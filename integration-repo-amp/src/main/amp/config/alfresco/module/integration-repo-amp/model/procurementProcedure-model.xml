@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="proc:procurementProcedureModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Document Model for procurement procedure</description>
+	<author>Khlestkin M.N.</author>
+	<version>1.0</version>
+
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco Data List Model Definitions -->
+		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+		
+	</imports>
+
+	<!-- Custom namespace for your domain -->
+	<namespaces>
+		<namespace uri="http://www.ioi.com/model/procurement/1.0" prefix="proc" />
+	</namespaces>
+
+	<!-- =============================================================================================================== Constraints, Types, and Aspects go here... -->
+
+	<constraints>
+		<constraint name="proc:securityClassificationOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>Public</value>
+					<value>Client Confidential</value>
+					<value>Company Confidential</value>
+					<value>Strictly Confidential</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="proc:procurementCategoryOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>Поставка МТРиО</value>
+					<value>Работы/Услуги</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+	<types>
+
+
+		<type name="proc:procurementDocument">
+			<title>Закупочная процедура</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="proc:procurementName">
+					<title>№ закупочной процедуры</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="proc:procurementNumber">
+					<title>ID закупочной процедуры</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="proc:procurementDescription">
+					<title>Описание закупочной процедуры</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="proc:procurementStatus">
+					<title>Статус закупочной процедуры</title>
+					<type>d:text</type>
+				</property>
+				<property name="proc:additionalMap">
+					<title>Примечание</title>
+					<type>d:text</type>
+
+				</property>
+				<property name="proc:procurementCategory">
+					<title>Категория</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+					<constraints>
+						<constraint ref="proc:procurementCategoryOptions" />
+					</constraints>
+				</property>
+			</properties>
+
+			<associations>
+				<association name="proc:procurementMember">
+					<title>Исполнитель</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>cm:person</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+					<!-- <duplicate>false</duplicate> -->
+					<!-- <propagateTimestamps>false</propagateTimestamps> -->
+				</association>
+				<association name="proc:procurementMasterDocument">
+					<title>Вышестоящий документ</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>proc:procurementDocument</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+
+				<association name="proc:procurementTypeLink">
+					<title>Тип процедуры</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>proc:procurementType</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				<!-- Lot association -->
+				<!-- <association name="proc:LotLink">
+					<title>Лот</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>lot:lotDocument</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association> -->
+			</associations>
+            <mandatory-aspects>
+                <aspect>cm:countable</aspect>
+            </mandatory-aspects>
+		</type>
+
+		<type name="proc:procurementType">
+			<title>Тип процедур</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="proc:procurementTypeID">
+					<title>ID типа процедуры</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="proc:procurementTypeDescription">
+					<title>Наименование типа процедуры</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</type>
+	</types>
+	<aspects>
+		<aspect name="proc:procurementIdentifier">
+			<title>Procurement Identification</title>
+			<description>Глобальный идентификатор закупочной процедуры</description>
+			<properties>
+				<property name="proc:procurementGlobalID">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="proc:securityClassified">
+			<title>Procurement Security Classified</title>
+			<description>Категория допуска</description>
+			<properties>
+				<property name="proc:securityClassification">
+					<type>d:text</type>
+					<index enabled="true">
+						<atomic>true</atomic>
+						<stored>false</stored>
+						<tokenised>false</tokenised>
+						<facetable>true</facetable>
+					</index>
+					<constraints>
+						<constraint ref="proc:securityClassificationOptions" />
+					</constraints>
+				</property>
+			</properties>
+		</aspect>
+		<!-- A content item would have this aspect applied to indicate that it has been published on a website. -->
+		<aspect name="proc:webPublished">
+			<title>Procurement Web published</title>
+			<description>Дата публикации на сайте</description>
+			<properties>
+				<property name="proc:publishedDate">
+					<type>d:datetime</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+		
+
+	</aspects>
+
+</model>

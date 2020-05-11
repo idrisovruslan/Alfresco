@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="lot:LotDocumentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Document Model for lot</description>
+	<author>Khlestkin M.N.</author>
+	<version>1.0</version>
+
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Data List Model Definitions -->
+		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco System Model Definitions -->
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+		<!-- Import Procurement Model Definitions -->
+		<import uri="http://www.ioi.com/model/procurement/1.0" prefix="proc" />
+		<!-- Import Supplier Model Definitions -->
+		<import uri="http://www.ioi.com/model/supplier/1.0" prefix="supp" />
+
+	</imports>
+
+	<!-- Custom namespace for your domain -->
+	<namespaces>
+		<namespace uri="http://www.ioi.com/model/lotdoc/1.0" prefix="lot" />
+	</namespaces>
+	<!-- Constraints, Types, and Aspects go here... -->
+
+	<constraints>
+		<constraint name="lot:lotsecurityClassificationOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>Public</value>
+					<value>Client Confidential</value>
+					<value>Company Confidential</value>
+					<value>Strictly Confidential</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="lot:TimeOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>7</value>
+					<value>15</value>
+					<value>Иной</value>
+
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="lot:deliverySellOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>с момента подписания договора</value>
+					<value>с момента 100% оплаты ТМЦ</value>
+					<value>с момента перечисления предоплаты на р/с поставщика</value>
+					<value>с момента оповещения Исполнителя о готовности Заказчика принять товар </value>
+					<value>с момента выполнения предыдущего этапа/предыдущей поставки </value>
+					<value>с момента поступления тары Покупателя в адрес Грузоотправителя </value>
+				</list>
+			</parameter>
+		</constraint>
+
+		<constraint name="lot:saleTypeOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>Предоплата</value>
+					<value>Постоплата</value>
+				</list>
+			</parameter>
+		</constraint>
+
+
+	</constraints>
+	<types>
+
+
+		<type name="lot:lotDocument">
+			<title>Лот</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:lotName">
+					<title>№ лота</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="lot:lotDescription">
+					<title>Описание лота</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="lot:lotTime">
+					<title>Срок проведения опроса, в раб. днях</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="lot:TimeOptions" />
+					</constraints>
+				</property>
+
+				<property name="lot:AnotherlotTime">
+					<title>Иной срок проведения опроса, в раб. днях</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="lot:EndDate">
+					<title>Дата окончания проведения опроса</title>
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="lot:LowPriceDate">
+					<title>Срок формирования НМЦ</title>
+					<type>d:date</type>
+				</property>
+
+				<property name="lot:deliveryPriceDate">
+					<title>передавать ПД для поиска ИЦИ и АЗТКП</title>
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="lot:LotStartDate">
+					<title>Дата начала поставки</title>
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<property name="lot:LotEndDate">
+					<title>Дата окончания поставки</title>
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+
+				</property>
+
+				<property name="lot:LotSale">
+					<title>Предмет закупки</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:LotDeliveryPrice">
+					<title>Сведения о включенных в цену расходах</title>
+					<type>d:text</type>
+				</property>
+				<property name="lot:LotDeliveryPlace">
+					<title>Место поставки / проведения работ</title>
+					<type>d:text</type>
+				</property>
+
+				<property name="lot:LotDeliveryDetail">
+					<title>Способ доставки</title>
+					<type>d:text</type>
+				</property>
+
+				<property name="lot:LotNote">
+					<title>Примечание</title>
+					<type>d:text</type>
+				</property>
+				<!-- Количество позиций. Позиция подтягивается из справочника -->
+				<property name="lot:positionQuantity">
+					<title>Количество</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+
+			</properties>
+
+			<associations>
+				<!-- ССылка на вышестоящий мастер документ -->
+				<association name="lot:lotMasterDocument">
+					<title>Вышестоящий документ</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>proc:procurementDocument</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				<!-- /////////////////////////////////////////////// -->
+				<association name="lot:supplierLink">
+					<title>Позиция</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>supp:Acknovledged_Supplier</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+
+				<!-- Уведомляемые поставщики-->
+				<association name="lot:procurementPositionLink">
+					<title>Позиция</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>lot:procurementPosition</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				
+				
+			</associations>
+		</type>
+
+		<!-- Описание полей справочника позиций -->
+		<type name="lot:procurementPosition">
+			<title>Позиция</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:positionCode">
+					<title>Код позиции</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+
+				</property>
+				<property name="lot:positionName">
+					<title>Наименование позиции</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+
+				<!-- <property name="lot:positionQualifier"> <title>Единица измерения</title> <type>d:text</type> <mandatory>true</mandatory> </property> -->
+			</properties>
+			<associations>
+				<association name="lot:positionQualifierLink">
+					<title>Единица измерения</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>lot:qualifierType</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+			</associations>
+		</type>
+		<!-- Описание типа единицы измерения -->
+		<type name="lot:qualifierType">
+			<title>Единица измерения</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:qualifierTypeCode">
+					<title>Код единицы измерения</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:qualifierTypeName">
+					<title>Наименование единицы измерения</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:qualifierTypeDescription">
+					<title>Пояснение</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</type>
+
+		<!-- Описание типа для таблицы график поставок -->
+
+
+		<type name="lot:deliveryGraf">
+			<title> График поставок</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:deliveryID">
+					<title>№</title>
+					<type>d:int</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="lot:deliveryValue">
+					<title>Объем поставки, %</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:deliveryTime">
+					<title>Срок поставки, дней</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:workDays">
+					<title>Рабочие дни</title>
+					<type>d:boolean</type>
+					<mandatory>false</mandatory>
+				</property>
+				<!-- перенести в ассоциации -->
+				<!-- <property name="lot:deliveryTimeOptions"> <title>Условия поставки</title> <type>d:int</type> <mandatory>true</mandatory> <constraints> <constraint ref="lot:deliverySellOptions" /> </constraints> </property> -->
+				<property name="lot:deliveryEndDate">
+					<title>Дата поставки </title>
+					<type>d:date</type>
+					<mandatory>false</mandatory>
+				</property>
+			</properties>
+			<associations>
+				<association name="lot:deliveryTimeOptions">
+					<title>Условия поставки</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>lot:deliverySellOpt</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+
+
+
+			</associations>
+		</type>
+
+		<type name="lot:deliverySellOpt">
+			<title> Условия поставки</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:deliveryIntervalCode">
+					<title>Код</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:deliveryIntervalOptions">
+					<title>Наименование</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="lot:deliverySellOptions" />
+					</constraints>
+				</property>
+			</properties>
+		</type>
+		<!-- График платежей -->
+		<type name="lot:saleGraf">
+			<title> График платежей</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:saleID">
+					<title>№</title>
+					<type>d:int</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="lot:saleValue">
+					<title>Объем оплаты, %</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+
+				</property>
+				<property name="lot:saleType">
+					<title>Тип оплаты</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="lot:saleTypeOptions" />
+					</constraints>
+				</property>
+				<property name="lot:saleTime">
+					<title>Срок оплаты, дней</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+					<!-- <constraints> <constraint ref="lot:saleTypeOptions" /> </constraints> -->
+				</property>
+				<property name="lot:saleworkDays">
+					<title>Рабочие дни</title>
+					<type>d:boolean</type>
+					<mandatory>false</mandatory>
+				</property>
+				<!-- перенести в ассоциации -->
+				<!-- <property name="lot:deliveryTimeOptions"> <title>Условия поставки</title> <type>d:int</type> <mandatory>true</mandatory> <constraints> <constraint ref="lot:deliverySellOptions" /> </constraints> </property> -->
+				
+				<property name="lot:saleEndDate">
+					<title>Дата оплаты </title>
+					<type>d:date</type>
+					<mandatory>false</mandatory>
+				</property>
+			</properties>
+			<associations>
+				<association name="lot:saleTimeOptions">
+					<title>Условия оплаты</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>lot:saleSellOpt</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+			</associations>
+		</type>
+
+		<type name="lot:saleSellOpt">
+			<title> Условия поставки</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:saleIntervalCode">
+					<title>Код</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:saleIntervalOptions">
+					<title>Наименование</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="lot:deliverySellOptions" />
+					</constraints>
+				</property>
+			</properties>
+		</type>
+		<!-- типы для обработки поставщиков -->
+
+	</types>
+	<!-- -->
+</model>

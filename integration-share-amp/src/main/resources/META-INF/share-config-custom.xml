@@ -1,0 +1,622 @@
+<!-- Share configuration related to this particular Share module extension, such as: - Doclib action config - Form config - Aspect and Type config Note. Any configuration related to the whole Share.war webapp (i.e. not specific to this share extension) should be placed in the environment specific config: alfresco-allinone/share/src/main/resources/alfresco/web-extension/share-config-custom.xml file -->
+<alfresco-config>
+	<!--================================================================================================================ View, Edit, Create forms for custom data list types For more information about how to define forms for data list item types see existing out-of-the-box form definitions: tomcat/webapps/share/WEB-INF/classes/alfresco/share-datalist-form-config.xml ============================================================================================================= -->
+	<!-- proc:procurementDocument type create form config -->
+	<config evaluator="model-type" condition="proc:procurementDocument">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementName" />
+					<show id="proc:procurementNumber" />
+					<show id="proc:procurementDescription" />
+					<show id="proc:procurementStatus" />
+					<show id="proc:additionalMap" />
+					<show id="proc:procurementMember" />
+					<show id="proc:procurementMasterDocument" />
+					<show id="proc:procurementTypeLink" />
+					<show id="proc:LotLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="proc:procurementDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+					<field id="proc:procurementMember">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementMasterDocument">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementTypeLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:LotLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- proc:procurementDocument type edit form config -->
+	<config evaluator="node-type" condition="proc:procurementDocument">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementName" />
+					<show id="proc:procurementNumber" />
+					<show id="proc:procurementDescription" />
+					<show id="proc:procurementStatus" />
+					<show id="proc:additionalMap" />
+					<show id="proc:procurementMember" />
+					<show id="proc:procurementMasterDocument" />
+					<show id="proc:procurementTypeLink" />
+					<show id="proc:LotLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="proc:procurementDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+					<field id="proc:procurementMember">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementMasterDocument">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementTypeLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:LotLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- proc:procurementType type create form config -->
+	<config evaluator="model-type" condition="proc:procurementType">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementTypeID" />
+					<show id="proc:procurementTypeDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="proc:procurementTypeDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- proc:procurementType type edit form config -->
+	<config evaluator="node-type" condition="proc:procurementType">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementTypeID" />
+					<show id="proc:procurementTypeDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="proc:procurementTypeDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot-model -->
+	<config evaluator="model-type" condition="lot:lotDocument">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:lotName" />
+					<show id="lot:lotDescription" />
+					<show id="lot:lotTime" />
+					<show id="lot:AnotherlotTime" />
+					<show id="lot:EndDate" />
+					<show id="lot:LowPriceDate" />
+					<show id="lot:deliveryPriceDate" />
+					<show id="lot:LotStartDate" />
+					<show id="lot:LotEndDate" />
+					<show id="lot:LotDeliveryPrice" />
+					<show id="lot:deliveryPriceDate" />
+					<show id="lot:LotDeliveryPlace" />
+					<show id="lot:LotDeliveryDetail" />
+					<show id="lot:LotNote" />
+					<show id="lot:positionQuantity" />
+					<show id="lot:lotMasterDocument" />
+					<show id="lot:procurementPositionLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<!-- <create-form template="../form/2-column-set.ftl" /> -->
+				<appearance>
+					<set id="text" appearance="fieldset" label="Text Fields" />
+					<set id="number" appearance="panel" label="Number Fields" />
+					<set id="date" appearance="fieldset" label="Date Fields" />
+					<show id="lot:lotName" set="text" />
+					<field id="lot:lotDescription" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotSale" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotDeliveryPrice" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotDeliveryPlace" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotDeliveryDetail" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotNote" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:lotTime" set="number" />
+					<field id="lot:AnotherlotTime" set="number" />
+					<field id="lot:EndDate" set="date" />
+					<field id="lot:LowPriceDate" />
+					<field id="lot:deliveryPriceDate" set="date" />
+					<field id="lot:LotStartDate" set="date" />
+					<field id="lot:LotEndDate" set="date" />
+					<field id="lot:positionQuantity" set="number" />
+					<!-- Association's -->
+					<field id="lot:lotMasterDocument">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="lot:procurementPositionLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="node-type" condition="lot:lotDocument">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:lotName" />
+					<show id="lot:lotDescription" />
+					<show id="lot:lotTime" />
+					<show id="lot:AnotherlotTime" />
+					<show id="lot:EndDate" />
+					<show id="lot:LowPriceDate" />
+					<show id="lot:deliveryPriceDate" />
+					<show id="lot:LotStartDate" />
+					<show id="lot:LotEndDate" />
+					<show id="lot:LotDeliveryPrice" />
+					<show id="lot:deliveryPriceDate" />
+					<show id="lot:LotDeliveryPlace" />
+					<show id="lot:LotDeliveryDetail" />
+					<show id="lot:LotNote" />
+					<show id="lot:positionQuantity" />
+					<show id="lot:lotMasterDocument" />
+					<show id="lot:procurementPositionLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<!-- <create-form template="../form/2-column-set.ftl" /> -->
+				<appearance>
+					<set id="text" appearance="fieldset" label="Text Fields" />
+					<set id="number" appearance="panel" label="Number Fields" />
+					<set id="date" appearance="fieldset" label="Date Fields" />
+					<show id="lot:lotName" set="text" />
+					<field id="lot:lotDescription" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotSale" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotDeliveryPrice" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotDeliveryPlace" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotDeliveryDetail" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:LotNote" set="text">
+						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
+					</field>
+					<field id="lot:lotTime" set="number" />
+					<field id="lot:AnotherlotTime" set="number" />
+					<field id="lot:EndDate" set="date" />
+					<field id="lot:LowPriceDate" />
+					<field id="lot:deliveryPriceDate" set="date" />
+					<field id="lot:LotStartDate" set="date" />
+					<field id="lot:LotEndDate" set="date" />
+					<field id="lot:positionQuantity" set="number" />
+					<!-- Association's -->
+					<field id="lot:lotMasterDocument">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="lot:procurementPositionLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:procurementPosition type create form config -->
+	<config evaluator="model-type" condition="lot:procurementPosition">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:positionCode" />
+					<show id="lot:positionName" />
+					<show id="lot:positionQualifierLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="lot:positionName">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+					<!-- asoociations -->
+					<field id="lot:positionQualifierLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:procurementPosition type create form config -->
+	<config evaluator="node-type" condition="lot:procurementPosition">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:positionCode" />
+					<show id="lot:positionName" />
+					<show id="lot:positionQualifierLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="lot:positionName">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+					<!-- asoociations -->
+					<field id="lot:positionQualifierLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:qualifierType type create form config -->
+	<config evaluator="model-type" condition="lot:qualifierType">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:qualifierTypeCode" />
+					<show id="lot:qualifierTypeName" />
+					<show id="lot:qualifierTypeDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="lot:qualifierTypeDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:qualifierType type create form config -->
+	<config evaluator="node-type" condition="lot:qualifierType">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:qualifierTypeCode" />
+					<show id="lot:qualifierTypeName" />
+					<show id="lot:qualifierTypeDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="lot:qualifierTypeDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- Position section -->
+	<!-- lot:procurementPosition type create form config -->
+	<config evaluator="model-type" condition="lot:deliveryGraf">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:deliveryID" />
+					<show id="lot:deliveryValue" />
+					<show id="lot:deliveryTime" />
+					<show id="lot:workDays" />
+					<show id="lot:deliveryEndDate" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- asoociations -->
+					<field id="lot:deliveryTimeOptions">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:deliveryGraf type create form config -->
+	<config evaluator="node-type" condition="lot:deliveryGraf">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:deliveryID" />
+					<show id="lot:deliveryValue" />
+					<show id="lot:deliveryTime" />
+					<show id="lot:workDays" />
+					<show id="lot:deliveryEndDate" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- asoociations -->
+					<field id="lot:deliveryTimeOptions">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:deliverySellOpt type create form config -->
+	<config evaluator="model-type" condition="lot:deliverySellOpt">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:deliveryIntervalCode" />
+					<show id="lot:deliveryIntervalOptions" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:deliverySellOpt type create form config -->
+	<config evaluator="node-type" condition="lot:deliverySellOpt">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:deliveryIntervalCode" />
+					<show id="lot:deliveryIntervalOptions" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:saleGraf type create form config -->
+	<config evaluator="model-type" condition="lot:saleGraf">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:saleID" />
+					<show id="lot:saleValue" />
+					<show id="lot:saleType" />
+					<show id="lot:saleTime" />
+					<show id="lot:saleworkDays" />
+					<show id="lot:deliveryEndDate" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- asoociations -->
+					<field id="lot:saleTimeOptions">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:saleGraf type create form config -->
+	<config evaluator="node-type" condition="lot:saleGraf">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:saleID" />
+					<show id="lot:saleValue" />
+					<show id="lot:saleType" />
+					<show id="lot:saleTime" />
+					<show id="lot:saleworkDays" />
+					<show id="lot:deliveryEndDate" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- asoociations -->
+					<field id="lot:saleTimeOptions">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- end of associations -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:saleSellOpt type create form config -->
+	<config evaluator="model-type" condition="lot:saleSellOpt">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:saleIntervalCode" />
+					<show id="lot:saleIntervalOptions" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- lot:saleSellOpt type create form config -->
+	<config evaluator="node-type" condition="lot:saleSellOpt">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="lot:saleIntervalCode" />
+					<show id="lot:saleIntervalOptions" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- supp:Acknovledged_Supplier type create form config -->
+	<config evaluator="model-type" condition="supp:Acknovledged_Supplier">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="supp:Resolver_FIO" />
+					<show id="supp:Acknovledged_SupplierLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="supp:Acknovledged_SupplierLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- supp:Acknovledged_Supplier type create form config -->
+	<config evaluator="node-type" condition="supp:Acknovledged_Supplier">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="supp:Resolver_FIO" />
+					<show id="supp:Acknovledged_SupplierLink" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="supp:Acknovledged_SupplierLink">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- supp:Supplier_base type create form config -->
+	<config evaluator="model-type" condition="supp:Supplier_base">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="supp:supp:Code" />
+					<show id="supp:SuppDescription" />
+					<show id="supp:e-mail" />
+					<show id="supp:Alte-mail" />
+					<show id="supp:inn" />
+					<show id="supp:kpp" />
+					<show id="supp:Director_FIO" />
+					<show id="supp:Director_Promise" />
+					<show id="supp:Dat_Director_FIO" />
+					<show id="supp:Dat_Director_Promise" />
+					<show id="supp:gender" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- supp:Supplier_base type create form config -->
+	<config evaluator="node-type" condition="supp:Supplier_base">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="supp:supp:Code" />
+					<show id="supp:SuppDescription" />
+					<show id="supp:e-mail" />
+					<show id="supp:Alte-mail" />
+					<show id="supp:inn" />
+					<show id="supp:kpp" />
+					<show id="supp:Director_FIO" />
+					<show id="supp:Director_Promise" />
+					<show id="supp:Dat_Director_FIO" />
+					<show id="supp:Dat_Director_Promise" />
+					<show id="supp:gender" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+</alfresco-config>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="supp:SupplierModel" xmlns="http://www.alfresco.org/model/dictionary/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- Optional meta-data about the model -->
+	<description>Supplier model</description>
+	<author>Khlestkin M.N.</author>
+	<version>1.0</version>
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Data List Model Definitions -->
+		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco System Model Definitions -->
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+		<!-- Import Procurement Model Definitions -->
+		<!-- <import uri="http://www.ioi.com/model/procurement/1.0" prefix="proc" /> -->
+	</imports>
+	<!-- Custom namespace for your domain -->
+	<namespaces>
+		<namespace uri="http://www.ioi.com/model/supplier/1.0" prefix="supp" />
+	</namespaces>
+	<!-- Constraints, Types, and Aspects go here... -->
+	<constraints>
+		<constraint name="supp:suppsecurityClassificationOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>Public</value>
+					<value>Client Confidential</value>
+					<value>Company Confidential</value>
+					<value>Strictly Confidential</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="supp:genderOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>Мужской</value>
+					<value>Женский</value>
+				</list>
+			</parameter>
+		</constraint>
+		<!-- <constraint name="lot:TimeOptions" type="LIST"> <parameter name="allowedValues"> <list> <value></value> Empty for default search <value>7</value> <value>15</value> <value>Иной</value> </list> </parameter> </constraint> <constraint name="lot:deliverySellOptions" type="LIST"> <parameter name="allowedValues"> <list> <value></value> Empty for default search <value>с момента подписания договора</value> 
+			<value>с момента 100% оплаты ТМЦ</value> <value>с момента перечисления предоплаты на р/с поставщика</value> <value>с момента оповещения Исполнителя о готовности Заказчика принять товар </value> <value>с момента выполнения предыдущего этапа/предыдущей поставки </value> <value>с момента поступления тары Покупателя в адрес Грузоотправителя </value> </list> </parameter> </constraint> <constraint name="lot:saleTypeOptions" 
+			type="LIST"> <parameter name="allowedValues"> <list> <value></value> Empty for default search <value>Предоплата</value> <value>Постоплата</value> </list> </parameter> </constraint> -->
+	</constraints>
+	<types>
+		<type name="supp:Acknovledged_Supplier">
+			<title>Уведомляемые поставщики</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="supp:Resolver_FIO">
+					<title>ФИО исполнителя</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+			</properties>
+			<associations>
+				<association name="supp:Acknovledged_SupplierLink">
+					<title>Уведомляемый поставщик</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>supp:Supplier_base</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+			</associations>
+		</type>
+		<!-- Элемент справочника поставщиков -->
+		<type name="supp:Supplier_base">
+			<title>Поставщик</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="supp:Code">
+					<title>Код поставщика</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:SuppDescription">
+					<title>Наименование поставщика</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:e-mail">
+					<title>E-mail</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:Alte-mail">
+					<title>E-mail</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="supp:inn">
+					<title>ИНН</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:kpp">
+					<title>КПП</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:Director_FIO">
+					<title>ФИО руководителя</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:Director_Promise">
+					<title>Должность руководителя</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:Dat_Director_FIO">
+					<title>ФИО руководителя в дательном падеже</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:Dat_Director_Promise">
+					<title>Должность руководителя в дательном падеже</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="supp:gender">
+					<title>Пол</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+					<constraints>
+						<constraint ref="supp:genderOptions" />
+					</constraints>
+				</property>
+			</properties>
+			<associations>
+			</associations>
+		</type>
+	</types>
+	<!-- -->
+</model>

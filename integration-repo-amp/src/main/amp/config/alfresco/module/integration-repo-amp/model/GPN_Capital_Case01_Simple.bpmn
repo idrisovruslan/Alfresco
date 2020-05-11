@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://activiti.com/modeler" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" modeler:version="1.0en" modeler:exportDateTime="20200318163246407" modeler:modelId="5034" modeler:modelVersion="8" modeler:modelLastUpdated="1584519064769" modeler:originalModelId="5" modeler:originalModelVersion="16">
+  <process id="GPN_Capital_Case01_Simple" name="GPN_Capital_Case01_Simple" isExecutable="true">
+    <documentation>ПАО "ГПН". Автоматизация капитального строительства. Кейс 01</documentation>
+    <startEvent id="startEvent1" name="Запуск" activiti:formKey="5020">
+      <extensionElements>
+        <modeler:form-reference-id>5020</modeler:form-reference-id>
+        <modeler:form-reference-name>Кейс01 Старт процесса</modeler:form-reference-name>
+        <modeler:editor-resource-id>startEvent1</modeler:editor-resource-id>
+      </extensionElements>
+    </startEvent>
+    <userTask id="sid-0C87F1D0-5D63-42D6-BB4D-DA7E1411B1C0" name="Проверка результатов" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1001,1002,1003,1004" activiti:formKey="5021">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5021</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ReviewForm</modeler:form-reference-name>
+        <modeler:group-info-name-1001>Генеральный подрядчик</modeler:group-info-name-1001>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-0C87F1D0-5D63-42D6-BB4D-DA7E1411B1C0</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <endEvent id="sid-CAF68F4F-033B-4236-BABC-9C2043FB62A7" name="Стоп">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-CAF68F4F-033B-4236-BABC-9C2043FB62A7</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <userTask id="sid-586E9287-32D7-49B3-A4CA-7400505B977F" name="Проведение  геодезического обследования" activiti:async="true" activiti:exclusive="false">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5023</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_EnvironmentForm</modeler:form-reference-name>
+        <modeler:group-info-name-1001>Генеральный подрядчик</modeler:group-info-name-1001>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-586E9287-32D7-49B3-A4CA-7400505B977F</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-176F0642-C8B2-4E61-9650-0491C6E0B38E" sourceRef="startEvent1" targetRef="sid-586E9287-32D7-49B3-A4CA-7400505B977F">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-176F0642-C8B2-4E61-9650-0491C6E0B38E</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-82A6F633-5EAF-4455-B43C-54A597F34569" sourceRef="sid-586E9287-32D7-49B3-A4CA-7400505B977F" targetRef="sid-0C87F1D0-5D63-42D6-BB4D-DA7E1411B1C0">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-82A6F633-5EAF-4455-B43C-54A597F34569</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <boundaryEvent id="sid-281AE4A0-7118-4789-8984-6FF5A4C76E5F" attachedToRef="sid-586E9287-32D7-49B3-A4CA-7400505B977F" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-281AE4A0-7118-4789-8984-6FF5A4C76E5F</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="sid-6A034175-32F6-4C7F-87BF-C3D018369FE4" sourceRef="sid-0C87F1D0-5D63-42D6-BB4D-DA7E1411B1C0" targetRef="sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-6A034175-32F6-4C7F-87BF-C3D018369FE4</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <exclusiveGateway id="sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9</modeler:editor-resource-id>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6" activiti:async="true" activiti:exclusive="false">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:editor-resource-id>sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </exclusiveGateway>
+    <userTask id="sid-6F377C55-3573-48BD-B007-85AE213E7BCD" name="Выполнение земляных работ" activiti:candidateGroups="1003" activiti:formKey="5024">
+      <extensionElements>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5024</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ZEnvironment</modeler:form-reference-name>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-6F377C55-3573-48BD-B007-85AE213E7BCD</modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <userTask id="sid-F93C16EC-BE66-4BB8-8F33-2141CA1A0DC7" name="Проверка результатов" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1004" activiti:formKey="5033">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5033</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_reviewForm08</modeler:form-reference-name>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-F93C16EC-BE66-4BB8-8F33-2141CA1A0DC7</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-09151E8B-C5D7-41B9-A284-56BA2D01EFA8" sourceRef="sid-6F377C55-3573-48BD-B007-85AE213E7BCD" targetRef="sid-F93C16EC-BE66-4BB8-8F33-2141CA1A0DC7">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-09151E8B-C5D7-41B9-A284-56BA2D01EFA8</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="sid-53F687AA-005E-4940-9176-BC1F1D541A5A" name="Заливка опор и основной площади" activiti:candidateGroups="1003" activiti:formKey="5029">
+      <extensionElements>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5029</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_REnvironment</modeler:form-reference-name>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>false</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-53F687AA-005E-4940-9176-BC1F1D541A5A</modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <userTask id="sid-B25E8B93-F162-467F-ABB8-F78E989413C8" name="Проверка результатов" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1003,1004" activiti:formKey="5030">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5030</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ReviewForm05</modeler:form-reference-name>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-B25E8B93-F162-467F-ABB8-F78E989413C8</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-0DD10455-3649-4FA1-958B-C25817FD68A8" sourceRef="sid-53F687AA-005E-4940-9176-BC1F1D541A5A" targetRef="sid-B25E8B93-F162-467F-ABB8-F78E989413C8">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-0DD10455-3649-4FA1-958B-C25817FD68A8</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <exclusiveGateway id="sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8" activiti:async="true" activiti:exclusive="false">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:editor-resource-id>sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </exclusiveGateway>
+    <sequenceFlow id="sid-9FA10CD3-6A13-4CB2-BD8D-46DA0BCB1435" sourceRef="sid-B25E8B93-F162-467F-ABB8-F78E989413C8" targetRef="sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-9FA10CD3-6A13-4CB2-BD8D-46DA0BCB1435</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <endEvent id="sid-7E897760-0A76-4F34-9DBE-B87BF8BCDAA2">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-7E897760-0A76-4F34-9DBE-B87BF8BCDAA2</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <userTask id="sid-0A35E7BF-AD42-47BF-AE79-3E543BA692B9" name="Проверка результатов" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1002,1003,1004" activiti:formKey="5031">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5031</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ReviewForm06</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-0A35E7BF-AD42-47BF-AE79-3E543BA692B9</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-0109EBBB-0688-4072-99CE-5BCE9737B89F" sourceRef="sid-BFCD09D6-C301-4808-8457-50533C38CD21" targetRef="sid-0A35E7BF-AD42-47BF-AE79-3E543BA692B9">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-0109EBBB-0688-4072-99CE-5BCE9737B89F</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="sid-BFCD09D6-C301-4808-8457-50533C38CD21" name="Разметка территории" activiti:candidateGroups="1002,1003" activiti:formKey="5023">
+      <extensionElements>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5023</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_EnvironmentForm</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-BFCD09D6-C301-4808-8457-50533C38CD21</modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-B115AE7E-F936-4949-B94B-B600FA06ECE1" sourceRef="sid-281AE4A0-7118-4789-8984-6FF5A4C76E5F" targetRef="sid-586E9287-32D7-49B3-A4CA-7400505B977F">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-B115AE7E-F936-4949-B94B-B600FA06ECE1</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-B872CF0E-6CFC-432B-A6A4-0215ECA3D3C7" sourceRef="sid-EC4D9081-FB96-4ECE-9ACF-E43BA694A414" targetRef="sid-BFCD09D6-C301-4808-8457-50533C38CD21">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-B872CF0E-6CFC-432B-A6A4-0215ECA3D3C7</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <boundaryEvent id="sid-EC4D9081-FB96-4ECE-9ACF-E43BA694A414" attachedToRef="sid-BFCD09D6-C301-4808-8457-50533C38CD21" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-EC4D9081-FB96-4ECE-9ACF-E43BA694A414</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <exclusiveGateway id="sid-9D2792E7-0A1F-4520-B410-2F027BA07776">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-9D2792E7-0A1F-4520-B410-2F027BA07776</modeler:editor-resource-id>
+      </extensionElements>
+    </exclusiveGateway>
+    <endEvent id="sid-E71E9967-E2C2-4778-8E8F-A73EDC90FAC1" name="Стоп">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-E71E9967-E2C2-4778-8E8F-A73EDC90FAC1</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <userTask id="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF" name="Подготовка МТР и О" activiti:candidateGroups="1002,1003" activiti:formKey="5023">
+      <extensionElements>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5023</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_EnvironmentForm</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-8DE54D3D-2930-4826-A195-574E9C21BBDF</modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <endEvent id="sid-846FB10E-A8B7-4B90-BCDC-F61CE4C99EF0" name="Стоп">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-846FB10E-A8B7-4B90-BCDC-F61CE4C99EF0</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <userTask id="sid-B5A6D32C-7235-4143-8648-FFAE0B316FF4" name="Проверка результатов МТР и О" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1002,1003,1004" activiti:formKey="5032">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5032</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ReviewForm07</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-B5A6D32C-7235-4143-8648-FFAE0B316FF4</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-612CB560-4460-40AC-9815-D573C5E8F1B5" sourceRef="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF" targetRef="sid-B5A6D32C-7235-4143-8648-FFAE0B316FF4">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-612CB560-4460-40AC-9815-D573C5E8F1B5</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-1895372C-E96A-49CD-AD6E-6988D2D13E20" sourceRef="sid-B5A6D32C-7235-4143-8648-FFAE0B316FF4" targetRef="sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-1895372C-E96A-49CD-AD6E-6988D2D13E20</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-5A526ED7-5F0D-432A-A342-549B5BBEB0D9" sourceRef="sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6" targetRef="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5032" modeler:outcomeFormName="Capital_Case01_ReviewForm07" modeler:rightOutcomeName="Отправить на доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-5A526ED7-5F0D-432A-A342-549B5BBEB0D9</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5032outcome') && form5032outcome == 'Отправить на доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <boundaryEvent id="sid-ABDDBF80-3509-489C-A81D-C5651BC7598C" attachedToRef="sid-6F377C55-3573-48BD-B007-85AE213E7BCD" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-ABDDBF80-3509-489C-A81D-C5651BC7598C</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="sid-C62F5A1C-AEAD-430D-8446-6F469D63C55F" sourceRef="sid-ABDDBF80-3509-489C-A81D-C5651BC7598C" targetRef="sid-6F377C55-3573-48BD-B007-85AE213E7BCD">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-C62F5A1C-AEAD-430D-8446-6F469D63C55F</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="sid-24803D2F-01B6-492C-A2A8-233D2916A696" name="Проверка результатов" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1002,1003,1004" activiti:formKey="5025">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5025</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ReviewForm02</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-24803D2F-01B6-492C-A2A8-233D2916A696</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <userTask id="sid-91CD2876-A67A-4A40-BE36-46F31437948F" name="Установка внутренней опалубки и армирующих элементов" activiti:candidateGroups="1002,1003" activiti:formKey="5027">
+      <extensionElements>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5027</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_AEnvironment</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-91CD2876-A67A-4A40-BE36-46F31437948F</modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <exclusiveGateway id="sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F" activiti:async="true" activiti:exclusive="false">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:editor-resource-id>sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </exclusiveGateway>
+    <endEvent id="sid-FBE4DAD8-ACBA-485C-BEDB-67529EA8238F" name="Стоп">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-FBE4DAD8-ACBA-485C-BEDB-67529EA8238F</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <userTask id="sid-65B15669-0EAF-4F84-9B50-A2A0BA73955B" name="Проверка результатов" activiti:async="true" activiti:exclusive="false" activiti:candidateGroups="1002,1003,1004" activiti:formKey="5026">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5026</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_ReviewForm03</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:group-info-name-1004>Ревизионно - надзорные органы</modeler:group-info-name-1004>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-65B15669-0EAF-4F84-9B50-A2A0BA73955B</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-EA73DA7E-D0B7-4BBF-B0D0-59419A8D1122" sourceRef="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725" targetRef="sid-65B15669-0EAF-4F84-9B50-A2A0BA73955B">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-EA73DA7E-D0B7-4BBF-B0D0-59419A8D1122</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725" name="Засыпка основы" activiti:candidateGroups="1002,1003" activiti:formKey="5027">
+      <extensionElements>
+        <modeler:allow-send-email>true</modeler:allow-send-email>
+        <modeler:form-reference-id>5027</modeler:form-reference-id>
+        <modeler:form-reference-name>Capital_Case01_AEnvironment</modeler:form-reference-name>
+        <modeler:group-info-name-1002>Субподрядчик 1</modeler:group-info-name-1002>
+        <modeler:group-info-name-1003>Субподрядчик 2</modeler:group-info-name-1003>
+        <modeler:activiti-idm-candidate-group>true</modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete>true</modeler:initiator-can-complete>
+        <modeler:editor-resource-id>sid-2EC3B480-5280-495B-9C97-8CA71EFAF725</modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-AA8E8282-E07E-4CE1-9B97-0768D754F8D9" sourceRef="sid-F80A0646-1385-4DC6-B2E6-633311FF0C58" targetRef="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-AA8E8282-E07E-4CE1-9B97-0768D754F8D9</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <exclusiveGateway id="sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118" activiti:async="true" activiti:exclusive="false">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:editor-resource-id>sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </exclusiveGateway>
+    <endEvent id="sid-A031407F-7778-4AC1-9DD3-CD922BFB71D0" name="Стоп">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-A031407F-7778-4AC1-9DD3-CD922BFB71D0</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="sid-7377ED53-74B4-4BF5-AFB8-4CA06C2AB856" sourceRef="sid-91CD2876-A67A-4A40-BE36-46F31437948F" targetRef="sid-24803D2F-01B6-492C-A2A8-233D2916A696">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-7377ED53-74B4-4BF5-AFB8-4CA06C2AB856</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-D2EEC8AC-5664-4AC4-B559-F1BCBA607C7A" sourceRef="sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8" targetRef="sid-53F687AA-005E-4940-9176-BC1F1D541A5A">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5030" modeler:outcomeFormName="Capital_Case01_ReviewForm05" modeler:rightOutcomeName="На доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-D2EEC8AC-5664-4AC4-B559-F1BCBA607C7A</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5030outcome') && form5030outcome == 'На доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498" activiti:async="true" activiti:exclusive="false">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.activiti.runtime.activiti.ContentProcessorExecutionListener">
+          <activiti:field name="externalContentHandler">
+            <activiti:expression><![CDATA[${externalContentHandler}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+        <modeler:editor-resource-id>sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498</modeler:editor-resource-id>
+        <modeler:ignore-listener-on-import>com.activiti.runtime.activiti.ContentProcessorExecutionListener</modeler:ignore-listener-on-import>
+      </extensionElements>
+    </exclusiveGateway>
+    <endEvent id="sid-AA09271D-540A-4004-9762-9949158EE536">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-AA09271D-540A-4004-9762-9949158EE536</modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="sid-2A289ABE-4128-468D-A30C-6DE5581FC4B2" sourceRef="sid-F93C16EC-BE66-4BB8-8F33-2141CA1A0DC7" targetRef="sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-2A289ABE-4128-468D-A30C-6DE5581FC4B2</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-62748B70-94A4-4584-A37C-D4E344832894" sourceRef="sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9" targetRef="sid-586E9287-32D7-49B3-A4CA-7400505B977F">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5021" modeler:outcomeFormName="Capital_Case01_ReviewForm" modeler:rightOutcomeName="Отправить на доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-62748B70-94A4-4584-A37C-D4E344832894</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5021outcome') && form5021outcome == 'Отправить на доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <boundaryEvent id="sid-CBE4F57F-CF41-4BFC-BB72-292654A24D60" attachedToRef="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-CBE4F57F-CF41-4BFC-BB72-292654A24D60</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <boundaryEvent id="sid-11BAACF6-7404-40B8-B286-BBEBACFF90D8" attachedToRef="sid-91CD2876-A67A-4A40-BE36-46F31437948F" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-11BAACF6-7404-40B8-B286-BBEBACFF90D8</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="sid-FBEE9871-8AC2-4D8C-8987-82BBC5AF66ED" sourceRef="sid-24803D2F-01B6-492C-A2A8-233D2916A696" targetRef="sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-FBEE9871-8AC2-4D8C-8987-82BBC5AF66ED</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-06A24A9D-DFD4-4DBF-B4C5-7627A3517063" sourceRef="sid-11BAACF6-7404-40B8-B286-BBEBACFF90D8" targetRef="sid-91CD2876-A67A-4A40-BE36-46F31437948F">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-06A24A9D-DFD4-4DBF-B4C5-7627A3517063</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-B7B1E6A1-4708-46DE-95E5-8F683B6E9E80" sourceRef="sid-65B15669-0EAF-4F84-9B50-A2A0BA73955B" targetRef="sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-B7B1E6A1-4708-46DE-95E5-8F683B6E9E80</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-94135F42-E2AA-419E-AB99-3E4B3737AB66" sourceRef="sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9" targetRef="sid-CAF68F4F-033B-4236-BABC-9C2043FB62A7">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5021" modeler:outcomeFormName="Capital_Case01_ReviewForm" modeler:rightOutcomeName="Отказать" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-94135F42-E2AA-419E-AB99-3E4B3737AB66</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5021outcome') && form5021outcome == 'Отказать')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-C4C5DF83-D8F7-429B-8EDB-24366DEC61CE" sourceRef="sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9" targetRef="sid-BFCD09D6-C301-4808-8457-50533C38CD21">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5021" modeler:outcomeFormName="Capital_Case01_ReviewForm" modeler:rightOutcomeName="Принять" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-C4C5DF83-D8F7-429B-8EDB-24366DEC61CE</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5021outcome') && form5021outcome == 'Принять')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-BC83DE66-8552-4B3D-B651-1EE181DB801D" sourceRef="sid-CBE4F57F-CF41-4BFC-BB72-292654A24D60" targetRef="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-BC83DE66-8552-4B3D-B651-1EE181DB801D</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-763AEEBA-FD78-42E6-899B-38375B5A2A92" sourceRef="sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6" targetRef="sid-846FB10E-A8B7-4B90-BCDC-F61CE4C99EF0">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5032" modeler:outcomeFormName="Capital_Case01_ReviewForm07" modeler:rightOutcomeName="Отвергнуть результаты" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-763AEEBA-FD78-42E6-899B-38375B5A2A92</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5032outcome') && form5032outcome == 'Отвергнуть результаты')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-E8B91893-4198-478A-9B2C-505950857ABE" sourceRef="sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6" targetRef="sid-6F377C55-3573-48BD-B007-85AE213E7BCD">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5032" modeler:outcomeFormName="Capital_Case01_ReviewForm07" modeler:rightOutcomeName="Принять результаты" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-E8B91893-4198-478A-9B2C-505950857ABE</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5032outcome') && form5032outcome == 'Принять результаты')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-AAA41BFB-C3F3-4C9E-A78C-B5579601D2AD" sourceRef="sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498" targetRef="sid-91CD2876-A67A-4A40-BE36-46F31437948F">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5033" modeler:outcomeFormName="Capital_Case01_reviewForm08" modeler:rightOutcomeName="Принять результаты" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-AAA41BFB-C3F3-4C9E-A78C-B5579601D2AD</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5033outcome') && form5033outcome == 'Принять результаты')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-39B4B33D-661D-4C74-8174-F3E2B185614B" sourceRef="sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498" targetRef="sid-AA09271D-540A-4004-9762-9949158EE536">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5033" modeler:outcomeFormName="Capital_Case01_reviewForm08" modeler:rightOutcomeName="Отвергнуть результаты" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-39B4B33D-661D-4C74-8174-F3E2B185614B</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5033outcome') && form5033outcome == 'Отвергнуть результаты')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-94A5B135-DC2E-40FF-B406-2BE03D49756F" sourceRef="sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F" targetRef="sid-FBE4DAD8-ACBA-485C-BEDB-67529EA8238F">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5025" modeler:outcomeFormName="Capital_Case01_ReviewForm02" modeler:rightOutcomeName="Отвергнуть" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-94A5B135-DC2E-40FF-B406-2BE03D49756F</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5025outcome') && form5025outcome == 'Отвергнуть')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-C240A50B-EE58-4FD9-AF60-FDE513137A8F" sourceRef="sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F" targetRef="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5025" modeler:outcomeFormName="Capital_Case01_ReviewForm02" modeler:rightOutcomeName="Принять этап" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-C240A50B-EE58-4FD9-AF60-FDE513137A8F</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5025outcome') && form5025outcome == 'Принять этап')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-D6B6ABDD-2F5A-4FD0-9758-B995D05CF56F" sourceRef="sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F" targetRef="sid-91CD2876-A67A-4A40-BE36-46F31437948F">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5025" modeler:outcomeFormName="Capital_Case01_ReviewForm02" modeler:rightOutcomeName="На доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-D6B6ABDD-2F5A-4FD0-9758-B995D05CF56F</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5025outcome') && form5025outcome == 'На доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-69EC9E8F-336A-45CD-A5E9-E10E1F125FA0" sourceRef="sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8" targetRef="sid-7E897760-0A76-4F34-9DBE-B87BF8BCDAA2">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5030" modeler:outcomeFormName="Capital_Case01_ReviewForm05" modeler:rightOutcomeName="Завершить этап" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-69EC9E8F-336A-45CD-A5E9-E10E1F125FA0</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5030outcome') && form5030outcome == 'Завершить этап')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-32533EDF-ACF4-4F9A-B3D6-AD101A73AE97" sourceRef="sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498" targetRef="sid-6F377C55-3573-48BD-B007-85AE213E7BCD">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5033" modeler:outcomeFormName="Capital_Case01_reviewForm08" modeler:rightOutcomeName="На доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-32533EDF-ACF4-4F9A-B3D6-AD101A73AE97</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5033outcome') && form5033outcome == 'На доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-BEBDFFF3-72D5-4F13-B8B5-9EFF51B243CC" sourceRef="sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118" targetRef="sid-A031407F-7778-4AC1-9DD3-CD922BFB71D0">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5026" modeler:outcomeFormName="Capital_Case01_ReviewForm03" modeler:rightOutcomeName="Завершить этап отказом" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-BEBDFFF3-72D5-4F13-B8B5-9EFF51B243CC</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5026outcome') && form5026outcome == 'Завершить этап отказом')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-7A8AF2EE-5AE9-4F18-BE5D-5091F9BD63F6" sourceRef="sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118" targetRef="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5026" modeler:outcomeFormName="Capital_Case01_ReviewForm03" modeler:rightOutcomeName="На доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-7A8AF2EE-5AE9-4F18-BE5D-5091F9BD63F6</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5026outcome') && form5026outcome == 'На доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-3C2D7438-4C63-4E56-9FE4-C7A349DBEE28" sourceRef="sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118" targetRef="sid-53F687AA-005E-4940-9176-BC1F1D541A5A">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5026" modeler:outcomeFormName="Capital_Case01_ReviewForm03" modeler:rightOutcomeName="Завершить этап" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-3C2D7438-4C63-4E56-9FE4-C7A349DBEE28</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5026outcome') && form5026outcome == 'Завершить этап')}]]></conditionExpression>
+    </sequenceFlow>
+    <boundaryEvent id="sid-F80A0646-1385-4DC6-B2E6-633311FF0C58" attachedToRef="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-F80A0646-1385-4DC6-B2E6-633311FF0C58</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <boundaryEvent id="sid-45924C57-A6A6-4374-813B-3AE9F973FBDC" attachedToRef="sid-53F687AA-005E-4940-9176-BC1F1D541A5A" cancelActivity="true">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-45924C57-A6A6-4374-813B-3AE9F973FBDC</modeler:editor-resource-id>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT5M</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="sid-26CF0D5C-7967-489E-B91E-32872D095E13" sourceRef="sid-45924C57-A6A6-4374-813B-3AE9F973FBDC" targetRef="sid-53F687AA-005E-4940-9176-BC1F1D541A5A">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-26CF0D5C-7967-489E-B91E-32872D095E13</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-C943EAD9-5058-49C5-B289-AC34F1BC3E8D" sourceRef="sid-9D2792E7-0A1F-4520-B410-2F027BA07776" targetRef="sid-E71E9967-E2C2-4778-8E8F-A73EDC90FAC1">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5031" modeler:outcomeFormName="Capital_Case01_ReviewForm06" modeler:rightOutcomeName="Отвергнуть результаты" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-C943EAD9-5058-49C5-B289-AC34F1BC3E8D</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5031outcome') && form5031outcome == 'Отвергнуть результаты')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-92438A20-00C0-4CA5-87B9-3C41050168E5" sourceRef="sid-9D2792E7-0A1F-4520-B410-2F027BA07776" targetRef="sid-BFCD09D6-C301-4808-8457-50533C38CD21">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5031" modeler:outcomeFormName="Capital_Case01_ReviewForm06" modeler:rightOutcomeName="Отправить на доработку" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-92438A20-00C0-4CA5-87B9-3C41050168E5</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5031outcome') && form5031outcome == 'Отправить на доработку')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-D7C556F3-81F7-46AD-87BD-8750544020C7" sourceRef="sid-0A35E7BF-AD42-47BF-AE79-3E543BA692B9" targetRef="sid-9D2792E7-0A1F-4520-B410-2F027BA07776">
+      <extensionElements>
+        <modeler:editor-resource-id>sid-D7C556F3-81F7-46AD-87BD-8750544020C7</modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="sid-BA0B6D0D-11EC-4F7C-832E-15672C15B86B" sourceRef="sid-9D2792E7-0A1F-4520-B410-2F027BA07776" targetRef="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF">
+      <extensionElements>
+        <modeler:conditionDefinition modeler:index="0" modeler:outcomeFormId="5031" modeler:outcomeFormName="Capital_Case01_ReviewForm06" modeler:rightOutcomeName="Принять результаты" modeler:operator="=="></modeler:conditionDefinition>
+        <modeler:editor-resource-id>sid-BA0B6D0D-11EC-4F7C-832E-15672C15B86B</modeler:editor-resource-id>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(activiti_flowConditionsBean.exists(execution, 'form5031outcome') && form5031outcome == 'Принять результаты')}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_GPN_Capital_Case01_Simple">
+    <bpmndi:BPMNPlane bpmnElement="GPN_Capital_Case01_Simple" id="BPMNPlane_GPN_Capital_Case01_Simple">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="117.0" y="87.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0C87F1D0-5D63-42D6-BB4D-DA7E1411B1C0" id="BPMNShape_sid-0C87F1D0-5D63-42D6-BB4D-DA7E1411B1C0">
+        <omgdc:Bounds height="60.0" width="138.0" x="430.0" y="71.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-CAF68F4F-033B-4236-BABC-9C2043FB62A7" id="BPMNShape_sid-CAF68F4F-033B-4236-BABC-9C2043FB62A7">
+        <omgdc:Bounds height="35.0" width="35.0" x="645.0" y="161.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-586E9287-32D7-49B3-A4CA-7400505B977F" id="BPMNShape_sid-586E9287-32D7-49B3-A4CA-7400505B977F">
+        <omgdc:Bounds height="80.0" width="132.0" x="192.0" y="62.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-281AE4A0-7118-4789-8984-6FF5A4C76E5F" id="BPMNShape_sid-281AE4A0-7118-4789-8984-6FF5A4C76E5F">
+        <omgdc:Bounds height="30.0" width="30.0" x="310.0" y="113.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9" id="BPMNShape_sid-469F979B-4E55-4B42-AD23-68BE9EE7BAD9">
+        <omgdc:Bounds height="40.0" width="40.0" x="642.0" y="82.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6" id="BPMNShape_sid-63F36FAF-1B1F-44D5-B8F2-54E61412EBB6">
+        <omgdc:Bounds height="40.0" width="40.0" x="1017.0" y="412.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-6F377C55-3573-48BD-B007-85AE213E7BCD" id="BPMNShape_sid-6F377C55-3573-48BD-B007-85AE213E7BCD">
+        <omgdc:Bounds height="70.0" width="159.0" x="699.0" y="397.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-ABDDBF80-3509-489C-A81D-C5651BC7598C" id="BPMNShape_sid-ABDDBF80-3509-489C-A81D-C5651BC7598C">
+        <omgdc:Bounds height="30.0" width="30.0" x="843.0" y="445.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-F93C16EC-BE66-4BB8-8F33-2141CA1A0DC7" id="BPMNShape_sid-F93C16EC-BE66-4BB8-8F33-2141CA1A0DC7">
+        <omgdc:Bounds height="54.0" width="142.0" x="466.0" y="405.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-53F687AA-005E-4940-9176-BC1F1D541A5A" id="BPMNShape_sid-53F687AA-005E-4940-9176-BC1F1D541A5A">
+        <omgdc:Bounds height="61.0" width="177.0" x="1246.0" y="886.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-45924C57-A6A6-4374-813B-3AE9F973FBDC" id="BPMNShape_sid-45924C57-A6A6-4374-813B-3AE9F973FBDC">
+        <omgdc:Bounds height="30.0" width="30.0" x="1408.0" y="926.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B25E8B93-F162-467F-ABB8-F78E989413C8" id="BPMNShape_sid-B25E8B93-F162-467F-ABB8-F78E989413C8">
+        <omgdc:Bounds height="53.0" width="160.0" x="1037.0" y="890.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8" id="BPMNShape_sid-5314E0B0-1DA5-4336-B410-A36E8CB143E8">
+        <omgdc:Bounds height="40.0" width="40.0" x="949.0" y="896.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-7E897760-0A76-4F34-9DBE-B87BF8BCDAA2" id="BPMNShape_sid-7E897760-0A76-4F34-9DBE-B87BF8BCDAA2">
+        <omgdc:Bounds height="35.0" width="35.0" x="888.0" y="899.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0A35E7BF-AD42-47BF-AE79-3E543BA692B9" id="BPMNShape_sid-0A35E7BF-AD42-47BF-AE79-3E543BA692B9">
+        <omgdc:Bounds height="54.0" width="135.0" x="1161.0" y="74.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-BFCD09D6-C301-4808-8457-50533C38CD21" id="BPMNShape_sid-BFCD09D6-C301-4808-8457-50533C38CD21">
+        <omgdc:Bounds height="57.0" width="178.0" x="812.0" y="73.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-EC4D9081-FB96-4ECE-9ACF-E43BA694A414" id="BPMNShape_sid-EC4D9081-FB96-4ECE-9ACF-E43BA694A414">
+        <omgdc:Bounds height="30.0" width="30.0" x="975.0" y="105.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9D2792E7-0A1F-4520-B410-2F027BA07776" id="BPMNShape_sid-9D2792E7-0A1F-4520-B410-2F027BA07776">
+        <omgdc:Bounds height="40.0" width="40.0" x="1208.0" y="195.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-E71E9967-E2C2-4778-8E8F-A73EDC90FAC1" id="BPMNShape_sid-E71E9967-E2C2-4778-8E8F-A73EDC90FAC1">
+        <omgdc:Bounds height="35.0" width="35.0" x="1129.0" y="198.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-8DE54D3D-2930-4826-A195-574E9C21BBDF" id="BPMNShape_sid-8DE54D3D-2930-4826-A195-574E9C21BBDF">
+        <omgdc:Bounds height="57.0" width="147.0" x="1155.0" y="318.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-CBE4F57F-CF41-4BFC-BB72-292654A24D60" id="BPMNShape_sid-CBE4F57F-CF41-4BFC-BB72-292654A24D60">
+        <omgdc:Bounds height="30.0" width="30.0" x="1284.0" y="360.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-846FB10E-A8B7-4B90-BCDC-F61CE4C99EF0" id="BPMNShape_sid-846FB10E-A8B7-4B90-BCDC-F61CE4C99EF0">
+        <omgdc:Bounds height="35.0" width="35.0" x="1019.0" y="480.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B5A6D32C-7235-4143-8648-FFAE0B316FF4" id="BPMNShape_sid-B5A6D32C-7235-4143-8648-FFAE0B316FF4">
+        <omgdc:Bounds height="57.0" width="130.0" x="1163.0" y="403.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-24803D2F-01B6-492C-A2A8-233D2916A696" id="BPMNShape_sid-24803D2F-01B6-492C-A2A8-233D2916A696">
+        <omgdc:Bounds height="52.0" width="148.0" x="543.0" y="582.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-91CD2876-A67A-4A40-BE36-46F31437948F" id="BPMNShape_sid-91CD2876-A67A-4A40-BE36-46F31437948F">
+        <omgdc:Bounds height="81.0" width="213.0" x="227.0" y="567.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-11BAACF6-7404-40B8-B286-BBEBACFF90D8" id="BPMNShape_sid-11BAACF6-7404-40B8-B286-BBEBACFF90D8">
+        <omgdc:Bounds height="30.0" width="30.0" x="426.0" y="630.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F" id="BPMNShape_sid-311C3F50-DF1F-4BB2-A0CD-3910CE93E20F">
+        <omgdc:Bounds height="40.0" width="40.0" x="597.0" y="677.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-FBE4DAD8-ACBA-485C-BEDB-67529EA8238F" id="BPMNShape_sid-FBE4DAD8-ACBA-485C-BEDB-67529EA8238F">
+        <omgdc:Bounds height="35.0" width="35.0" x="599.0" y="741.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-65B15669-0EAF-4F84-9B50-A2A0BA73955B" id="BPMNShape_sid-65B15669-0EAF-4F84-9B50-A2A0BA73955B">
+        <omgdc:Bounds height="59.0" width="179.0" x="1027.0" y="667.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-2EC3B480-5280-495B-9C97-8CA71EFAF725" id="BPMNShape_sid-2EC3B480-5280-495B-9C97-8CA71EFAF725">
+        <omgdc:Bounds height="80.0" width="208.0" x="729.0" y="657.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-F80A0646-1385-4DC6-B2E6-633311FF0C58" id="BPMNShape_sid-F80A0646-1385-4DC6-B2E6-633311FF0C58">
+        <omgdc:Bounds height="30.0" width="30.0" x="922.0" y="711.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118" id="BPMNShape_sid-C06FACD7-E5C6-488B-AD59-ED90FCDEC118">
+        <omgdc:Bounds height="40.0" width="40.0" x="1315.0" y="677.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A031407F-7778-4AC1-9DD3-CD922BFB71D0" id="BPMNShape_sid-A031407F-7778-4AC1-9DD3-CD922BFB71D0">
+        <omgdc:Bounds height="35.0" width="35.0" x="1388.0" y="679.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498" id="BPMNShape_sid-A283C1AC-BDBD-476E-BC5E-1C10C45C9498">
+        <omgdc:Bounds height="40.0" width="40.0" x="314.0" y="413.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-AA09271D-540A-4004-9762-9949158EE536" id="BPMNShape_sid-AA09271D-540A-4004-9762-9949158EE536">
+        <omgdc:Bounds height="35.0" width="35.0" x="227.0" y="416.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-176F0642-C8B2-4E61-9650-0491C6E0B38E" id="BPMNEdge_sid-176F0642-C8B2-4E61-9650-0491C6E0B38E">
+        <omgdi:waypoint x="152.0" y="104.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="102.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-82A6F633-5EAF-4455-B43C-54A597F34569" id="BPMNEdge_sid-82A6F633-5EAF-4455-B43C-54A597F34569">
+        <omgdi:waypoint x="324.0" y="102.0"></omgdi:waypoint>
+        <omgdi:waypoint x="430.0" y="101.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-6A034175-32F6-4C7F-87BF-C3D018369FE4" id="BPMNEdge_sid-6A034175-32F6-4C7F-87BF-C3D018369FE4">
+        <omgdi:waypoint x="568.0" y="101.0"></omgdi:waypoint>
+        <omgdi:waypoint x="642.0" y="102.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-09151E8B-C5D7-41B9-A284-56BA2D01EFA8" id="BPMNEdge_sid-09151E8B-C5D7-41B9-A284-56BA2D01EFA8">
+        <omgdi:waypoint x="699.0" y="432.0"></omgdi:waypoint>
+        <omgdi:waypoint x="608.0" y="432.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-0DD10455-3649-4FA1-958B-C25817FD68A8" id="BPMNEdge_sid-0DD10455-3649-4FA1-958B-C25817FD68A8">
+        <omgdi:waypoint x="1246.0" y="916.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1197.0" y="916.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-9FA10CD3-6A13-4CB2-BD8D-46DA0BCB1435" id="BPMNEdge_sid-9FA10CD3-6A13-4CB2-BD8D-46DA0BCB1435">
+        <omgdi:waypoint x="1037.0" y="916.0"></omgdi:waypoint>
+        <omgdi:waypoint x="989.0" y="916.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-0109EBBB-0688-4072-99CE-5BCE9737B89F" id="BPMNEdge_sid-0109EBBB-0688-4072-99CE-5BCE9737B89F">
+        <omgdi:waypoint x="990.0" y="101.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1161.0" y="101.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B115AE7E-F936-4949-B94B-B600FA06ECE1" id="BPMNEdge_sid-B115AE7E-F936-4949-B94B-B600FA06ECE1">
+        <omgdi:waypoint x="325.0" y="143.0"></omgdi:waypoint>
+        <omgdi:waypoint x="326.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="259.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="258.0" y="142.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B872CF0E-6CFC-432B-A6A4-0215ECA3D3C7" id="BPMNEdge_sid-B872CF0E-6CFC-432B-A6A4-0215ECA3D3C7">
+        <omgdi:waypoint x="990.0" y="135.0"></omgdi:waypoint>
+        <omgdi:waypoint x="992.0" y="161.0"></omgdi:waypoint>
+        <omgdi:waypoint x="901.0" y="161.0"></omgdi:waypoint>
+        <omgdi:waypoint x="901.0" y="130.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-612CB560-4460-40AC-9815-D573C5E8F1B5" id="BPMNEdge_sid-612CB560-4460-40AC-9815-D573C5E8F1B5">
+        <omgdi:waypoint x="1228.0" y="375.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1228.0" y="403.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-1895372C-E96A-49CD-AD6E-6988D2D13E20" id="BPMNEdge_sid-1895372C-E96A-49CD-AD6E-6988D2D13E20">
+        <omgdi:waypoint x="1163.0" y="431.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1057.0" y="432.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5A526ED7-5F0D-432A-A342-549B5BBEB0D9" id="BPMNEdge_sid-5A526ED7-5F0D-432A-A342-549B5BBEB0D9">
+        <omgdi:waypoint x="1037.0" y="412.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1037.0" y="347.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1155.0" y="346.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C62F5A1C-AEAD-430D-8446-6F469D63C55F" id="BPMNEdge_sid-C62F5A1C-AEAD-430D-8446-6F469D63C55F">
+        <omgdi:waypoint x="858.0" y="475.0"></omgdi:waypoint>
+        <omgdi:waypoint x="859.0" y="500.0"></omgdi:waypoint>
+        <omgdi:waypoint x="778.0" y="500.0"></omgdi:waypoint>
+        <omgdi:waypoint x="778.0" y="467.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-EA73DA7E-D0B7-4BBF-B0D0-59419A8D1122" id="BPMNEdge_sid-EA73DA7E-D0B7-4BBF-B0D0-59419A8D1122">
+        <omgdi:waypoint x="937.0" y="697.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1027.0" y="696.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-AA8E8282-E07E-4CE1-9B97-0768D754F8D9" id="BPMNEdge_sid-AA8E8282-E07E-4CE1-9B97-0768D754F8D9">
+        <omgdi:waypoint x="937.0" y="741.0"></omgdi:waypoint>
+        <omgdi:waypoint x="940.0" y="765.0"></omgdi:waypoint>
+        <omgdi:waypoint x="833.0" y="765.0"></omgdi:waypoint>
+        <omgdi:waypoint x="833.0" y="737.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7377ED53-74B4-4BF5-AFB8-4CA06C2AB856" id="BPMNEdge_sid-7377ED53-74B4-4BF5-AFB8-4CA06C2AB856">
+        <omgdi:waypoint x="440.0" y="607.0"></omgdi:waypoint>
+        <omgdi:waypoint x="543.0" y="608.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D2EEC8AC-5664-4AC4-B559-F1BCBA607C7A" id="BPMNEdge_sid-D2EEC8AC-5664-4AC4-B559-F1BCBA607C7A">
+        <omgdi:waypoint x="969.0" y="936.0"></omgdi:waypoint>
+        <omgdi:waypoint x="969.0" y="1011.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1333.0" y="1011.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1334.0" y="947.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-2A289ABE-4128-468D-A30C-6DE5581FC4B2" id="BPMNEdge_sid-2A289ABE-4128-468D-A30C-6DE5581FC4B2">
+        <omgdi:waypoint x="466.0" y="432.0"></omgdi:waypoint>
+        <omgdi:waypoint x="354.0" y="433.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-62748B70-94A4-4584-A37C-D4E344832894" id="BPMNEdge_sid-62748B70-94A4-4584-A37C-D4E344832894">
+        <omgdi:waypoint x="662.0" y="82.0"></omgdi:waypoint>
+        <omgdi:waypoint x="663.0" y="35.0"></omgdi:waypoint>
+        <omgdi:waypoint x="259.0" y="35.0"></omgdi:waypoint>
+        <omgdi:waypoint x="258.0" y="62.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-FBEE9871-8AC2-4D8C-8987-82BBC5AF66ED" id="BPMNEdge_sid-FBEE9871-8AC2-4D8C-8987-82BBC5AF66ED">
+        <omgdi:waypoint x="617.0" y="634.0"></omgdi:waypoint>
+        <omgdi:waypoint x="617.0" y="677.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-06A24A9D-DFD4-4DBF-B4C5-7627A3517063" id="BPMNEdge_sid-06A24A9D-DFD4-4DBF-B4C5-7627A3517063">
+        <omgdi:waypoint x="441.0" y="660.0"></omgdi:waypoint>
+        <omgdi:waypoint x="441.0" y="674.0"></omgdi:waypoint>
+        <omgdi:waypoint x="334.0" y="674.0"></omgdi:waypoint>
+        <omgdi:waypoint x="333.0" y="648.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B7B1E6A1-4708-46DE-95E5-8F683B6E9E80" id="BPMNEdge_sid-B7B1E6A1-4708-46DE-95E5-8F683B6E9E80">
+        <omgdi:waypoint x="1206.0" y="696.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1315.0" y="697.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-94135F42-E2AA-419E-AB99-3E4B3737AB66" id="BPMNEdge_sid-94135F42-E2AA-419E-AB99-3E4B3737AB66">
+        <omgdi:waypoint x="662.0" y="122.0"></omgdi:waypoint>
+        <omgdi:waypoint x="662.0" y="161.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C4C5DF83-D8F7-429B-8EDB-24366DEC61CE" id="BPMNEdge_sid-C4C5DF83-D8F7-429B-8EDB-24366DEC61CE">
+        <omgdi:waypoint x="682.0" y="102.0"></omgdi:waypoint>
+        <omgdi:waypoint x="812.0" y="101.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-BC83DE66-8552-4B3D-B651-1EE181DB801D" id="BPMNEdge_sid-BC83DE66-8552-4B3D-B651-1EE181DB801D">
+        <omgdi:waypoint x="1314.0" y="375.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1362.0" y="376.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1362.0" y="347.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1302.0" y="346.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-763AEEBA-FD78-42E6-899B-38375B5A2A92" id="BPMNEdge_sid-763AEEBA-FD78-42E6-899B-38375B5A2A92">
+        <omgdi:waypoint x="1037.0" y="452.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1036.0" y="480.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-E8B91893-4198-478A-9B2C-505950857ABE" id="BPMNEdge_sid-E8B91893-4198-478A-9B2C-505950857ABE">
+        <omgdi:waypoint x="1017.0" y="432.0"></omgdi:waypoint>
+        <omgdi:waypoint x="858.0" y="432.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-AAA41BFB-C3F3-4C9E-A78C-B5579601D2AD" id="BPMNEdge_sid-AAA41BFB-C3F3-4C9E-A78C-B5579601D2AD">
+        <omgdi:waypoint x="334.0" y="453.0"></omgdi:waypoint>
+        <omgdi:waypoint x="333.0" y="567.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-39B4B33D-661D-4C74-8174-F3E2B185614B" id="BPMNEdge_sid-39B4B33D-661D-4C74-8174-F3E2B185614B">
+        <omgdi:waypoint x="314.0" y="433.0"></omgdi:waypoint>
+        <omgdi:waypoint x="262.0" y="433.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-94A5B135-DC2E-40FF-B406-2BE03D49756F" id="BPMNEdge_sid-94A5B135-DC2E-40FF-B406-2BE03D49756F">
+        <omgdi:waypoint x="617.0" y="717.0"></omgdi:waypoint>
+        <omgdi:waypoint x="616.0" y="741.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C240A50B-EE58-4FD9-AF60-FDE513137A8F" id="BPMNEdge_sid-C240A50B-EE58-4FD9-AF60-FDE513137A8F">
+        <omgdi:waypoint x="637.0" y="697.0"></omgdi:waypoint>
+        <omgdi:waypoint x="729.0" y="697.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D6B6ABDD-2F5A-4FD0-9758-B995D05CF56F" id="BPMNEdge_sid-D6B6ABDD-2F5A-4FD0-9758-B995D05CF56F">
+        <omgdi:waypoint x="597.0" y="697.0"></omgdi:waypoint>
+        <omgdi:waypoint x="125.0" y="697.0"></omgdi:waypoint>
+        <omgdi:waypoint x="125.0" y="608.0"></omgdi:waypoint>
+        <omgdi:waypoint x="227.0" y="607.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-69EC9E8F-336A-45CD-A5E9-E10E1F125FA0" id="BPMNEdge_sid-69EC9E8F-336A-45CD-A5E9-E10E1F125FA0">
+        <omgdi:waypoint x="949.0" y="916.0"></omgdi:waypoint>
+        <omgdi:waypoint x="923.0" y="916.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-32533EDF-ACF4-4F9A-B3D6-AD101A73AE97" id="BPMNEdge_sid-32533EDF-ACF4-4F9A-B3D6-AD101A73AE97">
+        <omgdi:waypoint x="334.0" y="413.0"></omgdi:waypoint>
+        <omgdi:waypoint x="334.0" y="363.0"></omgdi:waypoint>
+        <omgdi:waypoint x="778.0" y="363.0"></omgdi:waypoint>
+        <omgdi:waypoint x="778.0" y="397.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-BEBDFFF3-72D5-4F13-B8B5-9EFF51B243CC" id="BPMNEdge_sid-BEBDFFF3-72D5-4F13-B8B5-9EFF51B243CC">
+        <omgdi:waypoint x="1355.0" y="697.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1388.0" y="696.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7A8AF2EE-5AE9-4F18-BE5D-5091F9BD63F6" id="BPMNEdge_sid-7A8AF2EE-5AE9-4F18-BE5D-5091F9BD63F6">
+        <omgdi:waypoint x="1335.0" y="677.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1335.0" y="620.0"></omgdi:waypoint>
+        <omgdi:waypoint x="833.0" y="620.0"></omgdi:waypoint>
+        <omgdi:waypoint x="833.0" y="657.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-3C2D7438-4C63-4E56-9FE4-C7A349DBEE28" id="BPMNEdge_sid-3C2D7438-4C63-4E56-9FE4-C7A349DBEE28">
+        <omgdi:waypoint x="1335.0" y="717.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1334.0" y="886.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-26CF0D5C-7967-489E-B91E-32872D095E13" id="BPMNEdge_sid-26CF0D5C-7967-489E-B91E-32872D095E13">
+        <omgdi:waypoint x="1438.0" y="941.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1477.0" y="942.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1477.0" y="917.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1423.0" y="916.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C943EAD9-5058-49C5-B289-AC34F1BC3E8D" id="BPMNEdge_sid-C943EAD9-5058-49C5-B289-AC34F1BC3E8D">
+        <omgdi:waypoint x="1208.0" y="215.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1164.0" y="215.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-92438A20-00C0-4CA5-87B9-3C41050168E5" id="BPMNEdge_sid-92438A20-00C0-4CA5-87B9-3C41050168E5">
+        <omgdi:waypoint x="1248.0" y="215.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1329.0" y="215.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1329.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="901.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="901.0" y="73.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D7C556F3-81F7-46AD-87BD-8750544020C7" id="BPMNEdge_sid-D7C556F3-81F7-46AD-87BD-8750544020C7">
+        <omgdi:waypoint x="1228.0" y="128.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1228.0" y="195.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-BA0B6D0D-11EC-4F7C-832E-15672C15B86B" id="BPMNEdge_sid-BA0B6D0D-11EC-4F7C-832E-15672C15B86B">
+        <omgdi:waypoint x="1228.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1228.0" y="318.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
