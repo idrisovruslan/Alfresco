@@ -143,9 +143,6 @@
 					</target>
 				</association> -->
 			</associations>
-            <mandatory-aspects>
-                <aspect>cm:countable</aspect>
-            </mandatory-aspects>
 		</type>
 
 		<type name="proc:procurementType">
