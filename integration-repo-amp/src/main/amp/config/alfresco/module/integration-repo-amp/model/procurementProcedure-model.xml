@@ -130,6 +130,7 @@
 					</target>
 				</association>
 				<!-- Lot association -->
+				
 				<association name="proc:LotLink">
 					<title>Лот</title>
 					<source>
@@ -142,6 +143,7 @@
 						<many>true</many>
 					</target>
 				</association>
+				
 			</associations>
 		</type>
 		<type name="proc:procurementType">
