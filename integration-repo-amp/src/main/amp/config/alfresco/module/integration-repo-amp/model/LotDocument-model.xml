@@ -179,6 +179,7 @@
 
 			<associations>
 				<!-- ССылка на вышестоящий мастер документ -->
+				<!--
 				<association name="lot:lotMasterDocument">
 					<title>Вышестоящий документ</title>
 					<source>
@@ -191,9 +192,10 @@
 						<many>false</many>
 					</target>
 				</association>
+				-->
 				<!-- /////////////////////////////////////////////// -->
 				<association name="lot:supplierLink">
-					<title>Позиция</title>
+					<title>Поставщик</title>
 					<source>
 						<mandatory>false</mandatory>
 						<many>true</many>
@@ -204,7 +206,6 @@
 						<many>true</many>
 					</target>
 				</association>
-
 				<!-- Уведомляемые поставщики-->
 				<association name="lot:procurementPositionLink">
 					<title>Позиция</title>
@@ -220,6 +221,32 @@
 				</association>
 				
 				
+				<!-- График поставок-->
+				<association name="lot:deliveryGrafLink">
+					<title>График поставок</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>lot:deliveryGraf</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				<!-- График платежей-->
+				<association name="lot:saleGrafLink">
+					<title>График платежей</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>lot:saleGraf</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>		
 			</associations>
 		</type>
 
@@ -246,11 +273,13 @@
 				<association name="lot:positionQualifierLink">
 					<title>Единица измерения</title>
 					<source>
+<!-- mandatory true -->
 						<mandatory>false</mandatory>
 						<many>true</many>
 					</source>
 					<target>
 						<class>lot:qualifierType</class>
+<!-- mandatory true -->
 						<mandatory>false</mandatory>
 						<many>false</many>
 					</target>
@@ -414,7 +443,7 @@
 		</type>
 
 		<type name="lot:saleSellOpt">
-			<title> Условия поставки</title>
+			<title> Условия оплаты</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
 				<property name="lot:saleIntervalCode">

@@ -47,9 +47,8 @@
 			</parameter>
 		</constraint>
 	</constraints>
+	
 	<types>
-
-
 		<type name="proc:procurementDocument">
 			<title>Закупочная процедура</title>
 			<parent>dl:dataListItem</parent>
@@ -104,6 +103,7 @@
 					<!-- <duplicate>false</duplicate> -->
 					<!-- <propagateTimestamps>false</propagateTimestamps> -->
 				</association>
+<!-- заполняем скримтом -->				
 				<association name="proc:procurementMasterDocument">
 					<title>Вышестоящий документ</title>
 					<source>
@@ -116,7 +116,7 @@
 						<many>false</many>
 					</target>
 				</association>
-
+<!-- отдельный справочник, в отображении должно быть либо id либо иня -->	
 				<association name="proc:procurementTypeLink">
 					<title>Тип процедуры</title>
 					<source>
@@ -130,7 +130,7 @@
 					</target>
 				</association>
 				<!-- Lot association -->
-				<!-- <association name="proc:LotLink">
+				<association name="proc:LotLink">
 					<title>Лот</title>
 					<source>
 						<mandatory>false</mandatory>
@@ -141,10 +141,9 @@
 						<mandatory>false</mandatory>
 						<many>true</many>
 					</target>
-				</association> -->
+				</association>
 			</associations>
 		</type>
-
 		<type name="proc:procurementType">
 			<title>Тип процедур</title>
 			<parent>dl:dataListItem</parent>
@@ -203,8 +202,5 @@
 				</property>
 			</properties>
 		</aspect>
-		
-
 	</aspects>
-
 </model>
