@@ -13,7 +13,8 @@
 		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
 		<!-- Import Alfresco Data List Model Definitions -->
 		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
-		
+		<!-- Import Lot Model Definitions -->
+		<import uri="http://www.ioi.com/model/procurement/1.0" prefix="proc" />
 	</imports>
 
 	<!-- Custom namespace for your domain -->
