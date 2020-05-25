@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="priceinf:priceInfoModel" xmlns="http://www.alfresco.org/model/dictionary/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- Optional meta-data about the model -->
+	<description>priceInfo model</description>
+	<author>Idrisov R.R.</author>
+	<version>1.0</version>
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Data List Model Definitions -->
+		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco System Model Definitions -->
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+		<!-- Import Supplier Model Definitions -->
+		<import uri="http://www.ioi.com/model/supplier/1.0" prefix="supp" />
+		<!-- Import Directory Model Definitions -->
+		<import uri="http://www.ioi.com/model/directory/1.0" prefix="dir" />
+	</imports>
+	<!-- Custom namespace for your domain -->
+	
+	<namespaces>
+		<namespace uri="http://www.ioi.com/model/priceInfo/1.0" prefix="priceinf" />
+	</namespaces>
+	
+	<!-- Constraints, Types, and Aspects go here... -->
+	<constraints>
+		<constraint name="priceinf:сurrencyOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>RUB</value>
+					<value>USD</value>
+					<value>EUR</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="priceinf:vatRateOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>0</value>
+					<value>10</value>
+					<value>20</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+	
+	<types>
+		<!-- Расчет-обоснование НМЦ -->
+		<type name="priceinf:calculationAndJustificationNmc">
+		
+			<title>Расчет-обоснование НМЦ</title>
+			<parent>dl:dataListItem</parent>
+			
+			<properties>
+				<property name="priceinf:nmcName">
+					<title>№ НМЦ</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:nmcDescription">
+					<title>Описание</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:lotLink">
+					<title>№ Лота</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:сurrency">
+					<title>Валюта</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="priceinf:сurrencyOptions" />
+					</constraints>
+				</property>
+				<property name="priceinf:vatRate">
+					<title>Ставка НДС, %</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="priceinf:vatRateOptions" />
+					</constraints>
+				</property>
+				<property name="priceinf:nmcWithVat">
+					<title>НМЦ (с НДС)</title>
+					<description>Сюда вводим "деньги"</description>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:sumVat">
+					<title>Сумма НДС</title>
+					<description>Заполняетсся вручную или автоматически при переходе на этап формирования НМЦ если поле пустое</description>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:nmcWithoutVat">
+					<title>НМЦ без НДС</title>
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:exchangeRates">
+					<title>Курс валюты</title>
+					<description>Заполняется автоматически если валюта не рубль, иначе берет из источника</description>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:paymentDate">
+					<title>Дата рачета</title>
+					<description>Обязательно если валюта не рубль, иначе не доступно</description>
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:priceInCurrencyWithVat">
+					<title>Стоимость в валюте с НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:node">
+					<title>Примечание</title>
+					<type>d:double</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea1">
+					<title>textArea1</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea2">
+					<title>textArea2</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea3">
+					<title>textArea3</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+			</properties>
+			
+			<associations>
+				<association name="priceinf:iciSearchResultsLink">
+					<title>Результаты поиска ИЦИ</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>priceinf:iciSearchResults</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+			</associations>
+		</type>
+		
+
+		<!-- Результаты поиска ИЦИ -->
+		<type name="priceinf:iciSearchResults">
+		
+			<title>Результаты поиска ИЦИ</title>
+			<parent>dl:dataListItem</parent>
+			
+			<properties>
+				<property name="priceinf:iciName">
+					<title>№ ИЦИ</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:iciKind">
+					<title>Вид ИЦИ</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:resource">
+					<title>Ресурс</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:quantity">
+					<title>Количество</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:priceUnitWithoutVAT">
+					<title>Цена за ед. без НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:sumWithoutVAT">
+					<title>Сумма без НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:costOfDeliveryWithoutVAT">
+					<title>Стоимость доставки без НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:sumWithDeliveryWithoutVAT">
+					<title>Сумма c доставкой без НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:priceDeliveryWithAdjustmentsWithoutVAT">
+					<title>Цена доставки с учётом корректирующих поправок без НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:sumShippingWithAdjustmentsWithoutVAT">
+					<title>Сумма доставки с учётом корректирующих поправок без НДС</title>
+					<type>d:double</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="priceinf:notSubjectToVAT">
+					<title>НДС не облагается</title>
+					<type>d:boolean</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:сurrency">
+					<title>Валюта</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="priceinf:сurrencyOptions" />
+					</constraints>
+				</property>
+				<property name="priceinf:vatRate">
+					<title>Ставка НДС, %</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="priceinf:vatRateOptions" />
+					</constraints>
+				</property>
+				<property name="priceinf:deliveryTime">
+					<title>Срок поставки</title>
+					<type>d:int</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:specifications">
+					<title>Технические характеристики</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:dateDelivery">
+					<title>Дата поставки</title>
+					<type>d:date</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:node">
+					<title>Примечание</title>
+					<type>d:double</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea1">
+					<title>textArea1</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea2">
+					<title>textArea2</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea3">
+					<title>textArea3</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+			</properties>
+			
+			<associations>
+			
+				<association name="priceinf:Supplier_baseLink">
+					<title>Поставщик</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>supp:Supplier_base</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:positionLink">
+					<title>Позиция</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:position</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:unitMeasurementLink">
+					<title>Единица измерения</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:unitMeasurement</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:manufacturerLink">
+					<title>Изготовитель</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:manufacturer</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:safetyClassLink">
+					<title>Класс безопасности</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:safetyClass</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:materialsListLink">
+					<title>Перечень материалов</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:materialsList</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:paymentConditionsLink">
+					<title>Условия платежа</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:paymentConditions</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+				<association name="priceinf:priceValidityInTkpLink">
+					<title>Срок действия цены в ТКП</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>dir:priceValidityInTkp</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+				
+			</associations>
+			
+		</type>
+	</types>
+</model>

@@ -13,8 +13,7 @@
 		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
 		<!-- Import Alfresco System Model Definitions -->
 		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
-		<!-- Import Procurement Model Definitions -->
-		<!-- <import uri="http://www.ioi.com/model/procurement/1.0" prefix="proc" /> -->
+
 	</imports>
 	<!-- Custom namespace for your domain -->
 	<namespaces>
