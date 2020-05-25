@@ -1,4 +1,5 @@
-утро<#include "common/picker.inc.ftl" />
+<#include "common/picker.inc.ftl" />
+<#import "/org/alfresco/components/form/form.lib.ftl" as formLib />
 
 <#assign controlId = fieldHtmlId + "-cntrl">
 
@@ -60,32 +61,40 @@
 
 <div>     
 	<#if field.id??>               
-		${field.id} + "field.id"<br>
+		${field.id} + "field.id"<br><br>
 	</#if>
 	<#if field.type??>               
-		${field.type} + "field.type"<br>
+		${field.type} + "field.type"<br><br>
 	</#if>
 	<#if field.value??>               
-		${field.value} + "field.value"<br>
+		${field.value} + "field.value"<br><br>
 	</#if>
 	<#if field.name??>               
-		${field.name} + "field.name"<br>
+		${field.name} + "field.name"<br><br>
 	</#if>
 	
 	
 
 	<#if field.params??>               
-		${field.params} + "field.params"<br>
+		${field.params} + "field.params"<br><br>
 	</#if>	
 	<#if field.options??>               
-		${field.options} + "field.options"<br>
+		${field.options} + "field.options"<br><br>
 	</#if>	
 	<#if field.fields??>               
-		${field.fields} + "field.fields"<br>
+		${field.fields} + "field.fields"<br><br>
 	</#if>
-	<#if form.fields??>               
-		${form.fields} + "form.fields"<br>
-	</#if>
+	
+	
+
+
+
+<#if form.structure??>  	
+   <#list form.structure as item>
+		${item} + ${item_index} + ${item.kind}<br><br>
+   </#list>	
+</#if>	
+
 </div>        
          
          
@@ -107,3 +116,4 @@
       </div>
    </#if>
 </div>
+

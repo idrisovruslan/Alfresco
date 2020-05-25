@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="supp:SupplierModel">
+    <description>Supplier model</description>
+    <author>Khlestkin M.N.</author>
+    <version>1.0</version>
+    <imports>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl"/>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys"/>
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.ioi.com/model/supplier/1.0" prefix="supp"/>
+    </namespaces>
+    <data-types/>
+    <constraints>
+        <constraint name="supp:suppsecurityClassificationOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value/>
+                    <value>Public</value>
+                    <value>Client Confidential</value>
+                    <value>Company Confidential</value>
+                    <value>Strictly Confidential</value>
+                </list>
+            </parameter>
+        </constraint>
+        <constraint name="supp:genderOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value/>
+                    <value>Мужской</value>
+                    <value>Женский</value>
+                </list>
+            </parameter>
+        </constraint>
+    </constraints>
+    <types>
+        <type name="supp:Acknovledged_Supplier">
+            <title>Уведомляемые поставщики</title>
+            <parent>dl:dataListItem</parent>
+            <properties>
+                <property name="supp:Resolver_FIO">
+                    <title>ФИО исполнителя</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true"/>
+                </property>
+            </properties>
+            <associations>
+                <association name="supp:Acknovledged_SupplierLink">
+                    <title>Уведомляемый поставщик</title>
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>supp:Supplier_base</class>
+                        <mandatory enforced="false">false</mandatory>
+                        <many>true</many>
+                    </target>
+                </association>
+            </associations>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+        <type name="supp:Supplier_base">
+            <title>Поставщик</title>
+            <parent>dl:dataListItem</parent>
+            <properties>
+                <property name="supp:Code">
+                    <title>Код поставщика</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:SuppDescription">
+                    <title>Наименование поставщика</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:e-mail">
+                    <title>E-mail</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:Alte-mail">
+                    <title>E-mail</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:inn">
+                    <title>ИНН</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:kpp">
+                    <title>КПП</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:Director_FIO">
+                    <title>ФИО руководителя</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:Director_Promise">
+                    <title>Должность руководителя</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:Dat_Director_FIO">
+                    <title>ФИО руководителя в дательном падеже</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:Dat_Director_Promise">
+                    <title>Должность руководителя в дательном падеже</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="supp:gender">
+                    <title>Пол</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true"/>
+                    <constraints>
+                        <constraint name="supp:SupplierModel_Supplier_base_gender_anon_0" ref="supp:genderOptions"/>
+                    </constraints>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+    </types>
+    <aspects/>
+</model>

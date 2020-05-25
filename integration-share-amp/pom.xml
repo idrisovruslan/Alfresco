@@ -31,6 +31,16 @@
          <scope>provided</scope> is inherited for each of the following; 
          for more info, please refer to alfresco-platform-distribution POM -->
     <dependencies>
+		
+		<!-- Новая версия aikau для коректной работы тем
+		Ссылка на статью:
+		https://docs.alfresco.com/5.1/tasks/dev-extensions-share-tutorials-add-theme.html -->
+		<dependency>
+		    <groupId>org.alfresco</groupId>
+		    <artifactId>aikau</artifactId>
+		    <version>1.0.30</version>
+		</dependency>    
+    
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>share</artifactId>

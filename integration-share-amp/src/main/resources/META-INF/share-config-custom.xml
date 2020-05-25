@@ -2,8 +2,19 @@
 <alfresco-config>
 	<!--================================================================================================================ View, Edit, Create forms for custom data list types For more information about how to define forms for data list item types see existing out-of-the-box form definitions: tomcat/webapps/share/WEB-INF/classes/alfresco/share-datalist-form-config.xml ============================================================================================================= -->
 	<!-- proc:procurementDocument type create form config -->
+
+	<config>
+	   <forms>
+		      <dependencies>
+		         <css src="/css/custom-css.css" />
+			<!-- 	 <js  src="/js/datagrid.js" /> -->
+		      </dependencies>
+	   </forms>
+	</config>
+	
 	<config evaluator="model-type" condition="proc:procurementDocument">
 		<forms>
+
 			<!-- Create item form -->
 			<form>
 				<field-visibility>
@@ -17,62 +28,69 @@
 					<show id="proc:procurementTypeLink" />
 					<show id="proc:LotLink" />
 				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<create-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
 				<appearance>
-				
-					<set id="text" appearance="fieldset" label="Text Fields" />
-					<set id="number" appearance="bordered-panel" label="Number Fields" />
 					
-					<field id="proc:procurementName" set="text">
+					<field id="proc:procurementName">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">10</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementNumber" set="text">
+					<field id="proc:procurementNumber">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">10</control-param>
 						</control>
 					</field>	
-					<field id="proc:procurementDescription" set="text">
+					<field id="proc:procurementDescription">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="maxLength">10</control-param>
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
 					
-					<field id="proc:procurementStatus" set="text">
+					<field id="proc:procurementStatus">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="maxLength">10</control-param>
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
 					
-					<field id="proc:additionalMap" set="text">
+					<field id="proc:additionalMap">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="maxLength">10</control-param>
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
 
-					<field id="proc:procurementMember" set="number">
+					<field id="proc:procurementMember">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementMasterDocument" set="number">
+					<field id="proc:procurementMasterDocument">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementTypeLink" set="number">
+					<field id="proc:procurementTypeLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
-					<field id="proc:LotLink" set="number">
+					<field id="proc:LotLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
 				</appearance>
@@ -82,6 +100,7 @@
 	<!-- proc:procurementDocument type edit form config -->
 	<config evaluator="node-type" condition="proc:procurementDocument">
 		<forms>
+		
 			<!-- Create item form -->
 			<form>
 				<field-visibility>
@@ -95,62 +114,71 @@
 					<show id="proc:procurementTypeLink" />
 					<show id="proc:LotLink" />
 				</field-visibility>
-				<edit-form template="../data-lists/forms/dataitem.ftl" />
+				<edit-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
 				<appearance>
-					<set id="text" appearance="fieldset" label="Text Fields" />
-					<set id="number" appearance="panel" label="Number Fields" />
+
 					
-					<field id="proc:procurementName" set="text">
+					<field id="proc:procurementName">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementNumber" set="text">
+					<field id="proc:procurementNumber">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>	
-					<field id="proc:procurementDescription" set="text">
+					<field id="proc:procurementDescription">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">5</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
 					
-					<field id="proc:procurementStatus" set="text">
+					<field id="proc:procurementStatus">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="maxLength">10</control-param>
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
 					
-					<field id="proc:additionalMap" set="text">
+					<field id="proc:additionalMap">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
 
 					
-					<field id="proc:procurementMember" set="number">
-						<control template="/org/alfresco/components/form/controls/CustomAssociation.ftl">
+					<field id="proc:procurementMember">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementMasterDocument" set="number">
-						<control template="/org/alfresco/components/form/controls/CustomAssociation.ftl">
+					<field id="proc:procurementMasterDocument">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementTypeLink" set="number">
-						<control template="/org/alfresco/components/form/controls/CustomAssociation.ftl">
+					<field id="proc:procurementTypeLink">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
-					<field id="proc:LotLink" set="number">
-						<control template="/org/alfresco/components/form/controls/CustomAssociation.ftl">
+					<field id="proc:LotLink">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
 						</control>
 					</field>
 				</appearance>
@@ -209,65 +237,171 @@
 					<show id="lot:LotStartDate" />
 					<show id="lot:LotEndDate" />
 					<show id="lot:LotDeliveryPrice" />
-					<show id="lot:deliveryPriceDate" />
+					<show id="lot:LotSale" />
 					<show id="lot:LotDeliveryPlace" />
 					<show id="lot:LotDeliveryDetail" />
 					<show id="lot:LotNote" />
 					<show id="lot:positionQuantity" />
-					<show id="lot:lotMasterDocument" />
 					<show id="lot:procurementPositionLink" />
 					<show id="lot:deliveryGrafLink" />
+					<show id="lot:saleGrafLink" />
+					<show id="lot:supplierLink" />
 				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
-				<!-- <create-form template="../form/2-column-set.ftl" /> -->
+				<create-form template="/org/alfresco/components/form/tabbed.ftl" />
+				
 				<appearance>
-					<set id="text" appearance="fieldset" label="Text Fields" />
-					<set id="number" appearance="panel" label="Number Fields" />
-					<set id="date" appearance="fieldset" label="Date Fields" />
-					<show id="lot:lotName" set="text" />
-					<field id="lot:lotDescription" set="text">
-						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
-					</field>
-					<field id="lot:LotSale" set="text">
-						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
-					</field>
-					<field id="lot:LotDeliveryPrice" set="text">
-						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
-					</field>
-					<field id="lot:LotDeliveryPlace" set="text">
-						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
-					</field>
-					<field id="lot:LotDeliveryDetail" set="text">
-						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
-					</field>
-					<field id="lot:LotNote" set="text">
-						<!-- <control template="/org/alfresco/components/form/controls/textarea.ftl" /> -->
-					</field>
-					<field id="lot:lotTime" set="number" />
-					<field id="lot:AnotherlotTime" set="number" />
-					<field id="lot:EndDate" set="date" />
-					<field id="lot:LowPriceDate" />
-					<field id="lot:deliveryPriceDate" set="date" />
-					<field id="lot:LotStartDate" set="date" />
-					<field id="lot:LotEndDate" set="date" />
-					<field id="lot:positionQuantity" set="number" />
-					<!-- Association's -->
-					<field id="lot:lotMasterDocument">
-						<control>
-							<control-param name="startLocation">{doclib}</control-param>
-						</control>
-					</field>
-					<field id="lot:procurementPositionLink">
-						<control>
-							<control-param name="startLocation">{doclib}</control-param>
-						</control>
-					</field>
-					<field id="lot:deliveryGrafLink">
-						<control>
-							<control-param name="startLocation">{doclib}</control-param>
-						</control>
-					</field>
-					<!-- end of associations -->
+
+				<!-- Tabs -->
+					<set id="Zlot" label="Лот" />
+					<set id="ZsubjectOfPurchase" label="Предмет закупки" />
+					<set id="ZtimeParameters" label="Временные параметры" />
+					
+				<!-- Colums -->
+	             	<set id="lot1" parent="Zlot" label="" />
+
+	             	<set id="subjectOfPurchase1" parent="ZsubjectOfPurchase" label="" />
+					<set id="subjectOfPurchase2" parent="ZsubjectOfPurchase" label="" />
+					
+	            	<set id="timeParameters1" parent="ZtimeParameters" label="" />
+					<set id="timeParameters2" parent="ZtimeParameters" label="" />
+
+				<!-- Groups -->
+	             	<set id="Glot1" parent="lot1" label="lot1"/>
+
+	             	<set id="GsubjectOfPurchase1" parent="subjectOfPurchase1" label="subjectOfPurchase1"/>
+					<set id="GsubjectOfPurchase2" parent="subjectOfPurchase2" label="subjectOfPurchase2"/>
+					
+	             	<set id="GtimeParameters1" parent="timeParameters1" label="timeParameters1"/>
+					<set id="GtimeParameters2" parent="timeParameters2" label="timeParameters2"/>
+
+				<!-- Fields -->
+				
+					<!-- Zlot -->
+						<!-- Glot1 -->
+							<!-- lot:lotName -->
+							<set id="111Glot1-0-0" parent="Glot1" />
+								<field id="lot:lotName" set="111Glot1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl" /> 
+								</field>
+							<!-- lot:lotDescription -->
+							<set id="111Glot1-0-1" parent="Glot1" />
+								<field id="lot:lotDescription" set="111Glot1-0-1">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- lot:LotNote -->
+							<set id="111Glot1-1-3" parent="Glot1" />
+								<field id="lot:LotNote" set="111Glot1-1-3">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+									</control>
+								</field>
+							<!-- lot:supplierLink -->
+							<set id="111Glot1-1-8" parent="Glot1" />
+								<field id="lot:supplierLink" set="111Glot1-1-8">
+									<control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>
+
+														
+					<!-- ZsubjectOfPurchase -->
+						<!-- GsubjectOfPurchase1 -->
+							<!-- lot:LotSale -->
+							<set id="111GsubjectOfPurchase1-1-0" parent="GsubjectOfPurchase1" />
+								<field id="lot:LotSale" set="111GsubjectOfPurchase1-1-0">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+									</control>
+								</field>
+							<!-- lot:LotDeliveryPlace -->
+							<set id="111GsubjectOfPurchase1-1-1" parent="GsubjectOfPurchase1" />
+								<field id="lot:LotDeliveryPlace" set="111GsubjectOfPurchase1-1-1">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+									</control>
+								</field>
+							<!-- lot:LotDeliveryDetail -->
+							<set id="111GsubjectOfPurchase1-1-2" parent="GsubjectOfPurchase1" />
+								<field id="lot:LotDeliveryDetail" set="111GsubjectOfPurchase1-1-2">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+									</control>
+								</field>
+							
+						<!-- GsubjectOfPurchase2 -->
+							<!-- lot:LotDeliveryPrice -->
+							<set id="111GsubjectOfPurchase2-0-9" parent="GsubjectOfPurchase2" />
+								<field id="lot:LotDeliveryPrice" set="111GsubjectOfPurchase2-0-9">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+									</control>
+								</field>
+							<!-- lot:positionQuantity -->
+							<set id="111GsubjectOfPurchase2-1-4" parent="GsubjectOfPurchase2" />
+								<field id="lot:positionQuantity" set="111GsubjectOfPurchase2-1-4" />
+						
+					<!-- ZtimeParameters -->
+						<!-- GtimeParameters1 -->
+							<!-- lot:lotTime -->
+							<set id="111GtimeParameters1-0-2" parent="GtimeParameters1" />
+								<field id="lot:lotTime" set="111GtimeParameters1-0-2" />
+							<!-- lot:AnotherlotTime -->
+							<set id="111GtimeParameters1-0-3" parent="GtimeParameters1" />
+								<field id="lot:AnotherlotTime" set="111GtimeParameters1-0-3" />
+							<!-- lot:EndDate -->
+							<set id="111GtimeParameters1-0-4" parent="GtimeParameters1" />
+								<field id="lot:EndDate" set="111GtimeParameters1-0-4" />
+							<!-- lot:LowPriceDate -->
+							<set id="111GtimeParameters1-0-5" parent="GtimeParameters1" />
+								<field id="lot:LowPriceDate" set="111GtimeParameters1-0-5" />
+							<!-- lot:procurementPositionLink -->
+							<set id="111GtimeParameters1-1-5" parent="GtimeParameters1" />
+								<field id="lot:procurementPositionLink" set="111GtimeParameters1-1-5">
+									<control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>
+						
+						<!-- GtimeParameters2 -->
+							<!-- lot:deliveryPriceDate -->
+							<set id="111GtimeParameters2-0-6" parent="GtimeParameters2" />
+								<field id="lot:deliveryPriceDate" set="111GtimeParameters2-0-6" />
+							<!-- lot:LotStartDate -->
+							<set id="111GtimeParameters2-0-7" parent="GtimeParameters2" />
+								<field id="lot:LotStartDate" set="111GtimeParameters2-0-7" />
+							<!-- lot:LotEndDate -->
+							<set id="111GtimeParameters2-0-8" parent="GtimeParameters2" />
+								<field id="lot:LotEndDate" set="111GtimeParameters2-0-8" />
+							<!-- lot:deliveryGrafLink -->
+							<set id="111GtimeParameters2-1-6" parent="GtimeParameters2" />
+								<field id="lot:deliveryGrafLink" set="111GtimeParameters2-1-6">
+									<control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>
+							<!-- lot:saleGrafLink -->
+							<set id="111GtimeParameters2-1-7" parent="GtimeParameters2" />
+								<field id="lot:saleGrafLink" set="111GtimeParameters2-1-7">
+									<control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>
+								
+								
+
+
+											
 				</appearance>
 			</form>
 		</forms>
@@ -292,7 +426,6 @@
 					<show id="lot:LotDeliveryDetail" />
 					<show id="lot:LotNote" />
 					<show id="lot:positionQuantity" />
-					<show id="lot:lotMasterDocument" />
 					<show id="lot:procurementPositionLink" />
 					<show id="lot:deliveryGrafLink" />
 				</field-visibility>
@@ -330,11 +463,6 @@
 					<field id="lot:LotEndDate" set="date" />
 					<field id="lot:positionQuantity" set="number" />
 					<!-- Association's -->
-					<field id="lot:lotMasterDocument">
-						<control>
-							<control-param name="startLocation">{doclib}</control-param>
-						</control>
-					</field>
 					<field id="lot:procurementPositionLink">
 						<control>
 							<control-param name="startLocation">{doclib}</control-param>
@@ -667,7 +795,7 @@
 					<show id="supp:Dat_Director_Promise" />
 					<show id="supp:gender" />
 				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<create-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
 				<appearance>
 				</appearance>
 			</form>

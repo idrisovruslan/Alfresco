@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="proc:procurementProcedureModel">
+    <description>Document Model for procurement procedure</description>
+    <author>Khlestkin M.N.</author>
+    <version>1.0</version>
+    <imports>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl"/>
+        <import uri="http://www.ioi.com/model/lotdoc/1.0" prefix="lot"/>
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.ioi.com/model/procurement/1.0" prefix="proc"/>
+    </namespaces>
+    <data-types/>
+    <constraints>
+        <constraint name="proc:securityClassificationOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value/>
+                    <value>Public</value>
+                    <value>Client Confidential</value>
+                    <value>Company Confidential</value>
+                    <value>Strictly Confidential</value>
+                </list>
+            </parameter>
+        </constraint>
+        <constraint name="proc:procurementCategoryOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value/>
+                    <value>Поставка МТРиО</value>
+                    <value>Работы/Услуги</value>
+                </list>
+            </parameter>
+        </constraint>
+    </constraints>
+    <types>
+        <type name="proc:procurementDocument">
+            <title>Закупочная процедура</title>
+            <parent>dl:dataListItem</parent>
+            <properties>
+                <property name="proc:procurementName">
+                    <title>№ закупочной процедуры</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="proc:procurementNumber">
+                    <title>ID закупочной процедуры</title>
+                    <type>d:int</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="proc:procurementDescription">
+                    <title>Описание закупочной процедуры</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="proc:procurementStatus">
+                    <title>Статус закупочной процедуры</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="proc:additionalMap">
+                    <title>Примечание</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="proc:procurementCategory">
+                    <title>Категория</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true"/>
+                    <constraints>
+                        <constraint name="proc:procurementProcedureModel_procurementDocument_procurementCategory_anon_0" ref="proc:procurementCategoryOptions"/>
+                    </constraints>
+                </property>
+            </properties>
+            <associations>
+                <association name="proc:procurementMember">
+                    <title>Исполнитель</title>
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>cm:person</class>
+                        <mandatory enforced="false">false</mandatory>
+                        <many>true</many>
+                    </target>
+                </association>
+                <association name="proc:procurementMasterDocument">
+                    <title>Вышестоящий документ</title>
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>proc:procurementDocument</class>
+                        <mandatory enforced="false">false</mandatory>
+                        <many>false</many>
+                    </target>
+                </association>
+                <association name="proc:procurementTypeLink">
+                    <title>Тип процедуры</title>
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>proc:procurementType</class>
+                        <mandatory enforced="false">false</mandatory>
+                        <many>false</many>
+                    </target>
+                </association>
+                <association name="proc:LotLink">
+                    <title>Лот</title>
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>lot:lotDocument</class>
+                        <mandatory enforced="false">false</mandatory>
+                        <many>true</many>
+                    </target>
+                </association>
+            </associations>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+        <type name="proc:procurementType">
+            <title>Тип процедур</title>
+            <parent>dl:dataListItem</parent>
+            <properties>
+                <property name="proc:procurementTypeID">
+                    <title>ID типа процедуры</title>
+                    <type>d:int</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+                <property name="proc:procurementTypeDescription">
+                    <title>Наименование типа процедуры</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </type>
+    </types>
+    <aspects>
+        <aspect name="proc:procurementIdentifier">
+            <title>Procurement Identification</title>
+            <description>Глобальный идентификатор закупочной процедуры</description>
+            <properties>
+                <property name="proc:procurementGlobalID">
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>
+        <aspect name="proc:securityClassified">
+            <title>Procurement Security Classified</title>
+            <description>Категория допуска</description>
+            <properties>
+                <property name="proc:securityClassification">
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>true</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                        <facetable>true</facetable>
+                    </index>
+                    <constraints>
+                        <constraint name="proc:procurementProcedureModel_securityClassified_securityClassification_anon_0" ref="proc:securityClassificationOptions"/>
+                    </constraints>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>
+        <aspect name="proc:webPublished">
+            <title>Procurement Web published</title>
+            <description>Дата публикации на сайте</description>
+            <properties>
+                <property name="proc:publishedDate">
+                    <type>d:datetime</type>
+                    <mandatory>true</mandatory>
+                    <index enabled="true"/>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>
+    </aspects>
+</model>
