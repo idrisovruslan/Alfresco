@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model name="aztkp:AZTKPModel" xmlns="http://www.alfresco.org/model/dictionary/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<!-- Optional meta-data about the model -->
-	<description>priceInfo model</description>
+	<description>AZTKP model</description>
 	<author>Idrisov R.R.</author>
 	<version>1.0</version>
 	<imports>
@@ -96,7 +96,7 @@
 				</property>
 				<property name="aztkp:node">
 					<title>Примечание</title>
-					<type>d:double</type>
+					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
 				<property name="aztkp:tzName">
@@ -113,11 +113,6 @@
 					<title>Кол-во листов в ТЗ</title>
 					<type>d:int</type>
 					<mandatory>true</mandatory>
-				</property>
-				<property name="aztkp:node">
-					<title>Примечание</title>
-					<type>d:double</type>
-					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:textArea1">
 					<title>textArea1</title>

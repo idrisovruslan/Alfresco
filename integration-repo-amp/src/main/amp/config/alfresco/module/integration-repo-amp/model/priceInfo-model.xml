@@ -19,7 +19,7 @@
 		<import uri="http://www.ioi.com/model/directory/1.0" prefix="dir" />
 	</imports>
 	<!-- Custom namespace for your domain -->
-	
+
 	<namespaces>
 		<namespace uri="http://www.ioi.com/model/priceInfo/1.0" prefix="priceinf" />
 	</namespaces>
@@ -49,7 +49,7 @@
 			</parameter>
 		</constraint>
 	</constraints>
-	
+
 	<types>
 		<!-- Расчет-обоснование НМЦ -->
 		<type name="priceinf:calculationAndJustificationNmc">
@@ -73,7 +73,7 @@
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:сurrency">
+				<property name="priceinf:сurrency1">
 					<title>Валюта</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
@@ -81,9 +81,9 @@
 						<constraint ref="priceinf:сurrencyOptions" />
 					</constraints>
 				</property>
-				<property name="priceinf:vatRate">
+				<property name="priceinf:vatRate1">
 					<title>Ставка НДС, %</title>
-					<type>d:int</type>
+					<type>d:text</type>
 					<mandatory>true</mandatory>
 					<constraints>
 						<constraint ref="priceinf:vatRateOptions" />
@@ -123,9 +123,9 @@
 					<type>d:double</type>
 					<mandatory>true</mandatory>
 				</property>
-				<property name="priceinf:node">
+				<property name="priceinf:node1">
 					<title>Примечание</title>
-					<type>d:double</type>
+					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>
 				<property name="priceinf:textArea1">
@@ -224,7 +224,7 @@
 					<type>d:boolean</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:сurrency">
+				<property name="priceinf:сurrency2">
 					<title>Валюта</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
@@ -232,9 +232,9 @@
 						<constraint ref="priceinf:сurrencyOptions" />
 					</constraints>
 				</property>
-				<property name="priceinf:vatRate">
+				<property name="priceinf:vatRate2">
 					<title>Ставка НДС, %</title>
-					<type>d:int</type>
+					<type>d:text</type>
 					<mandatory>true</mandatory>
 					<constraints>
 						<constraint ref="priceinf:vatRateOptions" />
@@ -255,23 +255,23 @@
 					<type>d:date</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:node">
+				<property name="priceinf:node2">
 					<title>Примечание</title>
-					<type>d:double</type>
-					<mandatory>false</mandatory>
-				</property>
-				<property name="priceinf:textArea1">
-					<title>textArea1</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:textArea2">
-					<title>textArea2</title>
+				<property name="priceinf:textArea4">
+					<title>textArea4</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:textArea3">
-					<title>textArea3</title>
+				<property name="priceinf:textArea5">
+					<title>textArea5</title>
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+				</property>
+				<property name="priceinf:textArea6">
+					<title>textArea6</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>

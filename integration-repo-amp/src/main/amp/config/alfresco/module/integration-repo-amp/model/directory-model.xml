@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model name="dir:DirectoryModel" xmlns="http://www.alfresco.org/model/dictionary/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<!-- Optional meta-data about the model -->
-	<description>priceInfo model</description>
+	<description>directory model</description>
 	<author>Idrisov R.R.</author>
 	<version>1.0</version>
 	<imports>

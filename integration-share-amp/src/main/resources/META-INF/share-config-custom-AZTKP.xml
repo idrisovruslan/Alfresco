@@ -1,0 +1,190 @@
+<!-- Share configuration related to this particular Share module extension, such as:
+     - Doclib action config
+     - Form config
+     - Aspect and Type config
+
+    Note. Any configuration related to the whole Share.war webapp
+           (i.e. not specific to this share extension) should be
+            placed in the environment specific config:
+             alfresco-allinone/share/src/main/resources/alfresco/web-extension/share-config-custom.xml file
+     -->
+<alfresco-config>
+
+	<config evaluator="model-type" condition="aztkp:attributiveStructureOfTheAztkpFacility">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="aztkp:tkpName" />
+					<show id="aztkp:doNotSendMailingList" />
+					<show id="aztkp:letterSubject" />
+					<show id="aztkp:letterText" />
+					<show id="aztkp:signatoryPosition" />
+					<show id="aztkp:quantity" />
+					<show id="aztkp:coordinatorPosition1" />
+					<show id="aztkp:coordinatorFullName1" />
+					<show id="aztkp:coordinatorPosition2" />
+					<show id="aztkp:coordinatorFullName2" />
+					<show id="aztkp:coordinatorPosition3" />
+					<show id="aztkp:coordinatorFullName3" />
+					<show id="aztkp:node" />
+					<show id="aztkp:tzName" />
+					<show id="aztkp:tzDate" />
+					<show id="aztkp:numberSheetsInTz" />
+					<show id="aztkp:unitMeasurementLink" />
+				</field-visibility>
+				<create-form template="/org/alfresco/components/form/tabbed.ftl" />
+				
+				<appearance>
+
+				<!-- Tabs -->
+					<set id="ZdocParam" label="Параметры документа" />
+					<set id="Zcoordinators" label="Согласующие лица" />
+
+					
+				<!-- Colums -->
+	             	<set id="docParam1" parent="ZdocParam" label="" />
+					<set id="docParam2" parent="ZdocParam" label="" />
+
+	             	<set id="coordinators1" parent="Zcoordinators" label="" />
+
+
+				<!-- Groups -->
+	             	<set id="GdocParam1" parent="docParam1" label="docParam1"/>
+					<set id="GdocParam2" parent="docParam2" label="docParam2"/>
+
+	             	<set id="Gcoordinators1" parent="coordinators1" label="coordinators1"/>
+
+
+				<!-- Fields -->
+				
+					<!-- ZdocParam -->
+						<!-- GdocParam1 -->
+							<!-- aztkp:tkpName -->
+							<set id="111GdocParam1-0-0" parent="GdocParam1" />
+								<field id="aztkp:tkpName" set="111GdocParam1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl" /> 
+								</field>
+							<!-- aztkp:doNotSendMailingList -->
+							<set id="111GdocParam1-0-1" parent="GdocParam1" />
+								<field id="aztkp:doNotSendMailingList" set="111GdocParam1-0-1" />
+							<!-- aztkp:letterSubject -->
+							<set id="111GdocParam1-1-3" parent="GdocParam1" />
+								<field id="aztkp:letterSubject" set="111GdocParam1-1-3">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- aztkp:letterText -->
+							<set id="111GdocParam1-1-8" parent="GdocParam1" />
+								<field id="aztkp:letterText" set="111GdocParam1-1-8">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">256</control-param>
+									</control>
+								</field>
+							<!-- aztkp:quantity -->	
+							<set id="111GdocParam1-1-5" parent="GdocParam1" />
+								<field id="aztkp:quantity" set="111GdocParam1-1-5">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- aztkp:unitMeasurementLink -->	
+							<set id="111GdocParam1-1-6" parent="GdocParam1" />
+								<field id="aztkp:unitMeasurementLink" set="111GdocParam1-1-6">
+									<control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+								
+
+						<!-- GdocParam2 -->		
+							<!-- aztkp:tzName -->
+							<set id="111GdocParam2-1-0" parent="GdocParam2" />
+								<field id="aztkp:tzName" set="111GdocParam2-1-0">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- aztkp:tzDate -->
+							<set id="111GdocParam2-1-1" parent="GdocParam2" />
+								<field id="aztkp:tzDate" set="111GdocParam2-1-1" />
+							<!-- aztkp:numberSheetsInTz -->
+							<set id="111GdocParam2-1-2" parent="GdocParam2" />
+								<field id="aztkp:numberSheetsInTz" set="111GdocParam2-1-2">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- aztkp:node -->
+							<set id="111GdocParam2-1-3" parent="GdocParam2" />
+								<field id="aztkp:node" set="111GdocParam2-1-3">
+									<control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="maxLength">128</control-param>
+										<control-param name="rows">2</control-param>
+									</control>
+								</field>						
+											
+														
+					<!-- Zcoordinators -->
+						<!-- Gcoordinators1 -->
+							<!-- aztkp:signatoryPosition -->
+							<set id="111Gcoordinators1-0-0" parent="Gcoordinators1" />
+								<field id="aztkp:signatoryPosition" set="111Gcoordinators1-0-0">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- aztkp:coordinatorFullName1 -->
+							<set id="111Gcoordinators1-0-1" parent="Gcoordinators1" />
+								<field id="aztkp:coordinatorFullName1" set="111Gcoordinators1-0-1">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- aztkp:coordinatorPosition1 -->
+							<set id="111Gcoordinators1-0-2" parent="Gcoordinators1" />
+								<field id="aztkp:coordinatorPosition1" set="111Gcoordinators1-0-2">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- aztkp:coordinatorFullName2 -->
+							<set id="111Gcoordinators1-0-3" parent="Gcoordinators1" />
+								<field id="aztkp:coordinatorFullName2" set="111Gcoordinators1-0-3">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- aztkp:coordinatorPosition2 -->
+							<set id="111Gcoordinators1-0-4" parent="Gcoordinators1" />
+								<field id="aztkp:coordinatorPosition2" set="111Gcoordinators1-0-4">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>		
+							<!-- aztkp:coordinatorFullName3 -->
+							<set id="111Gcoordinators1-0-5" parent="Gcoordinators1" />
+								<field id="aztkp:coordinatorFullName3" set="111Gcoordinators1-0-5">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- aztkp:coordinatorPosition3 -->
+							<set id="111Gcoordinators1-0-6" parent="Gcoordinators1" />
+								<field id="aztkp:coordinatorPosition3" set="111Gcoordinators1-0-6">
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>		
+								
+												
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+</alfresco-config>

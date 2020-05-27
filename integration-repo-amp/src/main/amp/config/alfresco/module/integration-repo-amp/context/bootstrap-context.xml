@@ -15,8 +15,9 @@
 				<value>alfresco/module/${project.artifactId}/model/Supplier-model.xml</value>
 				<value>alfresco/module/${project.artifactId}/model/LotDocument-model.xml</value>
 				<value>alfresco/module/${project.artifactId}/model/procurementProcedure-model.xml</value>
+				<value>alfresco/module/${project.artifactId}/model/directory-model.xml</value>  
 				<value>alfresco/module/${project.artifactId}/model/priceInfo-model.xml</value>
-				<value>alfresco/module/${project.artifactId}/model/directory-model.xml</value>
+				<value>alfresco/module/${project.artifactId}/model/AZTKP-model.xml</value>
 			</list>
 		</property>
 	</bean>
