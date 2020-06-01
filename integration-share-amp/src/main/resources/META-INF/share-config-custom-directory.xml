@@ -1,0 +1,246 @@
+<!-- Share configuration related to this particular Share module extension, such as: - Doclib action config - Form config - Aspect and Type config Note. Any configuration related to the whole Share.war webapp (i.e. not specific to this share extension) should be placed in the environment specific config: alfresco-allinone/share/src/main/resources/alfresco/web-extension/share-config-custom.xml file -->
+<alfresco-config>
+	<!--================================================================================================================ View, Edit, Create forms for custom data list types For more information about how to define forms for data list item types see existing out-of-the-box form definitions: tomcat/webapps/share/WEB-INF/classes/alfresco/share-datalist-form-config.xml ============================================================================================================= -->
+
+
+	<!-- dir:position type create form config -->
+	<config evaluator="model-type" condition="dir:position">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:positionNum" />
+					<show id="dir:positionName" />
+					<show id="dir:positionDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:positionNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:positionName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:positionDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	
+	
+	<!-- dir:unitMeasurement type create form config -->
+	<config evaluator="model-type" condition="dir:unitMeasurement">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:unitMeasurementNum" />
+					<show id="dir:unitMeasurementName" />
+					<show id="dir:unitMeasurementDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:unitMeasurementNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:unitMeasurementName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:unitMeasurementDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<!-- dir:manufacturer type create form config -->
+	<config evaluator="model-type" condition="dir:manufacturer">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:manufacturerNum" />
+					<show id="dir:manufacturerName" />
+					<show id="dir:manufacturerDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:manufacturerNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:manufacturerName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:manufacturerDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<!-- dir:safetyClass type create form config -->
+	<config evaluator="model-type" condition="dir:safetyClass">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:safetyClassNum" />
+					<show id="dir:safetyClassName" />
+					<show id="dir:safetyClassDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:safetyClassNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:safetyClassName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:safetyClassDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<!-- dir:materialsList type create form config -->
+	<config evaluator="model-type" condition="dir:materialsList">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:materialsListNum" />
+					<show id="dir:materialsListName" />
+					<show id="dir:materialsListDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:materialsListNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:materialsListName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:materialsListDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<!-- dir:paymentConditions type create form config -->
+	<config evaluator="model-type" condition="dir:paymentConditions">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:paymentConditionsNum" />
+					<show id="dir:paymentConditionsName" />
+					<show id="dir:paymentConditionsDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:paymentConditionsNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:paymentConditionsName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:paymentConditionsDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<!-- dir:priceValidityInTkp type create form config -->
+	<config evaluator="model-type" condition="dir:priceValidityInTkp">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="dir:priceValidityInTkpNum" />
+					<show id="dir:priceValidityInTkpName" />
+					<show id="dir:priceValidityInTkpDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="dir:priceValidityInTkpNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:priceValidityInTkpName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="dir:priceValidityInTkpDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">2</control-param>
+							<control-param name="maxLength">256</control-param>
+						</control>
+					</field>
+
+				</appearance>
+			</form>
+		</forms>
+	</config>	
+	
+</alfresco-config>

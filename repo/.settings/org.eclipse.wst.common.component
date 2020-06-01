@@ -74,7 +74,7 @@
         <dependent-module archiveName="integration-repo-amp-1.0-SNAPSHOT.amp" deploy-path="/WEB-INF/lib" handle="module:/resource/integration-repo-amp/integration-repo-amp">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/overlay/prj/integration-repo-amp?includes=**/**&amp;excludes=META-INF/MANIFEST.MF">
+        <dependent-module deploy-path="/" handle="module:/overlay/var/M2_REPO/ioi/integration-repo-amp/1.0-SNAPSHOT/integration-repo-amp-1.0-SNAPSHOT.amp?unpackFolder=target/m2e-wtp/overlays&amp;includes=**/**&amp;excludes=META-INF/MANIFEST.MF">
             <dependency-type>consumes</dependency-type>
         </dependent-module>
         <dependent-module deploy-path="/" handle="module:/overlay/var/M2_REPO/org/alfresco/alfresco/5.1.e/alfresco-5.1.e.war?unpackFolder=target/m2e-wtp/overlays&amp;includes=**/**&amp;excludes=META-INF/MANIFEST.MF">

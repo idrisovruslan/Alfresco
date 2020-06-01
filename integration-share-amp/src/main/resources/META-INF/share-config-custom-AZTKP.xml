@@ -10,6 +10,7 @@
      -->
 <alfresco-config>
 
+
 	<config evaluator="model-type" condition="aztkp:attributiveStructureOfTheAztkpFacility">
 		<forms>
 			<!-- Create item form -->

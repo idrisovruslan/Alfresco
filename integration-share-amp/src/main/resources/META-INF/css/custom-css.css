@@ -1,5 +1,13 @@
 .yui-panel
 {
    width: auto !important;
+   min-width: 10em !important;
+}
+
+.form-container textarea
+{
+   width: auto !important;
+   display: block;
+   clear: both;
 }
 

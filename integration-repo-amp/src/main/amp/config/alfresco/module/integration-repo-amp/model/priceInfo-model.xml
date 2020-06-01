@@ -73,7 +73,7 @@
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:сurrency1">
+				<property name="priceinf:nmcCurrency">
 					<title>Валюта</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
@@ -81,7 +81,7 @@
 						<constraint ref="priceinf:сurrencyOptions" />
 					</constraints>
 				</property>
-				<property name="priceinf:vatRate1">
+				<property name="priceinf:nmcVatRate">
 					<title>Ставка НДС, %</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
@@ -123,7 +123,7 @@
 					<type>d:double</type>
 					<mandatory>true</mandatory>
 				</property>
-				<property name="priceinf:node1">
+				<property name="priceinf:nmcNode">
 					<title>Примечание</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>
@@ -224,7 +224,7 @@
 					<type>d:boolean</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:сurrency2">
+				<property name="priceinf:iciCurrency">
 					<title>Валюта</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
@@ -232,7 +232,7 @@
 						<constraint ref="priceinf:сurrencyOptions" />
 					</constraints>
 				</property>
-				<property name="priceinf:vatRate2">
+				<property name="priceinf:iciVatRate">
 					<title>Ставка НДС, %</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
@@ -255,7 +255,7 @@
 					<type>d:date</type>
 					<mandatory>false</mandatory>
 				</property>
-				<property name="priceinf:node2">
+				<property name="priceinf:iciNode">
 					<title>Примечание</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>

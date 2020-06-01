@@ -1,0 +1,216 @@
+<!-- Share configuration related to this particular Share module extension, such as: - Doclib action config - Form config - Aspect and Type config Note. Any configuration related to the whole Share.war webapp (i.e. not specific to this share extension) should be placed in the environment specific config: alfresco-allinone/share/src/main/resources/alfresco/web-extension/share-config-custom.xml file -->
+<alfresco-config>
+	<!--================================================================================================================ View, Edit, Create forms for custom data list types For more information about how to define forms for data list item types see existing out-of-the-box form definitions: tomcat/webapps/share/WEB-INF/classes/alfresco/share-datalist-form-config.xml ============================================================================================================= -->
+	
+	<!-- proc:procurementDocument type create form config -->
+	<config evaluator="model-type" condition="proc:procurementDocument">
+		<forms>
+
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementName" />
+					<show id="proc:procurementNumber" />
+					<show id="proc:procurementDescription" />
+					<show id="proc:procurementStatus" />
+					<show id="proc:additionalMap" />
+					<show id="proc:procurementMember" />
+					<show id="proc:procurementMasterDocument" />
+					<show id="proc:procurementTypeLink" />
+					<show id="proc:LotLink" />
+				</field-visibility>
+				<create-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
+				<appearance>
+					
+					<field id="proc:procurementName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">10</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementNumber">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">10</control-param>
+						</control>
+					</field>	
+					<field id="proc:procurementDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+					
+					<field id="proc:procurementStatus">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+					
+					<field id="proc:additionalMap">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+
+					<field id="proc:procurementMember">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementMasterDocument">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementTypeLink">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:LotLink">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- proc:procurementDocument type edit form config -->
+	<config evaluator="node-type" condition="proc:procurementDocument">
+		<forms>
+		
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementName" />
+					<show id="proc:procurementNumber" />
+					<show id="proc:procurementDescription" />
+					<show id="proc:procurementStatus" />
+					<show id="proc:additionalMap" />
+					<show id="proc:procurementMember" />
+					<show id="proc:procurementMasterDocument" />
+					<show id="proc:procurementTypeLink" />
+					<show id="proc:LotLink" />
+				</field-visibility>
+				<edit-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
+				<appearance>
+
+					
+					<field id="proc:procurementName">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementNumber">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>	
+					<field id="proc:procurementDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">5</control-param>
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+					
+					<field id="proc:procurementStatus">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+					
+					<field id="proc:additionalMap">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="rows">4</control-param>
+							<control-param name="columns">7</control-param>
+							<control-param name="maxLength">5</control-param>
+						</control>
+					</field>
+
+					
+					<field id="proc:procurementMember">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementMasterDocument">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:procurementTypeLink">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="proc:LotLink">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
+                    		<control-param name="showTargetLink">true</control-param>
+                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- proc:procurementType type create form config -->
+	<config evaluator="model-type" condition="proc:procurementType">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementTypeID" />
+					<show id="proc:procurementTypeDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="proc:procurementTypeDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- proc:procurementType type edit form config -->
+	<config evaluator="node-type" condition="proc:procurementType">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="proc:procurementTypeID" />
+					<show id="proc:procurementTypeDescription" />
+				</field-visibility>
+				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<appearance>
+					<field id="proc:procurementTypeDescription">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+</alfresco-config>

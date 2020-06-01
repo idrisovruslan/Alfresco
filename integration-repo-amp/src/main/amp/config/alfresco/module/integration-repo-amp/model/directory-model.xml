@@ -32,8 +32,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:positionNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:positionName">
 					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:positionDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -50,8 +60,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:unitMeasurementNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:unitMeasurementName">
-					<title>Единица измерения</title>
+					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:unitMeasurementDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -68,8 +88,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:manufacturerNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:manufacturerName">
-					<title>Изготовитель</title>
+					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:manufacturerDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -86,8 +116,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:safetyClassNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:safetyClassName">
-					<title>Класс безопасности</title>
+					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:safetyClassDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -104,8 +144,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:materialsListNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:materialsListName">
-					<title>Перечень материалов</title>
+					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:materialsListDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -122,8 +172,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:paymentConditionsNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:paymentConditionsName">
-					<title>Условия платежа</title>
+					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:paymentConditionsDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -140,8 +200,18 @@
 			<parent>dl:dataListItem</parent>
 			
 			<properties>
+				<property name="dir:priceValidityInTkpNum">
+					<title>№</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="dir:priceValidityInTkpName">
-					<title>Срок действия цены в ТКП</title>
+					<title>Позиция</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="dir:priceValidityInTkpDescription">
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
