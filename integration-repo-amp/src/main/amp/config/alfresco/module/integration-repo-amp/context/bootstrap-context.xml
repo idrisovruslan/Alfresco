@@ -1,9 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<!-- The bootstrap-context.xml file is used for patch definitions, importers, workflow, and loading custom content models. -->
+
+
+
 
 
 	<!-- Registration of new models -->
@@ -23,5 +27,101 @@
 	</bean>
 
 
+
+   <!-- For importing smart site -->
+    <bean id="patch.siteLoadPatch.smart" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" parent="basePatch">
+        <property name="id"><value>patch.siteLoadPatch.smart</value></property>
+        <property name="description"><value>patch.siteLoadPatch.description</value></property>
+        <property name="fixesFromSchema"><value>0</value></property>
+        <property name="fixesToSchema"><value>${version.schema}</value></property>
+        <property name="targetSchema"><value>10000</value></property>
+        <property name="disabled"><value>false</value></property>
+        <property name="dependsOn" >
+            <list>
+                <ref bean="patch.updateDmPermissions" />
+            </list>
+        </property>
+        <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" />
+        <property name="usersBootstrap" ref="siteLoadBootstrap-Users" />
+        <property name="siteService" ref="siteService" />
+        <property name="descriptorService" ref="descriptorComponent" />
+        <property name="authorityService" ref="authorityService" />
+        <property name="behaviourFilter" ref="policyBehaviourFilter" />
+        <property name="siteName">
+            <value>smart</value>
+        </property>
+        <property name="bootstrapViews">
+            <map>
+                <!--<entry key="users">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/smart/No_Users_In_Site.txt</prop>
+                    </props>
+                </entry>
+                <entry key="people">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/smart/No_Persons_In_Site.txt</prop>
+                    </props>
+                </entry>-->
+                <entry key="groups">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/smart/Groups.txt</prop>
+                    </props>
+                </entry>
+                <entry key="contents">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/smart/Contents.acp</prop>
+                    </props>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+   <!-- For importing directories site -->
+    <bean id="patch.siteLoadPatch.directories" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" parent="basePatch">
+        <property name="id"><value>patch.siteLoadPatch.directories</value></property>
+        <property name="description"><value>patch.siteLoadPatch.description</value></property>
+        <property name="fixesFromSchema"><value>0</value></property>
+        <property name="fixesToSchema"><value>${version.schema}</value></property>
+        <property name="targetSchema"><value>10000</value></property>
+        <property name="disabled"><value>false</value></property>
+        <property name="dependsOn" >
+            <list>
+                <ref bean="patch.siteLoadPatch.smart" />
+            </list>
+        </property>
+        <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" />
+        <property name="usersBootstrap" ref="siteLoadBootstrap-Users" />
+        <property name="siteService" ref="siteService" />
+        <property name="descriptorService" ref="descriptorComponent" />
+        <property name="authorityService" ref="authorityService" />
+        <property name="behaviourFilter" ref="policyBehaviourFilter" />
+        <property name="siteName">
+            <value>directories</value>
+        </property>
+        <property name="bootstrapViews">
+            <map>
+                <!--<entry key="users">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/directories/No_Users_In_Site.txt</prop>
+                    </props>
+                </entry>
+                <entry key="people">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/directories/No_Persons_In_Site.txt</prop>
+                    </props>
+                </entry>-->
+                <entry key="groups">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/directories/Groups.txt</prop>
+                    </props>
+                </entry>
+                <entry key="contents">
+                    <props>
+                        <prop key="location">alfresco/module/${project.artifactId}/bootstrap/directories/Contents.acp</prop>
+                    </props>
+                </entry>
+            </map>
+        </property>
+    </bean>
 
 </beans>

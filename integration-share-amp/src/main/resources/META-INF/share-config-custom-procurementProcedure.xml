@@ -35,7 +35,7 @@
 					<field id="proc:procurementDescription">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="columns">7</control-param>
+							<control-param name="columns">17</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
@@ -43,7 +43,7 @@
 					<field id="proc:procurementStatus">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="columns">7</control-param>
+							<control-param name="columns">17</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
@@ -51,7 +51,7 @@
 					<field id="proc:additionalMap">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="columns">7</control-param>
+							<control-param name="columns">17</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
@@ -60,28 +60,28 @@
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementMasterDocument">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementTypeLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 					<field id="proc:LotLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 				</appearance>
@@ -122,7 +122,7 @@
 					<field id="proc:procurementDescription">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="columns">5</control-param>
+							<control-param name="columns">17</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
@@ -130,7 +130,7 @@
 					<field id="proc:procurementStatus">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="columns">7</control-param>
+							<control-param name="columns">17</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
@@ -138,7 +138,7 @@
 					<field id="proc:additionalMap">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="columns">7</control-param>
+							<control-param name="columns">17</control-param>
 							<control-param name="maxLength">5</control-param>
 						</control>
 					</field>
@@ -148,28 +148,28 @@
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementMasterDocument">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementTypeLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 					<field id="proc:LotLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{datalists}</control-param>
 						</control>
 					</field>
 				</appearance>

@@ -1,13 +1,13 @@
 <extension> 
     <modules> 
         <module> 
-            <id>Custom DocumentList Widget</id> 
-            <description>Instantiate a custom DocumentList widget</description> 
+            <id>Custom Data-lists Widget</id> 
+            <description>Instantiate a custom Data-lists widget</description> 
             <auto-deploy>true</auto-deploy> 
             <customizations> 
                 <customization> 
-                    <targetPackageRoot>org.alfresco.components.documentlibrary</targetPackageRoot> 
-                    <sourcePackageRoot>org.alfresco.components.documentlibrary.customization</sourcePackageRoot> 
+                    <targetPackageRoot>org.alfresco.components.data-lists</targetPackageRoot> 
+                    <sourcePackageRoot>org.alfresco.components.data-lists.customization</sourcePackageRoot> 
                 </customization> 
             </customizations> 
         </module> 

@@ -1,6 +1,6 @@
 #FileLock
-#Mon Jun 08 11:04:12 MSK 2020
+#Tue Jun 16 10:27:11 MSK 2020
 hostName=DESKTOP-6NLA2IF
-id=17292f55a86c7d56bda11b34db200b459eb0b47bdee
+id=172bc0657f1cade09b7e4bc4d0879fed478df5d8306
 method=file
-server=192.168.8.100\:51101
+server=192.168.8.100\:65515
