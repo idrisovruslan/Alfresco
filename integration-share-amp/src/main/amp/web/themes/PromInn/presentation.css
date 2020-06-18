@@ -14,7 +14,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner
 .sticky-footer
 {
    font-family: Arial, sans-serif;
-   color: #526A53;
+   color: #000000;
 }
 
 .sticky-footer
@@ -165,8 +165,7 @@ h4 .lighter
 
 .dashlet .title
 {
-   background-color: #BDA0CB;
-   background-image: url(images/dashlet-title-bg.png);
+   background-color: #6CACE4;
    background-repeat: repeat-x;
    color: #fff;
 }
@@ -197,7 +196,7 @@ h4 .lighter
 .dashlet .welcome-body a:visited,
 .dashlet .welcome-body a:hover
 {
-   color: #7F00FF;
+   color: #073F80;
 }
 
 .dashlet .detail-list-item
@@ -205,140 +204,140 @@ h4 .lighter
    border-bottom: 1px dashed #e9e9e9;
 }
 
-.yui-skin-castomTheme .yui-panel
+.yui-skin-promInn .yui-panel
 {
    border-bottom: medium none;
 }
 
-.yui-skin-castomTheme .mask
+.yui-skin-promInn .mask
 {
    opacity: 0.2;
 }
 
-.yui-skin-castomTheme .yui-panel .hd,
-.yui-skin-castomTheme .yui-panel .form-buttons,
-.yui-skin-castomTheme .yui-panel .bdft,
-.yui-skin-castomTheme .yui-panel .ft
+.yui-skin-promInn .yui-panel .hd,
+.yui-skin-promInn .yui-panel .form-buttons,
+.yui-skin-promInn .yui-panel .bdft,
+.yui-skin-promInn .yui-panel .ft
 {
-   color: #526A53;
-   background: #E3EDE6;
+   color: #000000;
+   background: #7F7F7F;
    border-bottom: 1px solid #C5C7C6;
    border-left-color: #C5C7C6;
    border-right-color: #C5C7C6;
 }
 
-.yui-skin-castomTheme .yui-panel .hd
+.yui-skin-promInn .yui-panel .hd
 {
    font-size: 123.1%;
    font-weight: bold;
    border-bottom: 1px solid #C5C7C6;
 }
 
-.yui-skin-castomTheme .yui-panel .form-buttons,
-.yui-skin-castomTheme .yui-panel .bdft
+.yui-skin-promInn .yui-panel .form-buttons,
+.yui-skin-promInn .yui-panel .bdft
 {
    font-size: 100%;
    border-top: 1px solid #C5C7C6;
 }
 
-.yui-skin-castomTheme .yui-panel div.form-fields
+.yui-skin-promInn .yui-panel div.form-fields
 {
    border-bottom: none;
 }
 
-.yui-skin-castomTheme .yui-panel .ft
+.yui-skin-promInn .yui-panel .ft
 {
    border-top: 1px solid #C5C7C6;
    padding: 5px;
 }
 
-.yui-skin-castomTheme .yui-panel .bd
+.yui-skin-promInn .yui-panel .bd
 {
-   color: #526A53;
+   color: #000000;
    background-color: #F7FDF8;
    border-left-color: #C5C7C6;
    border-right-color: #C5C7C6;
 }
 
-.yui-skin-castomTheme .yui-panel .bd .yui-resize .yui-resize-handle
+.yui-skin-promInn .yui-panel .bd .yui-resize .yui-resize-handle
 {
    background-color: #F7FDF8;
 }
 
 /* Data Lists: DataTable (Needs to appear before yui-dt-highlighted rule) */
 
-.yui-skin-castomTheme .datagrid tr.yui-dt-even
+.yui-skin-promInn .datagrid tr.yui-dt-even
 {
    background-color: #ffffff;
 }
-.yui-skin-castomTheme .datagrid tr.yui-dt-even td.yui-dt-asc,
-.yui-skin-castomTheme .datagrid tr.yui-dt-even td.yui-dt-desc
+.yui-skin-promInn .datagrid tr.yui-dt-even td.yui-dt-asc,
+.yui-skin-promInn .datagrid tr.yui-dt-even td.yui-dt-desc
 {
    background-color: #f8f8f8;
 }
 
-.yui-skin-castomTheme .datagrid tr.yui-dt-odd
+.yui-skin-promInn .datagrid tr.yui-dt-odd
 {
    background-color: #f8f8f8;
 }
-.yui-skin-castomTheme .datagrid tr.yui-dt-odd td.yui-dt-asc,
-.yui-skin-castomTheme .datagrid tr.yui-dt-odd td.yui-dt-desc
+.yui-skin-promInn .datagrid tr.yui-dt-odd td.yui-dt-asc,
+.yui-skin-promInn .datagrid tr.yui-dt-odd td.yui-dt-desc
 {
    background-color: #f0f0f0;
 }
 
 /* End Data Lists */
 
-.yui-skin-castomTheme .yui-dt-data tr.yui-dt-highlighted td.yui-dt-asc,
-.yui-skin-castomTheme .yui-dt-data tr.yui-dt-highlighted td.yui-dt-desc
+.yui-skin-promInn .yui-dt-data tr.yui-dt-highlighted td.yui-dt-asc,
+.yui-skin-promInn .yui-dt-data tr.yui-dt-highlighted td.yui-dt-desc
 {
-   background-color: #ECC8EC;
+   background-color: #2980B9;
    cursor: auto;
 }
 
-.yui-skin-castomTheme .yui-dt-message,
-.yui-skin-castomTheme .yui-dt-message tr.yui-dt-highlighted
+.yui-skin-promInn .yui-dt-message,
+.yui-skin-promInn .yui-dt-message tr.yui-dt-highlighted
 {
    background-color: white;
 }
 
 /* Style the default message  */
 
-.yui-skin-castomTheme #message .bd
+.yui-skin-promInn #message .bd
 {
    background-color: #808080;
    color: white;
 }
 
-.yui-skin-castomTheme #message .bd span.wait
+.yui-skin-promInn #message .bd span.wait
 {
    background-image: url(images/wait.gif);
    background-repeat: no-repeat;
 }
 
-.yui-skin-castomTheme .yui-overlay-hidden #message .bd span.wait
+.yui-skin-promInn .yui-overlay-hidden #message .bd span.wait
 {
    display: none;
 }
 
 /* Style the default prompt */
 
-.yui-skin-castomTheme #prompt,
-.yui-skin-castomTheme #userInput
+.yui-skin-promInn #prompt,
+.yui-skin-promInn #userInput
 {
    border-top: 1px solid #C5C7C6;
    border-bottom: 1px solid #C5C7C6;
-   background-color: #E3EDE6;
+   background-color: #7F7F7F;
 }
 
-.yui-skin-castomTheme #prompt .bd,
-.yui-skin-castomTheme #userInput .bd
+.yui-skin-promInn #prompt .bd,
+.yui-skin-promInn #userInput .bd
 {
    background-color: #e3ebec;
 }
 
-.yui-skin-castomTheme #prompt .ft,
-.yui-skin-castomTheme #userInput .ft
+.yui-skin-promInn #prompt .ft,
+.yui-skin-promInn #userInput .ft
 {
    border-left: 1px solid #c4c5c5;
    border-right: 1px solid #c4c5c5;
@@ -371,9 +370,9 @@ h4 .lighter
 
 .site-navigation
 {
-   background-color: #BF5FFF;
+   background-color: #1B66A2;
    background-image: url(../../components/images/navigation-bg.png);
-   border-bottom: 1px solid #2E0854;
+   border-bottom: 1px solid #003274;
    border-top: 1px dotted #bbd6e7;
    color: white;
 }
@@ -400,12 +399,12 @@ span.navigation-item a:hover
 
 span.navigation-separator
 {
-   border-right: 1px dotted #2E0854;
+   border-right: 1px dotted #003274;
 }
 
 span.navigation-separator-alt
 {
-   border-right: 1px solid #2E0854;
+   border-right: 1px solid #003274;
 }
 
 /* Standard toolbars */
@@ -426,7 +425,7 @@ span.navigation-separator-alt
 .toolbar .separator
 {
    border: medium none;
-   border-right: 1px dotted #2E0854;
+   border-right: 1px dotted #003274;
 }
 
 .share-toolbar .backLink
@@ -473,7 +472,7 @@ span.navigation-separator-alt
    width: 800px;
 }
 
-.yui-skin-castomTheme .yui-navset .yui-content
+.yui-skin-promInn .yui-navset .yui-content
 {
    background: #e4f7d4;
 }
@@ -509,7 +508,7 @@ span.navigation-separator-alt
 .toolbar .link a:hover,
 .members-bar .member-link a:hover
 {
-   color: #A020F0;
+   color: #155997;
 }
 
 /* Richtext Editor Plug-ins */
@@ -540,57 +539,57 @@ span.mce_alfresco-linklibrary
 
 /* Point the YUI button to the themed sprite */
 
-.yui-skin-castomTheme .yui-button
+.yui-skin-promInn .yui-button
 {
    background-image: url(images/sprite.png);
 }
 
 /* Override YUI Button styles for - flat button style */
 
-.yui-skin-castomTheme div.flat-button span.yui-button
+.yui-skin-promInn div.flat-button span.yui-button
 {
    background: none;
    border-color: transparent;
 }
 
-.yui-skin-castomTheme div.flat-button span.yui-button span.first-child
+.yui-skin-promInn div.flat-button span.yui-button span.first-child
 {
    border-color: transparent;
 }
 
-.yui-skin-castomTheme div.flat-button span.yui-button-hover,
-.yui-skin-castomTheme div.flat-button span.yui-button-focus
+.yui-skin-promInn div.flat-button span.yui-button-hover,
+.yui-skin-promInn div.flat-button span.yui-button-focus
 {
    background: transparent url(images/sprite.png) repeat-x scroll 0 0;
    border-color: #808080;
 }
 
-.yui-skin-castomTheme div.flat-button span.yui-button-hover span.first-child,
-.yui-skin-castomTheme div.flat-button span.yui-button-focus span.first-child
+.yui-skin-promInn div.flat-button span.yui-button-hover span.first-child,
+.yui-skin-promInn div.flat-button span.yui-button-focus span.first-child
 {
    border-color: #808080;
 }
 
-.yui-skin-castomTheme div.flat-button span.yui-radio-button-checked,
-.yui-skin-castomTheme div.flat-button span.yui-checkbox-button-checked
+.yui-skin-promInn div.flat-button span.yui-radio-button-checked,
+.yui-skin-promInn div.flat-button span.yui-checkbox-button-checked
 {
-   background: #BF5FFF none;
+   background: #1B66A2 none;
 }
 
 /* Override checked styles for doclist */
 
-.yui-skin-castomTheme .no-check-bg div.flat-button span.yui-radio-button-checked,
-.yui-skin-castomTheme .no-check-bg div.flat-button span.yui-checkbox-button-checked,
-.yui-skin-castomTheme .no-check-bg div.flat-button span.yui-radio-button-checked,
-.yui-skin-castomTheme .no-check-bg div.flat-button span.yui-checkbox-button-checked
+.yui-skin-promInn .no-check-bg div.flat-button span.yui-radio-button-checked,
+.yui-skin-promInn .no-check-bg div.flat-button span.yui-checkbox-button-checked,
+.yui-skin-promInn .no-check-bg div.flat-button span.yui-radio-button-checked,
+.yui-skin-promInn .no-check-bg div.flat-button span.yui-checkbox-button-checked
 {
    background: none;
 }
 
 /* Ensure hover state can be activated */
 
-.yui-skin-castomTheme .no-check-bg div.flat-button span.yui-button-hover,
-.yui-skin-castomTheme .no-check-bg div.flat-button span.yui-button-focus
+.yui-skin-promInn .no-check-bg div.flat-button span.yui-button-hover,
+.yui-skin-promInn .no-check-bg div.flat-button span.yui-button-focus
 {
    background: transparent url(images/sprite.png) repeat-x scroll 0 0;
    border-color: #808080;
@@ -598,42 +597,42 @@ span.mce_alfresco-linklibrary
 
 /* Override YUI Button styles for - title button style */
 
-.yui-skin-castomTheme .title-button .yui-button
+.yui-skin-promInn .title-button .yui-button
 {
    background: transparent url(images/title-button-bg.png) repeat-x 0 0;
    border-color: #e3ffe3;
 }
 
-.yui-skin-castomTheme .title-button a:hover
+.yui-skin-promInn .title-button a:hover
 {
    color: #000;
 }
 
-.yui-skin-castomTheme .title-button .yui-button .first-child,
-.yui-skin-castomTheme .title-button .yui-button
+.yui-skin-promInn .title-button .yui-button .first-child,
+.yui-skin-promInn .title-button .yui-button
 {
    border-color: #e3ffe3;
 }
 
 /* Override YUI Button styles for - attention button style */
 
-.yui-skin-castomTheme .alfresco-attention-yui-button,
-.yui-skin-castomTheme .alfresco-attention-yui-button span.first-child
+.yui-skin-promInn .alfresco-attention-yui-button,
+.yui-skin-promInn .alfresco-attention-yui-button span.first-child
 {
    border-color: #e0b000;
 }
 
-.yui-skin-castomTheme .alfresco-attention-yui-button.yui-button
+.yui-skin-promInn .alfresco-attention-yui-button.yui-button
 {
    background-position: 0 -2000px;
 }
 
-.yui-skin-castomTheme .alfresco-attention-yui-button.yui-button-hover
+.yui-skin-promInn .alfresco-attention-yui-button.yui-button-hover
 {
    background-position: 0 -2100px;
 }
 
-.yui-skin-castomTheme .alfresco-attention-yui-button.yui-button-disabled
+.yui-skin-promInn .alfresco-attention-yui-button.yui-button-disabled
 {
    background-position: 0 -2200px;
 }
@@ -641,40 +640,40 @@ span.mce_alfresco-linklibrary
 
 /* Paginator link styling */
 
-.yui-skin-castomTheme .yui-pg-container span
+.yui-skin-promInn .yui-pg-container span
 {
    color: #606060;
 }
 
-.yui-skin-castomTheme .yui-pg-container span.yui-pg-page.yui-pg-current-page
+.yui-skin-promInn .yui-pg-container span.yui-pg-page.yui-pg-current-page
 {
    color: #333333;
    font-weight: bold;
 }
 
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-first,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-previous,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-page,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-next,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-last
+.yui-skin-promInn .yui-pg-container a.yui-pg-first,
+.yui-skin-promInn .yui-pg-container a.yui-pg-previous,
+.yui-skin-promInn .yui-pg-container a.yui-pg-page,
+.yui-skin-promInn .yui-pg-container a.yui-pg-next,
+.yui-skin-promInn .yui-pg-container a.yui-pg-last
 {
    border-color: #CBCBCB;
-   color: #7F00FF;
+   color: #073F80;
    text-decoration: none;
 }
 
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-first:hover,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-previous:hover,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-page:hover,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-next:hover,
-.yui-skin-castomTheme .yui-pg-container a.yui-pg-last:hover
+.yui-skin-promInn .yui-pg-container a.yui-pg-first:hover,
+.yui-skin-promInn .yui-pg-container a.yui-pg-previous:hover,
+.yui-skin-promInn .yui-pg-container a.yui-pg-page:hover,
+.yui-skin-promInn .yui-pg-container a.yui-pg-next:hover,
+.yui-skin-promInn .yui-pg-container a.yui-pg-last:hover
 {
    text-decoration: underline;
 }
 
 /* A combination of a link and splitbutton wrapped inside a span */
 
-.yui-skin-castomTheme .link-menu-button .yui-button span button
+.yui-skin-promInn .link-menu-button .yui-button span button
 {
    color: #4C4C4C;
    font-size: 2px;
@@ -682,37 +681,37 @@ span.mce_alfresco-linklibrary
    background-position: center center;
 }
 
-body.yui-skin-castomTheme .link-menu-button .yui-button.yui-button-hover
+body.yui-skin-promInn .link-menu-button .yui-button.yui-button-hover
 {
    background-color: #FFFFFF;
-   border: 1px solid #A020F0;
+   border: 1px solid #155997;
 }
 
-body.yui-skin-castomTheme .link-menu-button.link-menu-button-menu-active .yui-button.yui-button-hover
+body.yui-skin-promInn .link-menu-button.link-menu-button-menu-active .yui-button.yui-button-hover
 {
    border-color: transparent;
    background-color: transparent;
 }
 
-.yui-skin-castomTheme .link-menu-button .yui-button span.first-child,
-.yui-skin-castomTheme .link-menu-button .yui-button.yui-button-activeoption span.first-child,
-.yui-skin-castomTheme .link-menu-button .yui-button.yui-button-hover span.first-child
+.yui-skin-promInn .link-menu-button .yui-button span.first-child,
+.yui-skin-promInn .link-menu-button .yui-button.yui-button-activeoption span.first-child,
+.yui-skin-promInn .link-menu-button .yui-button.yui-button-hover span.first-child
 {
    border-width: 0;
 }
 
-.yui-skin-castomTheme .link-menu-button span.link-menu-button-link
+.yui-skin-promInn .link-menu-button span.link-menu-button-link
 {
    border-right: 1px #BDBDBD solid;
 }
 
-body.yui-skin-castomTheme .link-menu-button.link-menu-button-menu-active
+body.yui-skin-promInn .link-menu-button.link-menu-button-menu-active
 {
    background-color: #FFFFFF;
-   border: 1px solid #A020F0;
+   border: 1px solid #155997;
 }
 
-.yui-skin-castomTheme .link-menu-button.link-menu-button-menu-active .yui-button.yui-menu-button-hover
+.yui-skin-promInn .link-menu-button.link-menu-button-menu-active .yui-button.yui-menu-button-hover
 {
    border: 1px solid #FFFFFF;
 }
@@ -724,11 +723,11 @@ body.yui-skin-castomTheme .link-menu-button.link-menu-button-menu-active
 
 /* blog/wiki action items links */
 
-body.yui-skin-castomTheme .wikipage .editPage a:hover,
-body.yui-skin-castomTheme .wikipage .deletePage a:hover,
-body.yui-skin-castomTheme .wikipage .detailsPage a:hover,
-body.yui-skin-castomTheme .nodeEdit .onEditBlogPost a:hover,
-body.yui-skin-castomTheme .nodeEdit .onDeleteBlogPost a:hover
+body.yui-skin-promInn .wikipage .editPage a:hover,
+body.yui-skin-promInn .wikipage .deletePage a:hover,
+body.yui-skin-promInn .wikipage .detailsPage a:hover,
+body.yui-skin-promInn .nodeEdit .onEditBlogPost a:hover,
+body.yui-skin-promInn .nodeEdit .onDeleteBlogPost a:hover
 {
    
 }
@@ -741,46 +740,46 @@ body.yui-skin-castomTheme .nodeEdit .onDeleteBlogPost a:hover
 
 /* YUI Menu */
 
-body.yui-skin-castomTheme .yuimenu .bd
+body.yui-skin-promInn .yuimenu .bd
 {
-   border: 1px solid #A020F0;
+   border: 1px solid #155997;
 }
 
-body.yui-skin-castomTheme .yuimenu .bd a:focus
+body.yui-skin-promInn .yuimenu .bd a:focus
 {
    outline: none;
-   background-color: #A020F0;
+   background-color: #155997;
    color: #FFF;
 }
 
 /* YUI Menu roll over state */
 
-body.yui-skin-castomTheme .yuimenuitemlabel
+body.yui-skin-promInn .yuimenuitemlabel
 {
    text-decoration: none;
 }
 
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected
 {
-   background-color: #A020F0;
+   background-color: #155997;
 }
 
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected div .yuimenuitemlabel,
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected div .yuimenuitemlabel a
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected div .yuimenuitemlabel,
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected div .yuimenuitemlabel a
 {
    color: #000;
 }
 
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected .yuimenuitemlabel,
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected .yuimenuitemlabel a,
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected div ul li.yuimenuitem-selected .yuimenuitemlabel,
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected div ul li.yuimenuitem-selected .yuimenuitemlabel a,
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem-selected span.description
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected .yuimenuitemlabel,
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected .yuimenuitemlabel a,
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected div ul li.yuimenuitem-selected .yuimenuitemlabel,
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected div ul li.yuimenuitem-selected .yuimenuitemlabel a,
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem-selected span.description
 {
    color: #FFF;
 }
 
-body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem .yuimenuitemlabel-disabled
+body.yui-skin-promInn .yuimenu .bd ul li.yuimenuitem .yuimenuitemlabel-disabled
 {
    color: #A6A6A6;
    cursor: default;
@@ -790,26 +789,26 @@ body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem .yuimenuitemlabel-disab
 
 /* Location */
 
-.yui-skin-castomTheme .location-path,
-.yui-skin-castomTheme .location-site
+.yui-skin-promInn .location-path,
+.yui-skin-promInn .location-site
 {
    background-position: left 50%;
    background-repeat: no-repeat;
    padding: 2px 0 2px 20px;
 }
 
-.yui-skin-castomTheme .location-none
+.yui-skin-promInn .location-none
 {
    margin-left: 0.5em;
 }
 
-.yui-skin-castomTheme .location-path
+.yui-skin-promInn .location-path
 {
    background-image: url(../../components/documentlibrary/images/folder-closed-16.png);
    margin-left: 0.5em;
 }
 
-.yui-skin-castomTheme .location-site
+.yui-skin-promInn .location-site
 {
    background-image: url(../../components/images/site-16.png);
 }
@@ -818,32 +817,32 @@ body.yui-skin-castomTheme .yuimenu .bd ul li.yuimenuitem .yuimenuitemlabel-disab
 
 /* Doclist */
 
-body.yui-skin-castomTheme .doclist .more-actions a:active,
-body.yui-skin-castomTheme .doclist .more-actions a:hover
+body.yui-skin-promInn .doclist .more-actions a:active,
+body.yui-skin-promInn .doclist .more-actions a:hover
 {
-   background-color: #ECC8EC;
+   background-color: #2980B9;
    color: #333;
 }
 
-body.yui-skin-castomTheme .doclist div.more-actions
+body.yui-skin-promInn .doclist div.more-actions
 {
-   border: 1px solid #ECC8EC;
+   border: 1px solid #2980B9;
 }
 
-body.yui-skin-castomTheme .doclist .action-set a:active,
-body.yui-skin-castomTheme .doclist .action-set a:hover,
-body.yui-skin-castomTheme .doclist .action-set .highlighted,
+body.yui-skin-promInn .doclist .action-set a:active,
+body.yui-skin-promInn .doclist .action-set a:hover,
+body.yui-skin-promInn .doclist .action-set .highlighted,
 #divCalendarContent .yui-dt-col-actions a:active,
 #divCalendarContent .yui-dt-col-actions a:hover
 {
-   border: 1px solid #ECC8EC;
+   border: 1px solid #2980B9;
 }
 
-body.yui-skin-castomTheme .yui-dt-data tr.yui-dt-highlighted,
-body.yui-skin-castomTheme .doclist tr.yui-dt-odd.yui-dt-highlighted,
-body.yui-skin-castomTheme .doclist tr.yui-dt-even.yui-dt-highlighted,
-body.yui-skin-castomTheme .links-body tr.links-selected-row,
-body.yui-skin-castomTheme .over,
+body.yui-skin-promInn .yui-dt-data tr.yui-dt-highlighted,
+body.yui-skin-promInn .doclist tr.yui-dt-odd.yui-dt-highlighted,
+body.yui-skin-promInn .doclist tr.yui-dt-even.yui-dt-highlighted,
+body.yui-skin-promInn .links-body tr.links-selected-row,
+body.yui-skin-promInn .over,
 .topicview
 {
    background-color: #F7FEF4;
@@ -854,49 +853,49 @@ body.yui-skin-castomTheme .over,
    background-color: #F5F5F5;
 }
 
-body.yui-skin-castomTheme .doclist tr.yui-dt-odd.yui-dt-highlighted td.yui-dt-last,
-body.yui-skin-castomTheme .doclist tr.yui-dt-even.yui-dt-highlighted td.yui-dt-last
+body.yui-skin-promInn .doclist tr.yui-dt-odd.yui-dt-highlighted td.yui-dt-last,
+body.yui-skin-promInn .doclist tr.yui-dt-even.yui-dt-highlighted td.yui-dt-last
 {
    border-left: 1px solid #C7ECBB;
 }
 
-body.yui-skin-castomTheme .categoryview .category .ygtvtn,
-body.yui-skin-castomTheme .categoryview .category .ygtvtm,
-body.yui-skin-castomTheme .categoryview .category .ygtvtmh, body.yui-skin-castomTheme .categoryview .category .ygtvtmhh,
-body.yui-skin-castomTheme .categoryview .category .ygtvtp,
-body.yui-skin-castomTheme .categoryview .category .ygtvtph, body.yui-skin-castomTheme .categoryview .category .ygtvtphh,
-body.yui-skin-castomTheme .categoryview .category .ygtvln,
-body.yui-skin-castomTheme .categoryview .category .ygtvlm,
-body.yui-skin-castomTheme .categoryview .category .ygtvlmh, body.yui-skin-castomTheme .categoryview .category .ygtvlmhh,
-body.yui-skin-castomTheme .categoryview .category .ygtvlp,
-body.yui-skin-castomTheme .categoryview .category .ygtvlph, body.yui-skin-castomTheme .categoryview .category .ygtvlphh,
-body.yui-skin-castomTheme .categoryview .category .ygtvdepthcell
+body.yui-skin-promInn .categoryview .category .ygtvtn,
+body.yui-skin-promInn .categoryview .category .ygtvtm,
+body.yui-skin-promInn .categoryview .category .ygtvtmh, body.yui-skin-promInn .categoryview .category .ygtvtmhh,
+body.yui-skin-promInn .categoryview .category .ygtvtp,
+body.yui-skin-promInn .categoryview .category .ygtvtph, body.yui-skin-promInn .categoryview .category .ygtvtphh,
+body.yui-skin-promInn .categoryview .category .ygtvln,
+body.yui-skin-promInn .categoryview .category .ygtvlm,
+body.yui-skin-promInn .categoryview .category .ygtvlmh, body.yui-skin-promInn .categoryview .category .ygtvlmhh,
+body.yui-skin-promInn .categoryview .category .ygtvlp,
+body.yui-skin-promInn .categoryview .category .ygtvlph, body.yui-skin-promInn .categoryview .category .ygtvlphh,
+body.yui-skin-promInn .categoryview .category .ygtvdepthcell
 {
    background-image: url(images/categoryview-sprite.gif);
    padding: 1px;
 }
 
-body.yui-skin-castomTheme .treeview a:focus,
-body.yui-skin-castomTheme .category a:focus
+body.yui-skin-promInn .treeview a:focus,
+body.yui-skin-promInn .category a:focus
 {
    outline: 1px solid #ccc;
 }
 
-body.yui-skin-castomTheme .treeview .ygtvtn,
-body.yui-skin-castomTheme .treeview .ygtvtm,
-body.yui-skin-castomTheme .treeview .ygtvtmh,
-body.yui-skin-castomTheme .treeview .ygtvtmhh,
-body.yui-skin-castomTheme .treeview .ygtvtp,
-body.yui-skin-castomTheme .treeview .ygtvtph,
-body.yui-skin-castomTheme .treeview .ygtvtphh,
-body.yui-skin-castomTheme .treeview .ygtvln,
-body.yui-skin-castomTheme .treeview .ygtvlm,
-body.yui-skin-castomTheme .treeview .ygtvlmh,
-body.yui-skin-castomTheme .treeview .ygtvlmhh,
-body.yui-skin-castomTheme .treeview .ygtvlp,
-body.yui-skin-castomTheme .treeview .ygtvlph,
-body.yui-skin-castomTheme .treeview .ygtvlphh,
-body.yui-skin-castomTheme .treeview .ygtvdepthcell
+body.yui-skin-promInn .treeview .ygtvtn,
+body.yui-skin-promInn .treeview .ygtvtm,
+body.yui-skin-promInn .treeview .ygtvtmh,
+body.yui-skin-promInn .treeview .ygtvtmhh,
+body.yui-skin-promInn .treeview .ygtvtp,
+body.yui-skin-promInn .treeview .ygtvtph,
+body.yui-skin-promInn .treeview .ygtvtphh,
+body.yui-skin-promInn .treeview .ygtvln,
+body.yui-skin-promInn .treeview .ygtvlm,
+body.yui-skin-promInn .treeview .ygtvlmh,
+body.yui-skin-promInn .treeview .ygtvlmhh,
+body.yui-skin-promInn .treeview .ygtvlp,
+body.yui-skin-promInn .treeview .ygtvlph,
+body.yui-skin-promInn .treeview .ygtvlphh,
+body.yui-skin-promInn .treeview .ygtvdepthcell
 {
    background-image: url(images/treeview-sprite.gif) !important;
 }
@@ -915,102 +914,102 @@ body.yui-skin-castomTheme .treeview .ygtvdepthcell
    background-color: #f9fcfd;
 }
 
-.yui-skin-castomTheme .dayview h2, .weekview h2,
-.yui-skin-castomTheme .calendar.weekview thead th,
-.yui-skin-castomTheme .calendar.monthview thead th
+.yui-skin-promInn .dayview h2, .weekview h2,
+.yui-skin-promInn .calendar.weekview thead th,
+.yui-skin-promInn .calendar.monthview thead th
 {
    color: #000;
 }
 
 /* filter list link */
 
-.yui-skin-castomTheme li.selected, 
-body.yui-skin-castomTheme .treeview .selected,
-body.yui-skin-castomTheme .categoryview .selected,
-body.yui-skin-castomTheme .yui-columnbrowser .yui-carousel-content li.yui-columnbrowser-column a.yui-columnbrowser-item-selected
+.yui-skin-promInn li.selected, 
+body.yui-skin-promInn .treeview .selected,
+body.yui-skin-promInn .categoryview .selected,
+body.yui-skin-promInn .yui-columnbrowser .yui-carousel-content li.yui-columnbrowser-column a.yui-columnbrowser-item-selected
 {
-   background-color: #ECC8EC;
+   background-color: #2980B9;
 }
 
 /* these rules need to be separate from the above for ie6 */
-.yui-skin-castomTheme .treeview .selected > table,
-.yui-skin-castomTheme .categoryview .selected > table
+.yui-skin-promInn .treeview .selected > table,
+.yui-skin-promInn .categoryview .selected > table
 {
-   background-color: #ECC8EC;
+   background-color: #2980B9;
 }
 
-.yui-skin-castomTheme .filter a.disabled,
-.yui-skin-castomTheme .filter a.disabled:active,
-.yui-skin-castomTheme .filter a.disabled:hover,
-.yui-skin-castomTheme .filter a.disabled:visited,
-.yui-skin-castomTheme .tags a.disabled,
-.yui-skin-castomTheme .tags a.disabled:active,
-.yui-skin-castomTheme .tags a.disabled:hover,
-.yui-skin-castomTheme .tags a.disabled:visited
+.yui-skin-promInn .filter a.disabled,
+.yui-skin-promInn .filter a.disabled:active,
+.yui-skin-promInn .filter a.disabled:hover,
+.yui-skin-promInn .filter a.disabled:visited,
+.yui-skin-promInn .tags a.disabled,
+.yui-skin-promInn .tags a.disabled:active,
+.yui-skin-promInn .tags a.disabled:hover,
+.yui-skin-promInn .tags a.disabled:visited
 {
    color: #a6a6a6;
    cursor: not-allowed;
 }
 
-.yui-skin-castomTheme .filter a:hover,
-.yui-skin-castomTheme .tags a:hover
+.yui-skin-promInn .filter a:hover,
+.yui-skin-promInn .tags a:hover
 {
    text-decoration: none;
 }
 
 /* Link color */
 
-.yui-skin-castomTheme .node .nodeTitle a,
-.yui-skin-castomTheme .node .nodeURL a,
-.yui-skin-castomTheme .nodeAttrValue a,
-.yui-skin-castomTheme .nodeFooter .tag a,
-.yui-skin-castomTheme .yui-dt-highlighted .tag a,
-.yui-skin-castomTheme .yui-dt-highlighted .category a,
-.yui-skin-castomTheme .yui-dt-highlighted .item-social a,
-.yui-skin-castomTheme a.wiki-tag-link,
-.yui-skin-castomTheme .node .userLink a,
-.yui-skin-castomTheme .site-members h3 a,
-.yui-skin-castomTheme .yui-calendar td.calcell a,
-.yui-skin-castomTheme .doclist .documents a,
-.yui-skin-castomTheme .attrValue a,
-.yui-skin-castomTheme .detail .item a,
-.yui-skin-castomTheme .info .meta-value a,
-.yui-skin-castomTheme .rules-none a,
-.yui-skin-castomTheme .agendaview a,
-.yui-skin-castomTheme a.previousEvents,
-.yui-skin-castomTheme a.nextEvents,
-.yui-skin-castomTheme div.channels a
+.yui-skin-promInn .node .nodeTitle a,
+.yui-skin-promInn .node .nodeURL a,
+.yui-skin-promInn .nodeAttrValue a,
+.yui-skin-promInn .nodeFooter .tag a,
+.yui-skin-promInn .yui-dt-highlighted .tag a,
+.yui-skin-promInn .yui-dt-highlighted .category a,
+.yui-skin-promInn .yui-dt-highlighted .item-social a,
+.yui-skin-promInn a.wiki-tag-link,
+.yui-skin-promInn .node .userLink a,
+.yui-skin-promInn .site-members h3 a,
+.yui-skin-promInn .yui-calendar td.calcell a,
+.yui-skin-promInn .doclist .documents a,
+.yui-skin-promInn .attrValue a,
+.yui-skin-promInn .detail .item a,
+.yui-skin-promInn .info .meta-value a,
+.yui-skin-promInn .rules-none a,
+.yui-skin-promInn .agendaview a,
+.yui-skin-promInn a.previousEvents,
+.yui-skin-promInn a.nextEvents,
+.yui-skin-promInn div.channels a
 {
-   color: #7F00FF;
+   color: #073F80;
 }
 
-.yui-skin-castomTheme .tag a,
-.yui-skin-castomTheme .category a,
-.yui-skin-castomTheme .item-social a,
-.yui-skin-castomTheme .document-tags .tag
+.yui-skin-promInn .tag a,
+.yui-skin-promInn .category a,
+.yui-skin-promInn .item-social a,
+.yui-skin-promInn .document-tags .tag
 {
    color: #333;
 }
 
-.yui-skin-castomTheme .tag a,
-.yui-skin-castomTheme .document-tags .tag
+.yui-skin-promInn .tag a,
+.yui-skin-promInn .document-tags .tag
 {
    background-color: #e8e8e8;
 }
 
-.yui-skin-castomTheme .site-navigation
+.yui-skin-promInn .site-navigation
 {
    background-image: url(./images/navigation-bg.png);
 }
 
 .cmis .body a
 {
-   color: #7F00FF;
+   color: #073F80;
 }
 
-.yui-skin-castomTheme .rules-list a
+.yui-skin-promInn .rules-list a
 {
-   color: #526A53;
+   color: #000000;
 }
 
 /* Calendar */
@@ -1020,8 +1019,8 @@ body.yui-skin-castomTheme .yui-columnbrowser .yui-carousel-content li.yui-column
 /* Day/Week timed events */
 .fc-content .fc-event-skin
 {
-   background-color: #7F00FF; /* Theme Colour 1 */
-   border-color: #BF5FFF;
+   background-color: #073F80; /* Theme Colour 1 */
+   border-color: #1B66A2;
    color: #FFFFFF;
 }
 
@@ -1030,7 +1029,7 @@ body.yui-skin-castomTheme .yui-columnbrowser .yui-carousel-content li.yui-column
 {
    background-color: transparent;
    border-color: transparent;
-   color: #7F00FF;
+   color: #073F80;
 }
 
 /* All day events */
@@ -1039,8 +1038,8 @@ body.yui-skin-castomTheme .yui-columnbrowser .yui-carousel-content li.yui-column
 .fc-content .fc-view-month .fc-event-multiday .fc-event-skin,
 .fc-content .fc-view-month a.fc-event.fc-event-multiday
 {
-   background-color: #7F00FF;
-   border-color: #7F00FF;
+   background-color: #073F80;
+   border-color: #073F80;
    color: #FFFFFF;
 }
 
@@ -1091,7 +1090,7 @@ a.theme-color-1,
 a.theme-color-1:visited,
 a.theme-color-1:hover
 {
-   color: #7F00FF;
+   color: #073F80;
 }
 
 .theme-color-2,
@@ -1115,7 +1114,7 @@ a.theme-color-4,
 a.theme-color-4:visited,
 a.theme-color-4:hover
 {
-   color: #A020F0;
+   color: #155997;
 }
 
 .theme-color-5,
@@ -1131,7 +1130,7 @@ a.theme-color-5:hover
 .theme-bg-color-1,
 div.theme-bg-color-1
 {
-   background-color: #BF5FFF;
+   background-color: #1B66A2;
 }
 
 .theme-bg-color-2,
@@ -1236,7 +1235,7 @@ div.theme-bg-color-8
 
 .theme-bg-selected
 {
-   background-color: #BF5FFF;
+   background-color: #1B66A2;
 }
 
 /* Theme border type/colors */
