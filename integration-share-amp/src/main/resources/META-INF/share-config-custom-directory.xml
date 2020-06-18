@@ -3,75 +3,9 @@
 	<!--================================================================================================================ View, Edit, Create forms for custom data list types For more information about how to define forms for data list item types see existing out-of-the-box form definitions: tomcat/webapps/share/WEB-INF/classes/alfresco/share-datalist-form-config.xml ============================================================================================================= -->
 
 
-	<!-- dir:position type create form config -->
-	<config evaluator="model-type" condition="dir:position">
-		<forms>
-			<!-- Create item form -->
-			<form>
-				<field-visibility>
-					<show id="dir:positionNum" />
-					<show id="dir:positionName" />
-					<show id="dir:positionDescription" />
-				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
-				<appearance>
-					<field id="dir:positionNum">
-						<control template="/org/alfresco/components/form/controls/textfield.ftl">
-							<control-param name="maxLength">128</control-param>
-						</control>
-					</field>
-					<field id="dir:positionName">
-						<control template="/org/alfresco/components/form/controls/textfield.ftl">
-							<control-param name="maxLength">128</control-param>
-						</control>
-					</field>
-					<field id="dir:positionDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
-						</control>
-					</field>
-
-				</appearance>
-			</form>
-		</forms>
-	</config>
 	
 	
 	
-	<!-- dir:unitMeasurement type create form config -->
-	<config evaluator="model-type" condition="dir:unitMeasurement">
-		<forms>
-			<!-- Create item form -->
-			<form>
-				<field-visibility>
-					<show id="dir:unitMeasurementNum" />
-					<show id="dir:unitMeasurementName" />
-					<show id="dir:unitMeasurementDescription" />
-				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
-				<appearance>
-					<field id="dir:unitMeasurementNum">
-						<control template="/org/alfresco/components/form/controls/textfield.ftl">
-							<control-param name="maxLength">128</control-param>
-						</control>
-					</field>
-					<field id="dir:unitMeasurementName">
-						<control template="/org/alfresco/components/form/controls/textfield.ftl">
-							<control-param name="maxLength">128</control-param>
-						</control>
-					</field>
-					<field id="dir:unitMeasurementDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
-						</control>
-					</field>
-
-				</appearance>
-			</form>
-		</forms>
-	</config>
 	
 	<!-- dir:manufacturer type create form config -->
 	<config evaluator="model-type" condition="dir:manufacturer">

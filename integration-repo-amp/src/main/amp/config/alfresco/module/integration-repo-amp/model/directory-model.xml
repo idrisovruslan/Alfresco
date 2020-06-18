@@ -24,63 +24,8 @@
 	<constraints>
 	</constraints>
 	
-	<types>
-		<!-- Позиция -->
-		<type name="dir:position">
-		
-			<title>Позиция</title>
-			<parent>dl:dataListItem</parent>
-			
-			<properties>
-				<property name="dir:positionNum">
-					<title>№</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-				</property>
-				<property name="dir:positionName">
-					<title>Позиция</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-				</property>
-				<property name="dir:positionDescription">
-					<title>Описание</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-				</property>
-			</properties>
-			
-			<associations>
-			</associations>
-		</type>
-		
-		<!-- Единица измерения -->
-		<type name="dir:unitMeasurement">
-		
-			<title>Единица измерения</title>
-			<parent>dl:dataListItem</parent>
-			
-			<properties>
-				<property name="dir:unitMeasurementNum">
-					<title>№</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-				</property>
-				<property name="dir:unitMeasurementName">
-					<title>Позиция</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-				</property>
-				<property name="dir:unitMeasurementDescription">
-					<title>Описание</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-				</property>
-			</properties>
-			
-			<associations>
-			</associations>
-		</type>
-		
+	<types>	
+	
 		<!-- Изготовитель -->
 		<type name="dir:manufacturer">
 		

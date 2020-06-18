@@ -12,6 +12,21 @@
 	   </forms>
 	</config>
 	
+   <config evaluator="string-compare" condition="Edition">
+      <!-- footer logo and copyright text -->
+      <footer>
+         <logo>share-logo.png</logo>
+         <alt-text>Alfresco Share</alt-text>
+         <css-class>footer-com</css-class>
+         <label>label.copyright</label>
+      </footer>
+      <about>
+         <css-class>logo-com</css-class>
+      </about>
+      <login>
+         <css-class>logo-com</css-class>
+      </login>
+   </config>
 
 
 </alfresco-config>

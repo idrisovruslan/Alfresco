@@ -1,29 +1,23 @@
 model.jsonModel = {
-    widgets: [{
-        id: "SET_PAGE_TITLE",
-        name: "alfresco/header/SetTitle",
-        config: {
-            title: "This is a simple page"
-        }
-    },
-        {
-            id: "MY_HORIZONTAL_WIDGET_LAYOUT",
-            name: "alfresco/layout/HorizontalWidgets",
-            config: {
-                widgetWidth: 50,
-                widgets: [
-                    {
-                        id: "DEMO_SIMPLE_LOGO",
-                        name: "alfresco/logo/Logo",
-                        config: {
-                            logoClasses: "alfresco-logo-only"
-                        }
-                    },
-                    {
-                        id: "DEMO_SIMPLE_MSG",
-                        name: "example/widgets/TemplateWidget"
-                    }
-                ]
-            }
-        }]
+   services: [
+      "alfresco/services/NavigationService",
+      "alfresco/services/LogoutService",
+      "alfresco/services/DocumentService",
+      "alfresco/services/ActionService",
+      "alfresco/services/UploadService",
+      "alfresco/services/DataListService"
+      // Add more services here !!!
+   ],
+   widgets: [
+	   {
+		   name: "alfresco/lists/views/layouts/Grid",
+		   config: {
+		     rootNode: "alfresco://user/home",
+		     rawData: true,
+		     
+		   }
+		 }
+               // Add more widgets here !!!
+            
+   ]
 };

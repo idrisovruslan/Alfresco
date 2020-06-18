@@ -10,7 +10,6 @@
      -->
 <alfresco-config>
 
-
 	<config evaluator="model-type" condition="aztkp:attributiveStructureOfTheAztkpFacility">
 		<forms>
 			<!-- Create item form -->
@@ -181,8 +180,7 @@
 										<control-param name="maxLength">128</control-param>
 									</control>
 								</field>		
-								
-												
+													
 				</appearance>
 			</form>
 		</forms>

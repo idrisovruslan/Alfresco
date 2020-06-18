@@ -8,15 +8,16 @@
      The run profile uses the tomcat7-maven-plugin to kick off the webapp and it is configured with the
      webapp resources and path (i.e. /share). -->
 <Context>
+
     <Resources className="org.apache.naming.resources.VirtualDirContext"
                extraResourcePaths="/=${project.parent.basedir}/integration-share-amp/target/amp/web" />
+
     <!-- IMPORTANT! The extraResourcePaths string need to be on one continues line, so if we add another Share AMP,
                     it would look something like this:
     <Resources className="org.apache.naming.resources.VirtualDirContext"
                extraResourcePaths="/=${project.parent.basedir}/integration-share-amp/target/amp/web,/=${project.parent.basedir}/component-a-share/target/amp/web" />
-               -->
-
-    <!-- Configure where the Share (share.war) web application can load classes, config, and test classes (in that order) -->
+               -->  
+	<!-- Configure where the Share (share.war) web application can load classes, config, and test classes (in that order) -->
     <!-- Setup the virtual class path like this:
          1) integration-share-amp/target/classes
          2) integration-share-amp/target/amp/config
@@ -32,6 +33,8 @@
             ${project.parent.basedir}/integration-share-amp/target/amp/config;
             ${project.parent.basedir}/integration-share-amp/target/test-classes;
             ${project.parent.basedir}/share/target/test-classes" />
+
+ 
 
     <!-- Load from all directories, not just when the META-INF directory is found in exploded JAR -->
     <JarScanner scanAllDirectories="true" />
