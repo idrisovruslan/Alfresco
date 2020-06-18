@@ -1,0 +1,405 @@
+<!-- Share configuration related to this particular Share module extension, such as:
+     - Doclib action config
+     - Form config
+     - Aspect and Type config
+
+    Note. Any configuration related to the whole Share.war webapp
+           (i.e. not specific to this share extension) should be
+            placed in the environment specific config:
+             alfresco-allinone/share/src/main/resources/alfresco/web-extension/share-config-custom.xml file
+     -->
+<alfresco-config>
+
+
+
+	<!-- Расчет-обоснование НМЦ -->
+	<config evaluator="node-type" condition="priceinf:calculationAndJustificationNmc">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="priceinf:nmcName" />
+					<show id="priceinf:nmcDescription" />
+					<show id="priceinf:lotLink" />
+					<show id="priceinf:nmcCurrency" />
+					<show id="priceinf:nmcVatRate" />
+					<show id="priceinf:nmcWithVat" />
+					<show id="priceinf:sumVat" />
+					<show id="priceinf:nmcWithoutVat" />
+					<show id="priceinf:exchangeRates" />
+					<show id="priceinf:paymentDate" />
+					<show id="priceinf:priceInCurrencyWithVat" />
+					<show id="priceinf:nmcNode" />
+					<show id="priceinf:iciSearchResultsLink" />
+				</field-visibility>
+				<edit-form template="/org/alfresco/components/form/tabbed.ftl" />
+				
+				<appearance>
+
+				<!-- Tabs -->
+					<set id="ZdocParam" label="Параметры документа" />
+					<set id="Zcalculation" label="Расчет" />
+
+					
+				<!-- Colums -->
+	             	<set id="docParam1" parent="ZdocParam" label="" />
+
+	             	<set id="calculation1" parent="Zcalculation" label="" />
+
+
+				<!-- Groups -->
+	             	<set id="GdocParam1" parent="docParam1" label=" "/>
+
+	             	<set id="Gcalculation1" parent="calculation1" label=" "/>
+
+
+				<!-- Fields -->
+				
+					<!-- ZdocParam -->
+						<!-- GdocParam1 -->
+							<!-- priceinf:nmcName -->
+							<set id="111GdocParam1-0-0" parent="GdocParam1" />
+								<field id="priceinf:nmcName" set="111GdocParam1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- priceinf:nmcDescription -->	
+							<set id="111GdocParam1-0-1" parent="GdocParam1" />
+								<field id="priceinf:nmcDescription" set="111GdocParam1-0-1">
+									 <control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">256</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:lotLink -->	
+							<set id="111GdocParam1-0-2" parent="GdocParam1" />
+								<field id="priceinf:lotLink" set="111GdocParam1-0-2">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:nmcNode -->	
+							<set id="111GdocParam1-0-3" parent="GdocParam1" />
+								<field id="priceinf:nmcNode" set="111GdocParam1-0-3">
+									 <control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">256</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:iciSearchResultsLink -->	
+							<set id="111GdocParam1-0-4" parent="GdocParam1" />
+								<field id="priceinf:iciSearchResultsLink" set="111GdocParam1-0-4">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>		
+
+								
+					
+											
+														
+					<!-- Zcalculation -->
+						<!-- Gcalculation1 -->
+							<!-- priceinf:nmcCurrency -->
+							<set id="111Gcalculation1-0-0" parent="Gcalculation1" />
+								<field id="priceinf:nmcCurrency" set="111Gcalculation1-0-0" />
+							<!-- priceinf:nmcVatRate -->
+							<set id="111Gcalculation1-0-1" parent="Gcalculation1" />
+								<field id="priceinf:nmcVatRate" set="111Gcalculation1-0-1" />
+							<!-- priceinf:nmcWithVat -->			
+							<set id="111Gcalculation1-0-2" parent="Gcalculation1" />
+								<field id="priceinf:nmcWithVat" set="111Gcalculation1-0-2">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:sumVat -->			
+							<set id="111Gcalculation1-0-3" parent="Gcalculation1" />
+								<field id="priceinf:sumVat" set="111Gcalculation1-0-3">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>		
+							<!-- priceinf:nmcWithoutVat -->
+							<set id="111Gcalculation1-0-4" parent="Gcalculation1" />
+								<field id="priceinf:nmcWithoutVat" set="111Gcalculation1-0-4" />	
+							<!-- priceinf:exchangeRates -->			
+							<set id="111Gcalculation1-0-5" parent="Gcalculation1" />
+								<field id="priceinf:exchangeRates" set="111Gcalculation1-0-5">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:paymentDate -->
+							<set id="111Gcalculation1-0-6" parent="Gcalculation1" />
+								<field id="priceinf:paymentDate" set="111Gcalculation1-0-6" />	
+							<!-- priceinf:priceInCurrencyWithVat -->			
+							<set id="111Gcalculation1-0-7" parent="Gcalculation1" />
+								<field id="priceinf:priceInCurrencyWithVat" set="111Gcalculation1-0-7">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+	
+								
+												
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+
+
+
+
+
+	<!-- Результаты поиска ИЦИ -->
+	<config evaluator="node-type" condition="priceinf:iciSearchResults">
+		<forms>
+			<!-- Create item form -->
+			<form>
+				<field-visibility>
+					<show id="priceinf:iciName" />
+					<show id="priceinf:iciKind" />
+					<show id="priceinf:resource" />
+					<show id="priceinf:quantity" />
+					<show id="priceinf:unitMeasurementLink" />
+					<show id="priceinf:specifications" />
+					<show id="priceinf:materialsListLink" />
+					<show id="priceinf:safetyClassLink" />
+					
+					<show id="priceinf:Supplier_baseLink" />
+					<show id="priceinf:deliveryTime" />
+					<show id="priceinf:dateDelivery" />
+					<show id="priceinf:positionLink" />
+					<show id="priceinf:manufacturerLink" />
+					
+					<show id="priceinf:priceUnitWithoutVAT" />
+					<show id="priceinf:sumWithoutVAT" />
+					<show id="priceinf:costOfDeliveryWithoutVAT" />
+					<show id="priceinf:sumWithDeliveryWithoutVAT" />
+					<show id="priceinf:priceDeliveryWithAdjustmentsWithoutVAT" />
+					<show id="priceinf:sumShippingWithAdjustmentsWithoutVAT" />
+					<show id="priceinf:notSubjectToVAT" />
+					<show id="priceinf:iciCurrency" />
+					<show id="priceinf:iciVatRate" />
+					<show id="priceinf:paymentConditionsLink" />
+					<show id="priceinf:priceValidityInTkpLink" />
+					
+				</field-visibility>
+				<edit-form template="/org/alfresco/components/form/tabbed.ftl" />
+				
+				<appearance>
+
+				<!-- Tabs -->
+					<set id="ZdocParam" label="Параметры документа" />
+					<set id="Zcalculation" label="Расчет" />
+
+					
+				<!-- Colums -->
+	             	<set id="docParam1" parent="ZdocParam" label="" />
+	             	<set id="docParam2" parent="ZdocParam" label="" />
+
+	             	<set id="calculation1" parent="Zcalculation" label="" />
+
+
+				<!-- Groups -->
+	             	<set id="GdocParam1" parent="docParam1" label="docParam1"/>
+	             	<set id="GdocParam2" parent="docParam2" label="docParam2"/>
+
+	             	<set id="Gcalculation1" parent="calculation1" label="calculation1"/>
+
+
+				<!-- Fields -->
+				
+					<!-- ZdocParam -->
+						<!-- GdocParam1 -->
+							<!-- priceinf:iciName -->
+							<set id="111GdocParam1-0-0" parent="GdocParam1" />
+								<field id="priceinf:iciName" set="111GdocParam1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- priceinf:iciKind -->	
+							<set id="111GdocParam1-0-1" parent="GdocParam1" />
+								<field id="priceinf:iciKind" set="111GdocParam1-0-1">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:resource -->	
+							<set id="111GdocParam1-0-2" parent="GdocParam1" />
+								<field id="priceinf:resource" set="111GdocParam1-0-2">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:quantity -->	
+							<set id="111GdocParam1-0-3" parent="GdocParam1" />
+								<field id="priceinf:quantity" set="111GdocParam1-0-3">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:unitMeasurementLink -->	
+							<set id="111GdocParam1-0-4" parent="GdocParam1" />
+								<field id="priceinf:unitMeasurementLink" set="111GdocParam1-0-4">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:specifications -->	
+							<set id="111GdocParam1-0-5" parent="GdocParam1" />
+								<field id="priceinf:specifications" set="111GdocParam1-0-5">
+									 <control template="/org/alfresco/components/form/controls/textarea.ftl">
+										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:materialsListLink -->	
+							<set id="111GdocParam1-0-6" parent="GdocParam1" />
+								<field id="priceinf:materialsListLink" set="111GdocParam1-0-6">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>		
+							<!-- priceinf:safetyClassLink -->	
+							<set id="111GdocParam1-0-7" parent="GdocParam1" />
+								<field id="priceinf:safetyClassLink" set="111GdocParam1-0-7">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>		
+									
+						<!-- GdocParam2 -->
+							<!-- priceinf:Supplier_baseLink -->
+							<set id="111GdocParam2-0-0" parent="GdocParam2" />
+								<field id="priceinf:Supplier_baseLink" set="111GdocParam2-0-0">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:deliveryTime -->
+							<set id="111GdocParam2-0-1" parent="GdocParam2" />
+								<field id="priceinf:deliveryTime" set="111GdocParam2-0-1">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:dateDelivery -->
+							<set id="111GdocParam2-0-2" parent="GdocParam2" />
+								<field id="priceinf:dateDelivery" set="111GdocParam2-0-2" />
+							<!-- priceinf:positionLink -->
+							<set id="111GdocParam2-0-3" parent="GdocParam2" />
+								<field id="priceinf:positionLink" set="111GdocParam2-0-3">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:manufacturerLink -->
+							<set id="111GdocParam2-0-4" parent="GdocParam2" />
+								<field id="priceinf:manufacturerLink" set="111GdocParam2-0-4">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>		
+																
+					<!-- Zcalculation -->
+						<!-- Gcalculation1 -->
+							<!-- priceinf:priceUnitWithoutVAT -->
+							<set id="111Gcalculation1-0-0" parent="Gcalculation1" />
+								<field id="priceinf:priceUnitWithoutVAT" set="111Gcalculation1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:sumWithoutVAT -->
+							<set id="111Gcalculation1-0-1" parent="Gcalculation1" />
+								<field id="priceinf:sumWithoutVAT" set="111Gcalculation1-0-1">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:costOfDeliveryWithoutVAT -->
+							<set id="111Gcalculation1-0-2" parent="Gcalculation1" />
+								<field id="priceinf:costOfDeliveryWithoutVAT" set="111Gcalculation1-0-2">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- priceinf:sumWithDeliveryWithoutVAT -->
+							<set id="111Gcalculation1-0-3" parent="Gcalculation1" />
+								<field id="priceinf:sumWithDeliveryWithoutVAT" set="111Gcalculation1-0-3">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>		
+							<!-- priceinf:priceDeliveryWithAdjustmentsWithoutVAT -->
+							<set id="111Gcalculation1-0-4" parent="Gcalculation1" />
+								<field id="priceinf:priceDeliveryWithAdjustmentsWithoutVAT" set="111Gcalculation1-0-4">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>		
+							<!-- priceinf:sumShippingWithAdjustmentsWithoutVAT -->
+							<set id="111Gcalculation1-0-5" parent="Gcalculation1" />
+								<field id="priceinf:sumShippingWithAdjustmentsWithoutVAT" set="111Gcalculation1-0-5">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- priceinf:notSubjectToVAT -->
+							<set id="111Gcalculation1-0-6" parent="Gcalculation1" />
+								<field id="priceinf:notSubjectToVAT" set="111Gcalculation1-0-6" />
+							<!-- priceinf:iciCurrency -->
+							<set id="111Gcalculation1-0-7" parent="Gcalculation1" />
+								<field id="priceinf:iciCurrency" set="111Gcalculation1-0-7" />	
+							<!-- priceinf:iciVatRate -->
+							<set id="111Gcalculation1-0-8" parent="Gcalculation1" />
+								<field id="priceinf:iciVatRate" set="111Gcalculation1-0-8" />		
+							<!-- priceinf:paymentConditionsLink -->
+							<set id="111Gcalculation1-0-9" parent="Gcalculation1" />
+								<field id="priceinf:paymentConditionsLink" set="111Gcalculation1-0-9">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+							<!-- priceinf:priceValidityInTkpLink -->
+							<set id="111Gcalculation1-1-0" parent="Gcalculation1" />
+								<field id="priceinf:priceValidityInTkpLink" set="111Gcalculation1-1-0">
+									 <control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{doclib}</control-param>
+									</control>
+								</field>	
+
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	
+	
+	
+</alfresco-config>

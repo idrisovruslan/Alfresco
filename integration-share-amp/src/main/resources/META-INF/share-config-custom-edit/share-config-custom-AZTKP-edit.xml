@@ -10,7 +10,7 @@
      -->
 <alfresco-config>
 
-	<config evaluator="model-type" condition="aztkp:attributiveStructureOfTheAztkpFacility">
+	<config evaluator="node-type" condition="aztkp:attributiveStructureOfTheAztkpFacility">
 		<forms>
 			<!-- Create item form -->
 			<form>
@@ -33,7 +33,7 @@
 					<show id="aztkp:numberSheetsInTz" />
 					<show id="aztkp:unitMeasurementLink" />
 				</field-visibility>
-				<create-form template="/org/alfresco/components/form/tabbed.ftl" />
+				<edit-form template="/org/alfresco/components/form/tabbed.ftl" />
 				
 				<appearance>
 
@@ -50,10 +50,10 @@
 
 
 				<!-- Groups -->
-	             	<set id="GdocParam1" parent="docParam1" label="docParam1"/>
-					<set id="GdocParam2" parent="docParam2" label="docParam2"/>
+	             	<set id="GdocParam1" parent="docParam1" label=" "/>
+					<set id="GdocParam2" parent="docParam2" label=" "/>
 
-	             	<set id="Gcoordinators1" parent="coordinators1" label="coordinators1"/>
+	             	<set id="Gcoordinators1" parent="coordinators1" label=" "/>
 
 
 				<!-- Fields -->

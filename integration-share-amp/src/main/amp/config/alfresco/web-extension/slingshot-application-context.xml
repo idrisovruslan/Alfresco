@@ -55,18 +55,35 @@
             <value>jar:*!/META-INF/share-config-custom.xml</value>
             <value>classpath:alfresco/web-extension/share-config-custom-dev.xml</value>
             <value>jar:*!/META-INF/share-config-custom-dev.xml</value>
-            <value>classpath:alfresco/web-extension/share-config-custom-AZTKP.xml</value>
-            <value>jar:*!/META-INF/share-config-custom-AZTKP.xml</value>
-            <value>classpath:alfresco/web-extension/share-config-custom-priceInfo.xml</value>
-            <value>jar:*!/META-INF/share-config-custom-priceInfo.xml</value>
-            <value>classpath:alfresco/web-extension/share-config-custom-LotDocument.xml</value>
-            <value>jar:*!/META-INF/share-config-custom-LotDocument.xml</value>
-            <value>classpath:alfresco/web-extension/share-config-custom-procurementProcedure.xml</value>
-            <value>jar:*!/META-INF/share-config-custom-procurementProcedure.xml</value>
-            <value>classpath:alfresco/web-extension/share-config-custom-Supplier.xml</value>
-            <value>jar:*!/META-INF/share-config-custom-Supplier.xml</value>
-            <value>classpath:alfresco/web-extension/share-config-custom-directory.xml</value>
-            <value>jar:*!/META-INF/share-config-custom-directory.xml</value>
+
+
+            <value>classpath:alfresco/web-extension/share-config-custom-AZTKP-edit.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-edit/share-config-custom-AZTKP-edit.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-priceInfo-edit.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-edit/share-config-custom-priceInfo-edit.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-LotDocument-edit.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-edit/share-config-custom-LotDocument-edit.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-procurementProcedure-edit.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-edit/share-config-custom-procurementProcedure-edit.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-Supplier-edit.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-edit/share-config-custom-Supplier-edit.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-directory-edit.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-edit/share-config-custom-directory-edit.xml</value>
+
+
+            <value>classpath:alfresco/web-extension/share-config-custom-AZTKP-create.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-create/share-config-custom-AZTKP-create.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-priceInfo-create.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-create/share-config-custom-priceInfo-create.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-LotDocument-create.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-create/share-config-custom-LotDocument-create.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-procurementProcedure-create.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-create/share-config-custom-procurementProcedure-create.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-Supplier-create.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-create/share-config-custom-Supplier-create.xml</value>
+            <value>classpath:alfresco/web-extension/share-config-custom-directory-create.xml</value>
+            <value>jar:*!/META-INF/share-config-custom-create/share-config-custom-directory-create.xml</value>
+
 
             <value>classpath:alfresco/web-extension/smartfolders-amp-actions-config.xml</value>
          </list>

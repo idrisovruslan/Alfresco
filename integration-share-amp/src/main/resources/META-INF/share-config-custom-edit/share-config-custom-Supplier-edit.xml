@@ -4,27 +4,6 @@
 
 
 	<!-- supp:Acknovledged_Supplier type create form config -->
-	<config evaluator="model-type" condition="supp:Acknovledged_Supplier">
-		<forms>
-			<!-- Create item form -->
-			<form>
-				<field-visibility>
-					<show id="supp:Resolver_FIO" />
-					<show id="supp:Acknovledged_SupplierLink" />
-				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
-				<appearance>
-					<field id="supp:Acknovledged_SupplierLink">
-						<control>
-							<control-param name="startLocation">{doclib}</control-param>
-						</control>
-					</field>
-					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->
-				</appearance>
-			</form>
-		</forms>
-	</config>
-	<!-- supp:Acknovledged_Supplier type create form config -->
 	<config evaluator="node-type" condition="supp:Acknovledged_Supplier">
 		<forms>
 			<!-- Create item form -->
@@ -33,7 +12,7 @@
 					<show id="supp:Resolver_FIO" />
 					<show id="supp:Acknovledged_SupplierLink" />
 				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<edit-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="supp:Acknovledged_SupplierLink">
 						<control>
@@ -45,30 +24,7 @@
 			</form>
 		</forms>
 	</config>
-	<!-- supp:Supplier_base type create form config -->
-	<config evaluator="model-type" condition="supp:Supplier_base">
-		<forms>
-			<!-- Create item form -->
-			<form>
-				<field-visibility>
-					<show id="supp:supp:Code" />
-					<show id="supp:SuppDescription" />
-					<show id="supp:e-mail" />
-					<show id="supp:Alte-mail" />
-					<show id="supp:inn" />
-					<show id="supp:kpp" />
-					<show id="supp:Director_FIO" />
-					<show id="supp:Director_Promise" />
-					<show id="supp:Dat_Director_FIO" />
-					<show id="supp:Dat_Director_Promise" />
-					<show id="supp:gender" />
-				</field-visibility>
-				<create-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
-				<appearance>
-				</appearance>
-			</form>
-		</forms>
-	</config>
+
 	<!-- supp:Supplier_base type create form config -->
 	<config evaluator="node-type" condition="supp:Supplier_base">
 		<forms>
@@ -87,10 +43,11 @@
 					<show id="supp:Dat_Director_Promise" />
 					<show id="supp:gender" />
 				</field-visibility>
-				<create-form template="../data-lists/forms/dataitem.ftl" />
+				<edit-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
 				<appearance>
 				</appearance>
 			</form>
 		</forms>
 	</config>
+
 </alfresco-config>

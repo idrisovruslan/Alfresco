@@ -48,9 +48,9 @@
 
 
 				<!-- Groups -->
-	             	<set id="GdocParam1" parent="docParam1" label="docParam1"/>
+	             	<set id="GdocParam1" parent="docParam1" label=" "/>
 
-	             	<set id="Gcalculation1" parent="calculation1" label="calculation1"/>
+	             	<set id="Gcalculation1" parent="calculation1" label=" "/>
 
 
 				<!-- Fields -->
