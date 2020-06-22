@@ -5,7 +5,7 @@ function sortByTitle(list1, list2)
 
 function main()
 {
-   var site = page.url.templateArgs.site,
+   var site = "smart",
       theUrl = "/slingshot/datalists/lists/site/" + site + "/dataLists?page=1&pageSize=512",
       result = remote.call(theUrl),
       canCreate = false,

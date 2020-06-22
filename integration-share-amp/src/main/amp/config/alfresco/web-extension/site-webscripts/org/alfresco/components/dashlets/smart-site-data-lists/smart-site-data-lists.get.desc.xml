@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Smart Site Data Lists</shortname>
+   <description>Component used to show Smart Data Lists in the site</description>
+   <family>user-dashlet</family>
+   <url>/components/dashlets/smart-site-datalists</url>
+</webscript>

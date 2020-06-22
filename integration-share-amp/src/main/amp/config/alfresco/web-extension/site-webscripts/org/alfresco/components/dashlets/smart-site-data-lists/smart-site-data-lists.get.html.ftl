@@ -13,7 +13,7 @@
 
 <@markup id="html">
    <@uniqueIdDiv>
-      <#assign site=page.url.templateArgs.site>
+      <#assign site="smart">
       <div class="dashlet site-data-lists">
          <div class="title">${msg("header.datalists")}</div>
          <#if (canCreate!false)?string == "true">
