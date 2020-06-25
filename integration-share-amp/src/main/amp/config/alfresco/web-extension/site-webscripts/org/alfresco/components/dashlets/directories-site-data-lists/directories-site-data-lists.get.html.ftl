@@ -13,8 +13,8 @@
 
 <@markup id="html">
    <@uniqueIdDiv>
-	  <#assign site = "smart">
-      <#assign id = args.htmlid?html>
+	  <#assign site = "directories">
+      <#assign id = args.htmlid?html>  
       <div class="dashlet site-data-lists">
          <div class="title">${msg("header.datalists")}</div>
          <#if (canCreate!false)?string == "true">
@@ -48,6 +48,6 @@
                </div>
          </#if>
          </div>
-      </div>  
+      </div>
    </@>
 </@>

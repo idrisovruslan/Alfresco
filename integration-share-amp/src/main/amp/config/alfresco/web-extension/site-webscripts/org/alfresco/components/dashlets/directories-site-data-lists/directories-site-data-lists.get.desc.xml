@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Directories Site Data Lists</shortname>
+   <description>Component used to show Directories Data Lists in the Home page</description>
+   <family>user-dashlet</family>
+   <url>/components/dashlets/directories-site-datalists</url>
+</webscript>
