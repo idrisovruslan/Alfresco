@@ -57,28 +57,28 @@
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{datalists}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementMasterDocument">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{datalists}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementTypeLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{datalists}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<field id="proc:LotLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{datalists}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 				</appearance>

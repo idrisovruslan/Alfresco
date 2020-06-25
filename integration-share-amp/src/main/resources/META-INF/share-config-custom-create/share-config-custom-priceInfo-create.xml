@@ -78,7 +78,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:nmcNode -->	
@@ -95,7 +95,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>		
 
@@ -253,7 +253,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:specifications -->	
@@ -270,7 +270,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>		
 							<!-- priceinf:safetyClassLink -->	
@@ -279,7 +279,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>		
 									
@@ -290,7 +290,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:deliveryTime -->
@@ -309,7 +309,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:manufacturerLink -->
@@ -318,7 +318,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>		
 																
@@ -381,7 +381,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:priceValidityInTkpLink -->
@@ -390,7 +390,7 @@
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>	
 

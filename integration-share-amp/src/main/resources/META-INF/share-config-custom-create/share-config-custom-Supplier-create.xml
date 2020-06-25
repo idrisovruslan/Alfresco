@@ -16,7 +16,7 @@
 				<appearance>
 					<field id="supp:Acknovledged_SupplierLink">
 						<control>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<!-- <field id="lot:qualifierTypeDescription"> <control template="/org/alfresco/components/form/controls/textarea.ftl" /> </field> -->

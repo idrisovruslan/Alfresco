@@ -86,7 +86,7 @@
 									<control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>
 
@@ -147,7 +147,7 @@
 									<control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>
 						
@@ -167,7 +167,7 @@
 									<control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>
 							<!-- lot:saleGrafLink -->
@@ -176,7 +176,7 @@
 									<control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
-										<control-param name="startLocation">{doclib}</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
 									</control>
 								</field>
 				
@@ -205,7 +205,7 @@
 					<!-- asoociations -->
 					<field id="lot:positionQualifierLink">
 						<control>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<!-- end of associations -->
@@ -259,7 +259,7 @@
 					<!-- asoociations -->
 					<field id="lot:deliveryTimeOptions">
 						<control>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<!-- end of associations -->
@@ -307,7 +307,7 @@
 					<!-- asoociations -->
 					<field id="lot:saleTimeOptions">
 						<control>
-							<control-param name="startLocation">{doclib}</control-param>
+							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
 					<!-- end of associations -->
