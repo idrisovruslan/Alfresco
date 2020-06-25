@@ -155,8 +155,6 @@
 						<many>true</many>
 					</target>
 				</association>
-			</associations>
-			<associations>
 				<association name="priceinf:lotLink">
 					<title>№ Лота</title>
 					<source>
