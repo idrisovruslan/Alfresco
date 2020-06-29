@@ -19,6 +19,7 @@
 			<form>
 				<field-visibility>
 					<show id="priceinf:nmcName" />
+					<show id="cm:name" />
 					<show id="priceinf:nmcDescription" />
 					<show id="priceinf:lotLink" />
 					<show id="priceinf:nmcCurrency" />
@@ -60,6 +61,13 @@
 							<!-- priceinf:nmcName -->
 							<set id="111GdocParam1-0-0" parent="GdocParam1" />
 								<field id="priceinf:nmcName" set="111GdocParam1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- cm:name -->
+							<set id="111GdocParam1-0-5" parent="GdocParam1" />
+								<field id="cm:name" set="111GdocParam1-0-5">
 									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
 										<control-param name="maxLength">128</control-param>
 									</control>
@@ -165,6 +173,7 @@
 			<form>
 				<field-visibility>
 					<show id="priceinf:iciName" />
+					<show id="cm:name" />
 					<show id="priceinf:iciKind" />
 					<show id="priceinf:resource" />
 					<show id="priceinf:quantity" />
@@ -222,6 +231,13 @@
 							<!-- priceinf:iciName -->
 							<set id="111GdocParam1-0-0" parent="GdocParam1" />
 								<field id="priceinf:iciName" set="111GdocParam1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
+									</control>
+								</field>
+							<!-- cm:name -->
+							<set id="111GdocParam1-0-8" parent="GdocParam1" />
+								<field id="cm:name" set="111GdocParam1-0-8">
 									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
 										<control-param name="maxLength">128</control-param>
 									</control>

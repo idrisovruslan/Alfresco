@@ -10,6 +10,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:lotName" />
+					<show id="cm:name" />
 					<show id="lot:lotDescription" />
 					<show id="lot:lotTime" />
 					<show id="lot:AnotherlotTime" />
@@ -63,6 +64,11 @@
 							<!-- lot:lotName -->
 							<set id="111Glot1-0-0" parent="Glot1" />
 								<field id="lot:lotName" set="111Glot1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl" /> 
+								</field>
+							<!-- cm:name -->
+							<set id="111Glot1-0-2" parent="Glot1" />
+								<field id="cm:name" set="111Glot1-0-2">
 									 <control template="/org/alfresco/components/form/controls/textfield.ftl" /> 
 								</field>
 							<!-- lot:lotDescription -->
@@ -194,6 +200,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:positionCode" />
+					<show id="cm:name" />
 					<show id="lot:positionName" />
 					<show id="lot:positionQualifierLink" />
 				</field-visibility>
@@ -225,6 +232,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:qualifierTypeCode" />
+					<show id="cm:name" />
 					<show id="lot:qualifierTypeName" />
 					<show id="lot:qualifierTypeDescription" />
 				</field-visibility>
@@ -249,6 +257,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:deliveryID" />
+					<show id="cm:name" />
 					<show id="lot:deliveryValue" />
 					<show id="lot:deliveryTime" />
 					<show id="lot:workDays" />
@@ -278,6 +287,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:deliveryIntervalCode" />
+					<show id="cm:name" />
 					<show id="lot:deliveryIntervalOptions" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
@@ -296,6 +306,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:saleID" />
+					<show id="cm:name" />
 					<show id="lot:saleValue" />
 					<show id="lot:saleType" />
 					<show id="lot:saleTime" />
@@ -324,6 +335,7 @@
 			<form>
 				<field-visibility>
 					<show id="lot:saleIntervalCode" />
+					<show id="cm:name" />
 					<show id="lot:saleIntervalOptions" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />

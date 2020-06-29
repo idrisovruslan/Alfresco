@@ -10,6 +10,7 @@
 			<form>
 				<field-visibility>
 					<show id="supp:Resolver_FIO" />
+					<show id="cm:name" />
 					<show id="supp:Acknovledged_SupplierLink" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
@@ -32,6 +33,7 @@
 			<form>
 				<field-visibility>
 					<show id="supp:supp:Code" />
+					<show id="cm:name" />
 					<show id="supp:SuppDescription" />
 					<show id="supp:e-mail" />
 					<show id="supp:Alte-mail" />

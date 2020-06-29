@@ -16,6 +16,7 @@
 			<form>
 				<field-visibility>
 					<show id="aztkp:tkpName" />
+					<show id="cm:name" />
 					<show id="aztkp:doNotSendMailingList" />
 					<show id="aztkp:letterSubject" />
 					<show id="aztkp:letterText" />
@@ -63,6 +64,11 @@
 							<!-- aztkp:tkpName -->
 							<set id="111GdocParam1-0-0" parent="GdocParam1" />
 								<field id="aztkp:tkpName" set="111GdocParam1-0-0">
+									 <control template="/org/alfresco/components/form/controls/textfield.ftl" /> 
+								</field>
+							<!-- cm:name -->
+							<set id="111GdocParam1-1-0" parent="GdocParam1" />
+								<field id="cm:name" set="111GdocParam1-1-0">
 									 <control template="/org/alfresco/components/form/controls/textfield.ftl" /> 
 								</field>
 							<!-- aztkp:doNotSendMailingList -->

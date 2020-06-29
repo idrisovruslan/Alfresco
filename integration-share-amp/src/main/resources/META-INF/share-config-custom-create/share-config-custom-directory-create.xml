@@ -14,12 +14,18 @@
 			<form>
 				<field-visibility>
 					<show id="dir:manufacturerNum" />
+					<show id="cm:name" />
 					<show id="dir:manufacturerName" />
 					<show id="dir:manufacturerDescription" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="dir:manufacturerNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="cm:name">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
 						</control>
@@ -48,12 +54,18 @@
 			<form>
 				<field-visibility>
 					<show id="dir:safetyClassNum" />
+					<show id="cm:name" />
 					<show id="dir:safetyClassName" />
 					<show id="dir:safetyClassDescription" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="dir:safetyClassNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="cm:name">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
 						</control>
@@ -82,12 +94,18 @@
 			<form>
 				<field-visibility>
 					<show id="dir:materialsListNum" />
+					<show id="cm:name" />
 					<show id="dir:materialsListName" />
 					<show id="dir:materialsListDescription" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="dir:materialsListNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="cm:name">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
 						</control>
@@ -116,12 +134,18 @@
 			<form>
 				<field-visibility>
 					<show id="dir:paymentConditionsNum" />
+					<show id="cm:name" />
 					<show id="dir:paymentConditionsName" />
 					<show id="dir:paymentConditionsDescription" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="dir:paymentConditionsNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="cm:name">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
 						</control>
@@ -150,12 +174,18 @@
 			<form>
 				<field-visibility>
 					<show id="dir:priceValidityInTkpNum" />
+					<show id="cm:name" />
 					<show id="dir:priceValidityInTkpName" />
 					<show id="dir:priceValidityInTkpDescription" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="dir:priceValidityInTkpNum">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="cm:name">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
 						</control>
@@ -176,5 +206,4 @@
 			</form>
 		</forms>
 	</config>	
-	
 </alfresco-config>

@@ -10,6 +10,7 @@
 			<form>
 				<field-visibility>
 					<show id="proc:procurementName" />
+					<show id="cm:name" />
 					<show id="proc:procurementNumber" />
 					<show id="proc:procurementDescription" />
 					<show id="proc:procurementStatus" />
@@ -24,32 +25,37 @@
 					
 					<field id="proc:procurementName">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
-							<control-param name="maxLength">10</control-param>
+							<control-param name="maxLength">128</control-param>
+						</control>
+					</field>
+					<field id="cm:name">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 					<field id="proc:procurementNumber">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
-							<control-param name="maxLength">10</control-param>
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>	
 					<field id="proc:procurementDescription">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="maxLength">5</control-param>
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 					
 					<field id="proc:procurementStatus">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="maxLength">5</control-param>
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 					
 					<field id="proc:additionalMap">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
-							<control-param name="maxLength">5</control-param>
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 
@@ -93,6 +99,7 @@
 			<form>
 				<field-visibility>
 					<show id="proc:procurementTypeID" />
+					<show id="cm:name" />
 					<show id="proc:procurementTypeDescription" />
 				</field-visibility>
 				<create-form template="../data-lists/forms/dataitem.ftl" />
