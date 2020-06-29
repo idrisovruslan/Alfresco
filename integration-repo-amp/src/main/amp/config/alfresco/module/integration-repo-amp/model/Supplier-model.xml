@@ -94,7 +94,7 @@
 					<mandatory>true</mandatory>
 				</property>
 				<property name="supp:Alte-mail">
-					<title>E-mail</title>
+					<title>E-mail дополнительный</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 				</property>

@@ -60,11 +60,11 @@
 					</field>
 
 					<field id="proc:procurementMember">
-						<control template="/org/alfresco/components/form/controls/association.ftl">
+<!--						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
-							<control-param name="startLocation">{siteshome}</control-param>
-						</control>
+							<control-param name="startLocation">{companyhome}</control-param>
+						</control>-->
 					</field>
 					<field id="proc:procurementMasterDocument">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
