@@ -1,0 +1,1 @@
+<@region id="additional-content" target="html" action="remove"/>

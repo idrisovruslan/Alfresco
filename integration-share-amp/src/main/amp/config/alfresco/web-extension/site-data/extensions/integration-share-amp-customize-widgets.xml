@@ -1,5 +1,6 @@
 <extension> 
     <modules> 
+
         <module> 
             <id>Custom Data-lists Widget</id> 
             <description>Instantiate a custom Data-lists widget</description> 
@@ -11,8 +12,7 @@
                 </customization> 
             </customizations> 
         </module> 
-    </modules> 
-    <modules>
+
         <module>
             <id>Customize Web Script Template for Footer</id>
             <version>1.0</version>
@@ -24,18 +24,30 @@
                 </customization>
             </customizations>
         </module>
-    </modules>
-  <modules>
-    <module>
-      <id>Custom Share Header Menu</id>
-      <version>1.0</version>
-	  <auto-deploy>true</auto-deploy>
-      <customizations>
-        <customization>
-          <targetPackageRoot>org.alfresco.share.header</targetPackageRoot>
-          <sourcePackageRoot>org.alfresco.components.header.customization</sourcePackageRoot>
-        </customization>
-      </customizations>
-    </module>
-  </modules>
+
+	    <module>
+	      <id>Customize Share Header Menu</id>
+	      <version>1.0</version>
+		  <auto-deploy>true</auto-deploy>
+	      <customizations>
+	        <customization>
+	          <targetPackageRoot>org.alfresco.share.header</targetPackageRoot>
+	          <sourcePackageRoot>org.alfresco.components.header.customization</sourcePackageRoot>
+	        </customization>
+	      </customizations>
+	    </module>
+
+        <module>
+            <id>Remove content from Share (hide My Sites)</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.dashlets</targetPackageRoot>
+                    <sourcePackageRoot>org.alfresco.components.dashlets.my-sites.customization</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+
+	</modules>
 </extension> 

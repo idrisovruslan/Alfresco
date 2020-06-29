@@ -100,7 +100,7 @@
 						<many>true</many>
 					</source>
 					<target>
-						<class>supp:Acknovledged_Supplier</class>
+						<class>cm:person</class>
 						<mandatory>false</mandatory>
 						<many>true</many>
 					</target>

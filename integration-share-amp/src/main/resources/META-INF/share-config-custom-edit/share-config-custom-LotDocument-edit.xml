@@ -49,7 +49,7 @@
 					<set id="timeParameters2" parent="ZtimeParameters" label="" />
 
 				<!-- Groups -->
-	             	<set id="Glot1" parent="lot1" label="lot1"/>
+	             	<set id="Glot1" parent="lot1" label=" "/>
 
 	             	<set id="GsubjectOfPurchase1" parent="subjectOfPurchase1" label=" "/>
 					<set id="GsubjectOfPurchase2" parent="subjectOfPurchase2" label=" "/>
