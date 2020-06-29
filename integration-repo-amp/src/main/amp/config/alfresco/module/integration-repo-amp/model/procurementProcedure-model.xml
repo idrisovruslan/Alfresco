@@ -15,6 +15,8 @@
 		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
 		<!-- Import Lot Model Definitions -->
 		<import uri="http://www.ioi.com/model/lotdoc/1.0" prefix="lot" />
+		<!-- Import Supplier Model Definitions -->
+		<import uri="http://www.ioi.com/model/supplier/1.0" prefix="supp" />
 		
 	</imports>
 
@@ -98,7 +100,7 @@
 						<many>true</many>
 					</source>
 					<target>
-						<class>cm:person</class>
+						<class>supp:Acknovledged_Supplier</class>
 						<mandatory>false</mandatory>
 						<many>true</many>
 					</target>
