@@ -1,7 +1,6 @@
 .yui-panel
 {
    width: auto !important;
-   min-width: 10em !important;
 }
 
 .form-container textarea
@@ -14,4 +13,9 @@
 .datagrid .yui-dt-liner {
     font: 11px/1.231 arial,helvetica,clean,sans-serif;
     padding: 2px;
+}
+
+/* Custom CSS */
+.yui-skin-lightTheme .yui-dt th .yui-dt-liner {
+    white-space: break-spaces !important;
 }
