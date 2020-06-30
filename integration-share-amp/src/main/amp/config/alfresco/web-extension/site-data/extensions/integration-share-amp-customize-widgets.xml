@@ -52,7 +52,7 @@
         <module>
             <id>Customize Datagrid(switch js file)</id>
             <version>1.0</version>
-            <auto-deploy>false</auto-deploy>
+            <auto-deploy>true</auto-deploy>
             <customizations>
                 <customization>
                     <targetPackageRoot>org.alfresco.components.data-lists</targetPackageRoot>
