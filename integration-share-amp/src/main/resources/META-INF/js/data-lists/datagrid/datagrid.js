@@ -199,7 +199,7 @@
           * @type string
           * @default "34em"
           */
-         editDialogWidth: "120em",
+         editDialogWidth: "auto",
          
          /**
           * Width of the actions column, in pixels

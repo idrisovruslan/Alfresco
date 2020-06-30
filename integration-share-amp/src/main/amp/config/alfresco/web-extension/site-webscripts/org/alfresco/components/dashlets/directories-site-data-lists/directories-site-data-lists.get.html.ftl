@@ -4,7 +4,7 @@
 </@>
 
 <@markup id="js">
-	<@script type="text/javascript" src="${url.context}/res/js/data-lists/smart-site-data-lists.js" group="dashlets"/>
+	<@script type="text/javascript" src="${url.context}/res/js/data-lists/custom-site-data-lists.js" group="dashlets"/>
 </@>
 
 <@markup id="widgets">

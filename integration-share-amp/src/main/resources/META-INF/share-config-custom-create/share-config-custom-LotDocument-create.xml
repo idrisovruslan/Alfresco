@@ -188,6 +188,28 @@
 				
 				</appearance>
 			</form>
+			
+	        <form id="datagrid">
+	            <field-visibility>
+					<show id="lot:lotName" />
+					<show id="cm:name" />
+					<show id="lot:lotTime" />
+					<show id="lot:AnotherlotTime" />
+					<show id="lot:EndDate" />
+					<show id="lot:LowPriceDate" />
+					<show id="lot:deliveryPriceDate" />
+					<show id="lot:LotStartDate" />
+					<show id="lot:LotEndDate" />
+					<show id="lot:LotDeliveryPrice" />
+					<show id="lot:LotSale" />
+					<show id="lot:positionQuantity" />
+					<show id="lot:procurementPositionLink" />
+					<show id="lot:deliveryGrafLink" />
+					<show id="lot:saleGrafLink" />
+					<show id="lot:supplierLink" />
+	            </field-visibility>
+	        </form>
+
 		</forms>
 	</config>
 	

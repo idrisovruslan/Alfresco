@@ -1,6 +1,5 @@
-.yui-panel
-{
-   width: auto !important;
+.yui-skin-lightTheme .yui-panel {
+    width: auto !important;
 }
 
 .form-container textarea

@@ -19,6 +19,8 @@
 					<show id="proc:procurementMasterDocument" />
 					<show id="proc:procurementTypeLink" />
 					<show id="proc:LotLink" />
+					<show id="proc:procurementDraftAgreementLink" />
+					<show id="proc:procurementTechnicalTaskLink" />
 				</field-visibility>
 				<create-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
 				<appearance>
@@ -86,6 +88,10 @@
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
 							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
+					</field>
+					<field id="proc:procurementDraftAgreementLink">
+					</field>
+					<field id="proc:procurementTechnicalTaskLink">
 					</field>
 				</appearance>
 			</form>

@@ -14,7 +14,7 @@
         </module> 
 
         <module>
-            <id>Customize Web Script Template for Footer</id>
+            <id>Customize Web Script Template for Footer(Remove Footer)</id>
             <version>1.0</version>
             <auto-deploy>true</auto-deploy>
             <customizations>
@@ -26,7 +26,7 @@
         </module>
 
 	    <module>
-	      <id>Customize Share Header Menu</id>
+	      <id>Customize Share Header Menu(Remove sites menu)</id>
 	      <version>1.0</version>
 		  <auto-deploy>true</auto-deploy>
 	      <customizations>
@@ -45,6 +45,18 @@
                 <customization>
                     <targetPackageRoot>org.alfresco.components.dashlets</targetPackageRoot>
                     <sourcePackageRoot>org.alfresco.components.dashlets.my-sites.customization</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+
+        <module>
+            <id>Customize Datagrid(switch js file)</id>
+            <version>1.0</version>
+            <auto-deploy>false</auto-deploy>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.data-lists</targetPackageRoot>
+                    <sourcePackageRoot>org.alfresco.components.datagrid.customization</sourcePackageRoot>
                 </customization>
             </customizations>
         </module>

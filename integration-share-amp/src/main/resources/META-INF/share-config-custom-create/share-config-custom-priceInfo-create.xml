@@ -412,6 +412,35 @@
 
 				</appearance>
 			</form>
+			
+	        <form id="datagrid">
+	            <field-visibility>
+					<show id="priceinf:iciName" />
+					<show id="cm:name" />
+					<show id="priceinf:iciKind" />
+					<show id="priceinf:quantity" />
+					<show id="priceinf:unitMeasurementLink" />
+					<show id="priceinf:specifications" />
+
+					<show id="priceinf:deliveryTime" />
+					<show id="priceinf:dateDelivery" />
+					<show id="priceinf:positionLink" />
+					<show id="priceinf:manufacturerLink" />
+					
+					<show id="priceinf:priceUnitWithoutVAT" />
+					<show id="priceinf:sumWithoutVAT" />
+					<show id="priceinf:costOfDeliveryWithoutVAT" />
+					<show id="priceinf:sumWithDeliveryWithoutVAT" />
+					<show id="priceinf:priceDeliveryWithAdjustmentsWithoutVAT" />
+					<show id="priceinf:sumShippingWithAdjustmentsWithoutVAT" />
+					<show id="priceinf:notSubjectToVAT" />
+					<show id="priceinf:iciCurrency" />
+					<show id="priceinf:iciVatRate" />
+					<show id="priceinf:paymentConditionsLink" />
+					<show id="priceinf:priceValidityInTkpLink" />
+	            </field-visibility>
+	        </form>
+			
 		</forms>
 	</config>
 	
