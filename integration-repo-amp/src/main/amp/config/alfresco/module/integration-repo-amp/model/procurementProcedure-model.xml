@@ -52,7 +52,7 @@
 				</list>
 			</parameter>
 		</constraint>
-		<constraint name="proc:StatusOptions" type="LIST">
+		<constraint name="proc:statusOptions" type="LIST">
 			<parameter name="allowedValues">
 				<list>
 					<value></value>
@@ -95,7 +95,7 @@
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 					<constraints>
-						<constraint ref="proc:StatusOptions" />
+						<constraint ref="proc:statusOptions" />
 					</constraints>
 				</property>
 				<property name="proc:additionalMap">
@@ -155,9 +155,9 @@
 						<many>false</many>
 					</target>
 				</association>
-				<!-- Lot association -->
 				
-				<association name="proc:LotLink">
+				<!-- Lot association -->
+				<association name="proc:lotLink">
 					<title>Лот</title>
 					<source>
 						<mandatory>false</mandatory>
@@ -169,9 +169,9 @@
 						<many>true</many>
 					</target>
 				</association>
-				
 			</associations>
 		</type>
+		
 		<type name="proc:procurementType">
 			<title>Тип процедур</title>
 			<parent>dl:dataListItem</parent>

@@ -13,15 +13,17 @@
 					<show id="cm:name" />
 					<show id="proc:procurementNumber" />
 					<show id="proc:procurementDescription" />
+					<show id="proc:procurementStatus" />
 					<show id="proc:additionalMap" />
+					<show id="proc:procurementCategory" />
 					<show id="proc:procurementMember" />
 					<show id="proc:procurementMasterDocument" />
 					<show id="proc:procurementTypeLink" />
-					<show id="proc:LotLink" />
-					<show id="proc:procurementDraftAgreementLink" />
+					<show id="proc:lotLink" />
 				</field-visibility>
 				<edit-form template="/org/alfresco/components/form/template/2-colums.ftl" />
 				<appearance>
+
 					<field id="proc:procurementName">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
@@ -42,6 +44,12 @@
 							<control-param name="rows">4</control-param>
 							<control-param name="maxLength">128</control-param>
 						</control>
+					</field>
+					
+					<field id="proc:procurementStatus">
+					</field>
+					
+					<field id="proc:procurementCategory">
 					</field>
 					
 					<field id="proc:additionalMap">
@@ -72,16 +80,13 @@
 							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
-					<field id="proc:LotLink">
+					<field id="proc:lotLink">
 						<control template="/org/alfresco/components/form/controls/association.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
 							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementDraftAgreementLink">
-					</field>
-
 				</appearance>
 			</form>
 		</forms>

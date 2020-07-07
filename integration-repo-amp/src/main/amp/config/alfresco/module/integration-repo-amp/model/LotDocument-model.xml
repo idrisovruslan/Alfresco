@@ -93,11 +93,9 @@
 				</list>
 			</parameter>
 		</constraint>
-
 	</constraints>
+	
 	<types>
-
-
 		<type name="lot:lotDocument">
 			<title>Лот</title>
 			<parent>dl:dataListItem</parent>
