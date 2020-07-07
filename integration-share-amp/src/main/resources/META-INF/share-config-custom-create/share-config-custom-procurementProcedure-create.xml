@@ -40,8 +40,7 @@
 						</control>
 					</field>	
 					<field id="proc:procurementDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">4</control-param>
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
@@ -54,8 +53,9 @@
 					
 					<field id="proc:additionalMap">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">4</control-param>
+							<control-param name="rows">2</control-param>
 							<control-param name="maxLength">128</control-param>
+							<control-param name="columns">42</control-param>
 						</control>
 					</field>
 
@@ -123,7 +123,9 @@
 				<create-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="proc:procurementTypeDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
 					</field>
 				</appearance>
 			</form>

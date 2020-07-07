@@ -88,8 +88,7 @@
 							<!-- lot:lotDescription -->
 							<set id="111Glot1-0-4" parent="Glot1" />
 								<field id="lot:lotDescription" set="111Glot1-0-4">
-									<control template="/org/alfresco/components/form/controls/textarea.ftl">
-										<control-param name="rows">2</control-param>
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
 										<control-param name="maxLength">128</control-param>
 									</control>
 								</field>
@@ -98,6 +97,8 @@
 								<field id="lot:LotNote" set="111Glot1-0-5">
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>
 							<!-- lot:procurementNumber -->
@@ -135,6 +136,8 @@
 								<field id="lot:LotSale" set="111GsubjectOfPurchase1-1-0">
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>
 							<!-- lot:LotDeliveryPlace -->
@@ -142,6 +145,8 @@
 								<field id="lot:LotDeliveryPlace" set="111GsubjectOfPurchase1-1-1">
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>
 							<!-- lot:LotDeliveryDetail -->
@@ -149,6 +154,8 @@
 								<field id="lot:LotDeliveryDetail" set="111GsubjectOfPurchase1-1-2">
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>
 							
@@ -158,6 +165,8 @@
 								<field id="lot:LotDeliveryPrice" set="111GsubjectOfPurchase2-0-9">
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>
 
@@ -298,7 +307,9 @@
 				<edit-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="lot:qualifierTypeDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
+						</control>
 					</field>
 				</appearance>
 			</form>

@@ -87,6 +87,7 @@
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
 										<control-param name="maxLength">256</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>
 							<!-- aztkp:quantity -->	
@@ -129,8 +130,9 @@
 							<set id="111GdocParam2-1-3" parent="GdocParam2" />
 								<field id="aztkp:node" set="111GdocParam2-1-3">
 									<control template="/org/alfresco/components/form/controls/textarea.ftl">
-										<control-param name="maxLength">128</control-param>
 										<control-param name="rows">2</control-param>
+										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>						
 											

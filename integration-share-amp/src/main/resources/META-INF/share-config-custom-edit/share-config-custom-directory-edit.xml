@@ -36,9 +36,8 @@
 						</control>
 					</field>
 					<field id="dir:manufacturerDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 
@@ -76,9 +75,8 @@
 						</control>
 					</field>
 					<field id="dir:safetyClassDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 
@@ -116,9 +114,8 @@
 						</control>
 					</field>
 					<field id="dir:materialsListDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 
@@ -156,9 +153,8 @@
 						</control>
 					</field>
 					<field id="dir:paymentConditionsDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 
@@ -196,9 +192,8 @@
 						</control>
 					</field>
 					<field id="dir:priceValidityInTkpDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">2</control-param>
-							<control-param name="maxLength">256</control-param>
+						<control template="/org/alfresco/components/form/controls/textfield.ftl">
+							<control-param name="maxLength">128</control-param>
 						</control>
 					</field>
 

@@ -75,9 +75,8 @@
 							<!-- priceinf:nmcDescription -->	
 							<set id="111GdocParam1-0-1" parent="GdocParam1" />
 								<field id="priceinf:nmcDescription" set="111GdocParam1-0-1">
-									 <control template="/org/alfresco/components/form/controls/textarea.ftl">
-										<control-param name="rows">2</control-param>
-										<control-param name="maxLength">256</control-param>
+									<control template="/org/alfresco/components/form/controls/textfield.ftl">
+										<control-param name="maxLength">128</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:lotLink -->	
@@ -95,6 +94,7 @@
 									 <control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
 										<control-param name="maxLength">256</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:iciSearchResultsLink -->	
@@ -278,6 +278,7 @@
 									 <control template="/org/alfresco/components/form/controls/textarea.ftl">
 										<control-param name="rows">2</control-param>
 										<control-param name="maxLength">128</control-param>
+										<control-param name="columns">42</control-param>
 									</control>
 								</field>	
 							<!-- priceinf:materialsListLink -->	
