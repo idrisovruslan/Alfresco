@@ -4,7 +4,6 @@
         <module> 
             <id>Custom Data-lists Widget</id> 
             <description>Instantiate a custom Data-lists widget</description> 
-            <auto-deploy>true</auto-deploy> 
             <customizations> 
                 <customization> 
                     <targetPackageRoot>org.alfresco.components.data-lists</targetPackageRoot> 
@@ -56,7 +55,19 @@
             <customizations>
                 <customization>
                     <targetPackageRoot>org.alfresco.components.data-lists</targetPackageRoot>
-                    <sourcePackageRoot>org.alfresco.components.datagrid.customization</sourcePackageRoot>
+                    <sourcePackageRoot>org.alfresco.components.data-lists.customization.datagrid</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+
+        <module>
+            <id>Customize toolbar(switch js file)</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.data-lists</targetPackageRoot>
+                    <sourcePackageRoot>org.alfresco.components.data-lists.customization.toolbar</sourcePackageRoot>
                 </customization>
             </customizations>
         </module>
