@@ -13,18 +13,15 @@
 					<show id="cm:name" />
 					<show id="proc:procurementNumber" />
 					<show id="proc:procurementDescription" />
-					<show id="proc:procurementStatus" />
 					<show id="proc:additionalMap" />
 					<show id="proc:procurementMember" />
 					<show id="proc:procurementMasterDocument" />
 					<show id="proc:procurementTypeLink" />
 					<show id="proc:LotLink" />
 					<show id="proc:procurementDraftAgreementLink" />
-					<show id="proc:procurementTechnicalTaskLink" />
 				</field-visibility>
-				<edit-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
+				<edit-form template="/org/alfresco/components/form/template/2-colums.ftl" />
 				<appearance>
-					
 					<field id="proc:procurementName">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
@@ -41,13 +38,6 @@
 						</control>
 					</field>	
 					<field id="proc:procurementDescription">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">4</control-param>
-							<control-param name="maxLength">128</control-param>
-						</control>
-					</field>
-					
-					<field id="proc:procurementStatus">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl">
 							<control-param name="rows">4</control-param>
 							<control-param name="maxLength">128</control-param>
@@ -91,8 +81,7 @@
 					</field>
 					<field id="proc:procurementDraftAgreementLink">
 					</field>
-					<field id="proc:procurementTechnicalTaskLink">
-					</field>
+
 				</appearance>
 			</form>
 		</forms>

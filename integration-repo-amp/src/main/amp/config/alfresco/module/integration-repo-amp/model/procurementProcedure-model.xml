@@ -17,6 +17,8 @@
 		<import uri="http://www.ioi.com/model/lotdoc/1.0" prefix="lot" />
 		<!-- Import Supplier Model Definitions -->
 		<import uri="http://www.ioi.com/model/supplier/1.0" prefix="supp" />
+		<!-- Import Alfresco System Model Definitions -->
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
 		
 	</imports>
 
@@ -50,15 +52,30 @@
 				</list>
 			</parameter>
 		</constraint>
+		<constraint name="proc:StatusOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>100 На регистрации</value>
+					<value>200 Прикрепление документации</value>
+					<value>300 Поиск ИЦИ</value>
+					<value>400 Запрос ТКП</value>
+					<value>500 Формирование НМЦ</value>
+					<value>700 Закрыт</value>
+					<value>900 Отклонен</value>
+				</list>
+			</parameter>
+		</constraint>
 	</constraints>
 	
 	<types>
 		<type name="proc:procurementDocument">
-			<title>Закупочная процедура</title>
+			<title>Проект ЗП</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
 				<property name="proc:procurementName">
-					<title>№ закупочной процедуры</title>
+					<title>Регистрационный №</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
@@ -68,28 +85,32 @@
 					<mandatory>true</mandatory>
 				</property>
 				<property name="proc:procurementDescription">
-					<title>Описание закупочной процедуры</title>
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
 
 				<property name="proc:procurementStatus">
-					<title>Статус закупочной процедуры</title>
+					<title>Статус</title>
 					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="proc:StatusOptions" />
+					</constraints>
 				</property>
 				<property name="proc:additionalMap">
 					<title>Примечание</title>
 					<type>d:text</type>
-
 				</property>
 				<property name="proc:procurementCategory">
-					<title>Категория</title>
+					<title>Категория закупки</title>
 					<type>d:text</type>
 					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="proc:procurementCategoryOptions" />
 					</constraints>
 				</property>
+				
 			</properties>
 
 			<associations>
@@ -107,30 +128,7 @@
 					<!-- <duplicate>false</duplicate> -->
 					<!-- <propagateTimestamps>false</propagateTimestamps> -->
 				</association>
-				<association name="proc:procurementDraftAgreementLink">
-					<title>Проект договора</title>
-					<source>
-						<mandatory>false</mandatory>
-						<many>false</many>
-					</source>
-					<target>
-						<class>cm:content</class>
-						<mandatory>false</mandatory>
-						<many>false</many>
-					</target>
-				</association>
-				<association name="proc:procurementTechnicalTaskLink">
-					<title>Тех. задание</title>
-					<source>
-						<mandatory>false</mandatory>
-						<many>false</many>
-					</source>
-					<target>
-						<class>cm:content</class>
-						<mandatory>false</mandatory>
-						<many>false</many>
-					</target>
-				</association>
+
 <!-- заполняем скримтом -->				
 				<association name="proc:procurementMasterDocument">
 					<title>Вышестоящий документ</title>

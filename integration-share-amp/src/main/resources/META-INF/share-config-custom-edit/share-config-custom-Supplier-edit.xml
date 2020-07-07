@@ -45,7 +45,7 @@
 					<show id="supp:Dat_Director_Promise" />
 					<show id="supp:gender" />
 				</field-visibility>
-				<edit-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
+				<edit-form template="/org/alfresco/components/form/template/2-colums.ftl" />
 				<appearance>
 				</appearance>
 			</form>

@@ -7,7 +7,7 @@
 	
 	
 	
-	<!-- dir:manufacturer type create form config -->
+	<!-- Изготовитель -->
 	<config evaluator="model-type" condition="dir:manufacturer">
 		<forms>
 			<!-- Create item form -->

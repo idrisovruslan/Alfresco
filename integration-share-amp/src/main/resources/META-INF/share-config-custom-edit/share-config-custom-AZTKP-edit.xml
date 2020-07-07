@@ -34,7 +34,7 @@
 					<show id="aztkp:numberSheetsInTz" />
 					<show id="aztkp:unitMeasurementLink" />
 				</field-visibility>
-				<edit-form template="/org/alfresco/components/form/tabbed.ftl" />
+				<edit-form template="/org/alfresco/components/form/template/tabbed.ftl" />
 				
 				<appearance>
 

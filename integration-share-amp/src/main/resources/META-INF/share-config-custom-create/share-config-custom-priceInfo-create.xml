@@ -33,7 +33,7 @@
 					<show id="priceinf:nmcNode" />
 					<show id="priceinf:iciSearchResultsLink" />
 				</field-visibility>
-				<create-form template="/org/alfresco/components/form/tabbed.ftl" />
+				<create-form template="/org/alfresco/components/form/template/tabbed.ftl" />
 				
 				<appearance>
 
@@ -185,7 +185,7 @@
 					<show id="priceinf:Supplier_baseLink" />
 					<show id="priceinf:deliveryTime" />
 					<show id="priceinf:dateDelivery" />
-					<show id="priceinf:positionLink" />
+					<show id="priceinf:lotIciLink" />
 					<show id="priceinf:manufacturerLink" />
 					
 					<show id="priceinf:priceUnitWithoutVAT" />
@@ -201,7 +201,7 @@
 					<show id="priceinf:priceValidityInTkpLink" />
 					
 				</field-visibility>
-				<create-form template="/org/alfresco/components/form/tabbed.ftl" />
+				<create-form template="/org/alfresco/components/form/template/tabbed.ftl" />
 				
 				<appearance>
 
@@ -319,9 +319,9 @@
 							<!-- priceinf:dateDelivery -->
 							<set id="111GdocParam2-0-2" parent="GdocParam2" />
 								<field id="priceinf:dateDelivery" set="111GdocParam2-0-2" />
-							<!-- priceinf:positionLink -->
+							<!-- priceinf:lotIciLink -->
 							<set id="111GdocParam2-0-3" parent="GdocParam2" />
-								<field id="priceinf:positionLink" set="111GdocParam2-0-3">
+								<field id="priceinf:lotIciLink" set="111GdocParam2-0-3">
 									 <control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
@@ -415,6 +415,7 @@
 			
 	        <form id="datagrid">
 	            <field-visibility>
+<show id="sys:node-uuid" />
 					<show id="priceinf:iciName" />
 					<show id="cm:name" />
 					<show id="priceinf:iciKind" />
@@ -424,7 +425,7 @@
 
 					<show id="priceinf:deliveryTime" />
 					<show id="priceinf:dateDelivery" />
-					<show id="priceinf:positionLink" />
+					<show id="priceinf:lotIciLink" />
 					<show id="priceinf:manufacturerLink" />
 					
 					<show id="priceinf:priceUnitWithoutVAT" />
@@ -438,6 +439,7 @@
 					<show id="priceinf:iciVatRate" />
 					<show id="priceinf:paymentConditionsLink" />
 					<show id="priceinf:priceValidityInTkpLink" />
+					
 	            </field-visibility>
 	        </form>
 			

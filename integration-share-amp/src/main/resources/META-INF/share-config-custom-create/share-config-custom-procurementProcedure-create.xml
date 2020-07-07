@@ -2,7 +2,7 @@
 <alfresco-config>
 	<!--================================================================================================================ View, Edit, Create forms for custom data list types For more information about how to define forms for data list item types see existing out-of-the-box form definitions: tomcat/webapps/share/WEB-INF/classes/alfresco/share-datalist-form-config.xml ============================================================================================================= -->
 	
-	<!-- proc:procurementDocument type create form config -->
+	<!-- Закупочная процедура -->
 	<config evaluator="model-type" condition="proc:procurementDocument">
 		<forms>
 
@@ -19,12 +19,10 @@
 					<show id="proc:procurementMasterDocument" />
 					<show id="proc:procurementTypeLink" />
 					<show id="proc:LotLink" />
-					<show id="proc:procurementDraftAgreementLink" />
-					<show id="proc:procurementTechnicalTaskLink" />
 				</field-visibility>
-				<create-form template="/org/alfresco/components/data-lists/forms/procurementDocument.ftl" />
+				<create-form template="/org/alfresco/components/form/template/2-colums.ftl" />
 				<appearance>
-					
+
 					<field id="proc:procurementName">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
@@ -38,6 +36,7 @@
 					<field id="proc:procurementNumber">
 						<control template="/org/alfresco/components/form/controls/textfield.ftl">
 							<control-param name="maxLength">128</control-param>
+
 						</control>
 					</field>	
 					<field id="proc:procurementDescription">
@@ -48,10 +47,6 @@
 					</field>
 					
 					<field id="proc:procurementStatus">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl">
-							<control-param name="rows">4</control-param>
-							<control-param name="maxLength">128</control-param>
-						</control>
 					</field>
 					
 					<field id="proc:additionalMap">
@@ -89,12 +84,25 @@
 							<control-param name="startLocation">{siteshome}</control-param>
 						</control>
 					</field>
-					<field id="proc:procurementDraftAgreementLink">
-					</field>
-					<field id="proc:procurementTechnicalTaskLink">
-					</field>
 				</appearance>
 			</form>
+			
+			<form id="datagrid">
+	            <field-visibility>
+					<show id="sys:node-uuid" />
+					<show id="proc:procurementName" />
+					<show id="cm:name" />
+					<show id="proc:procurementNumber" />
+					<show id="proc:procurementDescription" />
+					<show id="proc:procurementStatus" />
+					<show id="proc:additionalMap" />
+					<show id="proc:procurementMember" />
+					<show id="proc:procurementMasterDocument" />
+					<show id="proc:procurementTypeLink" />
+					<show id="proc:LotLink" />
+	            </field-visibility>
+	        </form>
+			
 		</forms>
 	</config>
 

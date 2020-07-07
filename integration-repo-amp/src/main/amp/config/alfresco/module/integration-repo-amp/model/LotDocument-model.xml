@@ -18,6 +18,8 @@
 		<!-- Import Supplier Model Definitions -->
 		<import uri="http://www.ioi.com/model/supplier/1.0" prefix="supp" />
 
+
+
 	</imports>
 
 	<!-- Custom namespace for your domain -->
@@ -76,7 +78,21 @@
 				</list>
 			</parameter>
 		</constraint>
-
+		<constraint name="lot:statusOptions" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<!-- Empty for default search -->
+					<value>100 На регистрации</value>
+					<value>200 Прикрепление документации</value>
+					<value>300 Поиск ИЦИ</value>
+					<value>400 Запрос ТКП</value>
+					<value>500 Формирование НМЦ</value>
+					<value>700 Закрыт</value>
+					<value>900 Отклонен</value>
+				</list>
+			</parameter>
+		</constraint>
 
 	</constraints>
 	<types>
@@ -86,18 +102,39 @@
 			<title>Лот</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
+				<property name="lot:lotId">
+					<title>Id</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="lot:lotName">
-					<title>№ лота</title>
+					<title>Регистрационный №</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
-
+				<property name="lot:lotNumber">
+					<title>Порядковый номер</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
 				<property name="lot:lotDescription">
-					<title>Описание лота</title>
+					<title>Описание</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
-
+				<property name="lot:procurementNumber">
+					<title>№ ЗП</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="lot:lotStatus">
+					<title>Статус</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="lot:statusOptions" />
+					</constraints>
+				</property>
 				<property name="lot:lotTime">
 					<title>Срок проведения опроса, в раб. днях</title>
 					<type>d:text</type>
@@ -158,7 +195,7 @@
 				</property>
 
 				<property name="lot:LotDeliveryDetail">
-					<title>Способ доставки</title>
+					<title>Способ поставки</title>
 					<type>d:text</type>
 				</property>
 
@@ -166,32 +203,9 @@
 					<title>Примечание</title>
 					<type>d:text</type>
 				</property>
-				<!-- Количество позиций. Позиция подтягивается из справочника -->
-				<property name="lot:positionQuantity">
-					<title>Количество</title>
-					<type>d:double</type>
-					<mandatory>true</mandatory>
-				</property>
-
 			</properties>
 
 			<associations>
-				<!-- ССылка на вышестоящий мастер документ -->
-				<!--
-				<association name="lot:lotMasterDocument">
-					<title>Вышестоящий документ</title>
-					<source>
-						<mandatory>false</mandatory>
-						<many>true</many>
-					</source>
-					<target>
-						<class>proc:procurementDocument</class>
-						<mandatory>false</mandatory>
-						<many>false</many>
-					</target>
-				</association>
-				-->
-				<!-- /////////////////////////////////////////////// -->
 				<association name="lot:supplierLink">
 					<title>Поставщик</title>
 					<source>
@@ -205,14 +219,14 @@
 					</target>
 				</association>
 				<!-- Уведомляемые поставщики-->
-				<association name="lot:procurementPositionLink">
-					<title>Позиция</title>
+				<association name="lot:lotPositionLink">
+					<title>Позиция лота</title>
 					<source>
 						<mandatory>false</mandatory>
-						<many>true</many>
+						<many>false</many>
 					</source>
 					<target>
-						<class>lot:procurementPosition</class>
+						<class>lot:lotPosition</class>
 						<mandatory>false</mandatory>
 						<many>true</many>
 					</target>
@@ -244,46 +258,179 @@
 						<mandatory>false</mandatory>
 						<many>false</many>
 					</target>
-				</association>		
+				</association>	
+				
+				<association name="lot:draftAgreementLink">
+					<title>Проект договора</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>cm:content</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+
+				<association name="lot:technicalTaskLink">
+					<title>Тех. задание</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>cm:content</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>	
+<!--				<association name="lot:iciSearchResultsLink">
+					<title>ИЦИ</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>priceinf:iciSearchResults</class>
+						<mandatory>true</mandatory>
+						<many>false</many>
+					</target>
+				</association>-->
 			</associations>
 		</type>
 
 		<!-- Описание полей справочника позиций -->
-		<type name="lot:procurementPosition">
-			<title>Позиция</title>
+		<type name="lot:lotPosition">
+			<title>Позиция лота</title>
 			<parent>dl:dataListItem</parent>
-			<properties>
-				<property name="lot:positionCode">
-					<title>Код позиции</title>
-					<type>d:text</type>
-					<mandatory>true</mandatory>
-
-				</property>
-				<property name="lot:positionName">
-					<title>Наименование позиции</title>
+			
+			<properties>			
+				<property name="lot:lotPositionId">
+					<title>ID</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 				</property>
-
-				<!-- <property name="lot:positionQualifier"> <title>Единица измерения</title> <type>d:text</type> <mandatory>true</mandatory> </property> -->
+				
+				<property name="lot:lotPositionNumber">
+					<title>Регистрационный №</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:lotPositionStatus">
+					<title>Статус</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<constraints>
+						<constraint ref="lot:statusOptions" />
+					</constraints>
+				</property>
+				
+				<property name="lot:lotPositionDescription">
+					<title>Описание</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:lotNumberLink">
+					<title>№ Лота</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:lotPositionYear">
+					<title>Гот заявки</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:lotPositionNote">
+					<title>Примечание</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:lotPositionAmount">
+					<title>Количество</title>
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
 			</properties>
+			
 			<associations>
-				<association name="lot:positionQualifierLink">
-					<title>Единица измерения</title>
+				<association name="lot:positionLink">
+					<title>Позиция</title>
 					<source>
-<!-- mandatory true -->
 						<mandatory>false</mandatory>
-						<many>true</many>
+						<many>false</many>
 					</source>
 					<target>
-						<class>lot:qualifierType</class>
-<!-- mandatory true -->
+						<class>lot:position</class>
 						<mandatory>false</mandatory>
 						<many>false</many>
 					</target>
 				</association>
 			</associations>
 		</type>
+		
+		
+		
+		
+		
+		
+		<!-- Описание полей справочника позиций -->
+		<type name="lot:position">
+			<title>Позиция</title>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="lot:positionCode">
+					<title>Код</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:positionName">
+					<title>Наименование</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="lot:positionGID">
+					<title>GID</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+
+			</properties>
+			<associations>
+				<association name="lot:positionQualifierLink">
+					<title>Единица измерения</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>lot:qualifierType</class>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</target>
+				</association>
+			</associations>
+		</type>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<!-- Описание типа единицы измерения -->
 		<type name="lot:qualifierType">
 			<title>Единица измерения</title>
