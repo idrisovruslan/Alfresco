@@ -176,7 +176,7 @@
 					<show id="cm:name" />
 					<show id="priceinf:iciKind" />
 					<show id="priceinf:resource" />
-					<show id="priceinf:quantity" />
+					<!--<show id="priceinf:quantity" />-->
 					<show id="priceinf:unitMeasurementLink" />
 					<show id="priceinf:specifications" />
 					<show id="priceinf:materialsListLink" />
@@ -257,12 +257,12 @@
 									</control>
 								</field>	
 							<!-- priceinf:quantity -->	
-							<set id="111GdocParam1-0-3" parent="GdocParam1" />
+<!--							<set id="111GdocParam1-0-3" parent="GdocParam1" />
 								<field id="priceinf:quantity" set="111GdocParam1-0-3">
 									 <control template="/org/alfresco/components/form/controls/textfield.ftl">
 										<control-param name="maxLength">128</control-param>
 									</control>
-								</field>	
+								</field>-->	
 							<!-- priceinf:unitMeasurementLink -->	
 							<set id="111GdocParam1-0-4" parent="GdocParam1" />
 								<field id="priceinf:unitMeasurementLink" set="111GdocParam1-0-4">
@@ -420,7 +420,7 @@
 					<show id="priceinf:iciName" />
 					<show id="cm:name" />
 					<show id="priceinf:iciKind" />
-					<show id="priceinf:quantity" />
+					<!--<show id="priceinf:quantity" />-->
 					<show id="priceinf:unitMeasurementLink" />
 					<show id="priceinf:specifications" />
 

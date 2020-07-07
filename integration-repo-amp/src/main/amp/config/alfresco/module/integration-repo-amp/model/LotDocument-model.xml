@@ -338,7 +338,7 @@
 				</property>
 				
 				<property name="lot:lotPositionYear">
-					<title>Гот заявки</title>
+					<title>Год заявки</title>
 					<type>d:int</type>
 					<mandatory>true</mandatory>
 				</property>
