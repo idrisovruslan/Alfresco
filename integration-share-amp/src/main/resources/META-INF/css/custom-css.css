@@ -1,3 +1,9 @@
+.yui-panel
+{
+   width: auto !important;
+}
+
+
 .form-container textarea
 {
    width: auto !important;
