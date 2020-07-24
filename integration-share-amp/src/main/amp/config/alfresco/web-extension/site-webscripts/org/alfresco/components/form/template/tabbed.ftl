@@ -82,7 +82,7 @@
       initAcc();
    }
    
-   loadScript("/share/res/js/tabbed.js", tabbedMain);
+   loadScript("/share/res/js/form/template/tabbed/tabbed.js", tabbedMain);
    
 </script>
 <#macro processZone myzoneitem>

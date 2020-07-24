@@ -7,7 +7,7 @@
 	   <forms>
 		      <dependencies>
 		         <css src="/css/custom-css.css" />
-			<!-- 	 <js  src="/js/datagrid.js" /> -->
+			 	 <js  src="/js/object-finder/custom-object-finder.js" />
 		      </dependencies>
 	   </forms>
 	</config>

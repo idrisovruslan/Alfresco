@@ -279,15 +279,18 @@
 					<show id="lot:positionGID" />
 					<show id="lot:positionQualifierLink" />
 				</field-visibility>
-				<edit-form template="../data-lists/forms/dataitem.ftl" />
+				<edit-form template="/org/alfresco/components/form/template/dataitem.ftl" />
 				<appearance>
 					<field id="lot:positionName">
 						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
 					</field>
 					<!-- asoociations -->
 					<field id="lot:positionQualifierLink">
-						<control>
-							<control-param name="startLocation">{siteshome}</control-param>
+						<control template="/org/alfresco/components/form/controls/assoc.ftl">
+							<control-param name="startLocation">{parent}</control-param>
+							<control-param name="displayMode">items</control-param>
+							<control-param name="showTargetLink">true</control-param>
+							<control-param name="compactMode">true</control-param>
 						</control>
 					</field>
 					<!-- end of associations -->

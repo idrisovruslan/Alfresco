@@ -21,5 +21,14 @@
 		<property name="nodeLocatorService" ref="nodeLocatorService" />
 	</bean>
 
+<!--
+	<bean id="integration-repo-amp.FormFilterNode" class="ioi.integration.formProcessorFilters.TaskFormFilter" parent="baseFormFilter">
+	    <property name="filterRegistry" ref="nodeFilterRegistry" />
+	</bean>
+	
+	<bean id="integration-repo-amp.FormFilterType" class="ioi.integration.formProcessorFilters.TaskFormFilter" parent="baseFormFilter">
+	    <property name="filterRegistry" ref="typeFilterRegistry" />
+	</bean>
+-->
 
 </beans>

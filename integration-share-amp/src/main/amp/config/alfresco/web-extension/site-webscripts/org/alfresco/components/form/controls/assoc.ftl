@@ -1,4 +1,4 @@
-<#include "/org/alfresco/components/form/controls/common/picker.inc.ftl" />
+<#include "common/picker.inc.ftl" />
 
 <#assign controlId = fieldHtmlId + "-cntrl">
 
@@ -6,6 +6,7 @@
 (function()
 {
    <@renderPickerJS field "picker" />
+   
    picker.setOptions(
    {
    <#if field.control.params.showTargetLink??>
@@ -36,12 +37,8 @@
 
 
 
-
-
-
-
-
 <div class="form-field">
+
 
 
    <#if form.mode == "view">
