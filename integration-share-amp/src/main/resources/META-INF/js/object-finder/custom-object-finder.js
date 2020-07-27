@@ -69,6 +69,7 @@
       this.columns = [];
       this.selectedItems = {};
       this.isReady = false;
+      this.itemsOnGrid = {};
       
       this.options.objectRenderer = new Alfresco.ObjectRenderer(this);
 
@@ -436,6 +437,16 @@
        * @type string
        */
       singleSelectedItem: null,
+      
+      /**
+       * Custom!
+       * 
+       * Selected items. Keeps a list of selected items for correct Add button state.
+       * 
+       * @property selectedItems
+       * @type object
+       */
+      itemsOnGrid: null,
 
       /**
        * Selected items. Keeps a list of selected items for correct Add button state.
@@ -571,7 +582,9 @@
             Dom.addClass(this.pickerId, "object-finder");
          }
          
+         this.loadAssocItems();
          this._loadSelectedItems();
+         
       },
 
       /**
@@ -736,6 +749,7 @@
        */
       _adjustCurrentValues: function CustomObjectFinder__adjustCurrentValues()
       {
+    	  this.loadAssocItems();
          if (!this.options.disabled)
          {
             var addedItems = this.getAddedItems(),
@@ -767,9 +781,10 @@
                selectedItems: selectedItems,
                selectedItemsMetaData: Alfresco.util.deepCopy(this.selectedItems)
             });
-
+            
             this._enableActions();
          }
+         this.loadAssocItems();
       },
 
       /**
@@ -928,6 +943,7 @@
        */
       onRenderCurrentValue: function CustomObjectFinder_onRenderCurrentValue(layer, args)
       {
+    	  
          // Check the event is directed towards this instance
          if ($hasEventInterest(this, args))
          {
@@ -935,6 +951,8 @@
 
             var items = this.selectedItems,
                displayValue = "";
+            var tempDisplayValue = "";
+           	 
 
             if (items === null)
             {
@@ -956,28 +974,9 @@
                {
                   if (items.hasOwnProperty(key))
                   {
-                     item = items[key];
-                     
-                     
-                     
-                     
-                     
-                     
-                     
+                	  item = items[key];
+                	  itemData = items[key].itemData;
 
-
-
-
-
-
-
-
-
-                     // Special case for tags, which we want to render differently to categories
-                     if (item.type == "cm:category" && item.displayPath.indexOf("/categories/Tags") !== -1)
-                     {
-                        item.type = "tag";
-                     }
 
                      if (this.options.showLinkToTarget && this.options.targetLinkTemplate !== null)
                      {
@@ -989,7 +988,7 @@
                               link = this.options.targetLinkTemplate.call(this, item);
                            }
                            else
-                           {
+                           {   
                               //Discard template, build link from scratch
                               var linkTemplate = (item.site) ? Alfresco.constants.URL_PAGECONTEXT + "site/{site}/document-details?nodeRef={nodeRef}" : Alfresco.constants.URL_PAGECONTEXT + "document-details?nodeRef={nodeRef}";
                               link = YAHOO.lang.substitute(linkTemplate,
@@ -998,9 +997,51 @@
                                  site : item.site
                               });
                            }
-                           displayValue += this.options.objectRenderer.renderItem(item, 16,
-                                 "<div>{icon} <a href='" + link + "'>{name}</a></div>");
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           	
+                        tempDisplayValue = '<div><table border="1" width="100%" cellpadding="5"><tr>'; 
+                 	   
+                    	for (var key2 in itemData)   
+                    	{
+                    		var itemTitle = itemData[key2];
+
+                    			tempDisplayValue += "<th>" + key2 + "</th>";
+
+                    	}
+                    	tempDisplayValue += "</tr><tr>";
+                    	   
+                    	for (var key3 in itemData)   
+                    	{
+                    		var itemValue = itemData[key3].value;
+
+                    			tempDisplayValue += this.options.objectRenderer.renderItem(item, 16,
+                             		   '<th><div>{icon} <a href="' + link + '">' + itemValue + "</a></div></th>");;
+                    	}
+                    	
+                    	tempDisplayValue += "</tr></table></div>";                           
+                           
+
+                           displayValue += tempDisplayValue;
+
                         }
+                        
+
+                        
+
+                      
+                    
+                        
+                        
+                        
+                        
+                        
+                        
                         else if (this.options.displayMode == "list")
                         {
                            this.widgets.currentValuesDataTable.addRow(item);
@@ -1505,14 +1546,17 @@
          
          var onSuccess = function CustomObjectFinder__loadSelectedItems_onSuccess(response)
          {
+        	
             var items = response.json.data.items,
                item;
             this.selectedItems = {};
-
+            this.loadAssocItems();
+            
             for (var i = 0, il = items.length; i < il; i++)
             {
                item = items[i];
                this.selectedItems[item.nodeRef] = item;
+               this.selectedItems[item.nodeRef].itemData = this.itemsOnGrid[item.nodeRef].itemData;
             }
 
             YAHOO.Bubbling.fire("renderCurrentValue",
@@ -1569,8 +1613,84 @@
             
             this._enableActions();
          }
+
       },
 
+      
+      
+      
+      /**
+       * Custom!
+       * 
+       * Data Item created event handler
+       *
+       * @method loadAssocItems
+       * @param layer {object} Event fired
+       * @param args {array} Event parameters (depends on event type)
+       */
+      loadAssocItems: function CustomObjectFinder_loadAssocItems(useOptions)
+      { 	  
+      var arrItems = "";
+      if (this.options.selectedValue)
+      {
+         arrItems = this.options.selectedValue;
+      }
+      else
+      {
+         arrItems = this.options.currentValue;      
+      }
+      
+      arrItems = arrItems.split(",");
+
+  
+        for (i = 0; i<arrItems.length; i++) 
+        {
+        	var itemsUrl = Alfresco.constants.PROXY_URI + "slingshot/datalists/item/node/" + arrItems[i].replace('://','/');
+	        
+	        // Reload the node's metadata
+	        Alfresco.util.Ajax.jsonPost(
+	        {
+	           url: itemsUrl,
+	           dataObj:
+	           {
+	         	  fields:["cm_name","lot:qualifierTypeCode"],
+	        	  filter:{"filterId":"all","filterData":""}
+	           },
+	           successCallback:
+	           {
+	              fn: function DataGrid_loadAssocItems_refreshSuccess(response)
+		           {
+	                  var item = response.json.item;
+	                  this.itemsOnGrid[item.nodeRef] = item;
+	               },
+	               
+	              scope: this,
+	           },
+	           failureCallback:
+	           {
+	              fn: function DataGrid_loadAssocItems_refreshFailure(response)
+	              {
+	            	  this.itemsOnGrid = null;
+	              },
+	              scope: this
+	           }
+	        });
+        }
+     },      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       /**
        * Creates the UI Navigation controls
        *
