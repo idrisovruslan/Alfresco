@@ -286,7 +286,7 @@
 					</field>
 					<!-- asoociations -->
 					<field id="lot:positionQualifierLink">
-						<control template="/org/alfresco/components/form/controls/assoc.ftl">
+						<control template="/org/alfresco/components/form/controls/association.ftl">
 							<control-param name="startLocation">{parent}</control-param>
 							<control-param name="displayMode">items</control-param>
 							<control-param name="showTargetLink">true</control-param>
