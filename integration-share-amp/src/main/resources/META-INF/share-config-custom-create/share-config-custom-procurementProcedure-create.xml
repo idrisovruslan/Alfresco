@@ -81,7 +81,7 @@
 						</control>
 					</field>
 					<field id="proc:lotLink">
-						<control template="/org/alfresco/components/form/controls/association.ftl">
+						<control template="/org/alfresco/components/form/controls/assoc.ftl">
                     		<control-param name="showTargetLink">true</control-param>
                      		<control-param name="allowNavigationToContentChildren">true</control-param>
 							<control-param name="startLocation">{siteshome}</control-param>

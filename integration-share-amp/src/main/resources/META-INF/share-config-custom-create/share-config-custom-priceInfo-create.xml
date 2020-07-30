@@ -82,7 +82,7 @@
 							<!-- priceinf:lotLink -->	
 							<set id="111GdocParam1-0-2" parent="GdocParam1" />
 								<field id="priceinf:lotLink" set="111GdocParam1-0-2">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -100,7 +100,7 @@
 							<!-- priceinf:iciSearchResultsLink -->	
 							<set id="111GdocParam1-0-4" parent="GdocParam1" />
 								<field id="priceinf:iciSearchResultsLink" set="111GdocParam1-0-4">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -266,7 +266,7 @@
 							<!-- priceinf:unitMeasurementLink -->	
 							<set id="111GdocParam1-0-4" parent="GdocParam1" />
 								<field id="priceinf:unitMeasurementLink" set="111GdocParam1-0-4">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -284,7 +284,7 @@
 							<!-- priceinf:materialsListLink -->	
 							<set id="111GdocParam1-0-6" parent="GdocParam1" />
 								<field id="priceinf:materialsListLink" set="111GdocParam1-0-6">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -293,7 +293,7 @@
 							<!-- priceinf:safetyClassLink -->	
 							<set id="111GdocParam1-0-7" parent="GdocParam1" />
 								<field id="priceinf:safetyClassLink" set="111GdocParam1-0-7">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -304,7 +304,7 @@
 							<!-- priceinf:Supplier_baseLink -->
 							<set id="111GdocParam2-0-0" parent="GdocParam2" />
 								<field id="priceinf:Supplier_baseLink" set="111GdocParam2-0-0">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -323,7 +323,7 @@
 							<!-- priceinf:lotIciLink -->
 							<set id="111GdocParam2-0-3" parent="GdocParam2" />
 								<field id="priceinf:lotIciLink" set="111GdocParam2-0-3">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -332,7 +332,7 @@
 							<!-- priceinf:manufacturerLink -->
 							<set id="111GdocParam2-0-4" parent="GdocParam2" />
 								<field id="priceinf:manufacturerLink" set="111GdocParam2-0-4">
-									 <control template="/org/alfresco/components/form/controls/association.ftl">
+									 <control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>

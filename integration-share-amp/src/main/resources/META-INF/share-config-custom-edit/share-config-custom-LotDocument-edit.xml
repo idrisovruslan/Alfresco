@@ -119,7 +119,7 @@
 							<!-- lot:supplierLink -->
 							<set id="111Glot2-0-0" parent="Glot2" />
 								<field id="lot:supplierLink" set="111Glot2-0-0">
-									<control template="/org/alfresco/components/form/controls/association.ftl">
+									<control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -195,7 +195,7 @@
 							<!-- lot:lotPositionLink -->
 							<set id="111GtimeParameters1-1-5" parent="GtimeParameters1" />
 								<field id="lot:lotPositionLink" set="111GtimeParameters1-1-5">
-									<control template="/org/alfresco/components/form/controls/association.ftl">
+									<control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -215,7 +215,7 @@
 							<!-- lot:deliveryGrafLink -->
 							<set id="111GtimeParameters2-1-6" parent="GtimeParameters2" />
 								<field id="lot:deliveryGrafLink" set="111GtimeParameters2-1-6">
-									<control template="/org/alfresco/components/form/controls/association.ftl">
+									<control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -224,7 +224,7 @@
 							<!-- lot:saleGrafLink -->
 							<set id="111GtimeParameters2-1-7" parent="GtimeParameters2" />
 								<field id="lot:saleGrafLink" set="111GtimeParameters2-1-7">
-									<control template="/org/alfresco/components/form/controls/association.ftl">
+									<control template="/org/alfresco/components/form/controls/assoc.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
 										<control-param name="startLocation">{siteshome}</control-param>
@@ -258,7 +258,7 @@
 				<edit-form template="../data-lists/forms/dataitem.ftl" />
 				<appearance>
 					<field id="lot:PositionLink">
-						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+						<control template="/org/alfresco/components/form/controls/assoc.ftl" />
 					</field>
 				</appearance>
 			</form>

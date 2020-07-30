@@ -1653,7 +1653,7 @@
 	           url: itemsUrl,
 	           dataObj:
 	           {
-	         	  fields:["cm_name","lot:qualifierTypeCode"],
+	         	  fields:["lot:lotPositionNumber","lot:lotPositionStatus","lot:lotPositionDescription","lot:saleID","lot:saleValue","lot:saleType","lot:saleTime","lot:saleworkDays","lot:saleEndDate","lot:deliveryID","lot:deliveryValue","lot:deliveryTime","lot:workDays","lot:deliveryEndDate","supp:SuppDescription","supp:e-mail","supp:kpp","supp:inn","supp:Director_FIO","lot:lotName","cm:name","lot:lotDescription","lot:lotStatus","lot:LotSale","priceinf:iciName","priceinf:iciKind","priceinf:resource","priceinf:sumWithoutVAT","lot:positionCode","lot:positionName","lot:positionGID","dir:materialsListNum","dir:materialsListName","dir:materialsListDescription","dir:safetyClassNum","dir:safetyClassName","dir:safetyClassDescription","dir:manufacturerNum","dir:manufacturerName","dir:manufacturerDescription"],
 	        	  filter:{"filterId":"all","filterData":""}
 	           },
 	           successCallback:
