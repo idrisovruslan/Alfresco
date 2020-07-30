@@ -581,10 +581,9 @@
             this.widgets.dialog.hideEvent.subscribe(this.onCancel, null, this);
             Dom.addClass(this.pickerId, "object-finder");
          }
-         
-         this.loadAssocItems();
+
          this._loadSelectedItems();
-         
+
       },
 
       /**
@@ -749,7 +748,7 @@
        */
       _adjustCurrentValues: function CustomObjectFinder__adjustCurrentValues()
       {
-    	  this.loadAssocItems();
+
          if (!this.options.disabled)
          {
             var addedItems = this.getAddedItems(),
@@ -784,7 +783,7 @@
             
             this._enableActions();
          }
-         this.loadAssocItems();
+
       },
 
       /**
@@ -997,6 +996,12 @@
                                  site : item.site
                               });
                            }
+                           
+                           
+                           
+   
+                           
+
                            
                            
                            
@@ -1548,17 +1553,19 @@
          {
         	
             var items = response.json.data.items,
-               item;
+            item;
             this.selectedItems = {};
-            this.loadAssocItems();
             
-            for (var i = 0, il = items.length; i < il; i++)
+            
+            
+            for (var i = 0; i < items.length; i++)
             {
                item = items[i];
+               
                this.selectedItems[item.nodeRef] = item;
-               this.selectedItems[item.nodeRef].itemData = this.itemsOnGrid[item.nodeRef].itemData;
+               
             }
-
+    
             YAHOO.Bubbling.fire("renderCurrentValue",
             {
                eventGroup: this
@@ -1625,61 +1632,79 @@
        * Data Item created event handler
        *
        * @method loadAssocItems
-       * @param layer {object} Event fired
-       * @param args {array} Event parameters (depends on event type)
        */
-      loadAssocItems: function CustomObjectFinder_loadAssocItems(useOptions)
-      { 	  
-      var arrItems = "";
-      if (this.options.selectedValue)
-      {
-         arrItems = this.options.selectedValue;
-      }
-      else
-      {
-         arrItems = this.options.currentValue;      
-      }
-      
-      arrItems = arrItems.split(",");
-
-  
-        for (i = 0; i<arrItems.length; i++) 
+      loadAssocItems: function CustomObjectFinder_loadAssocItems(nodeRef)
+      { 	
+    	  
+        // Reload the node's metadata
+    	Alfresco.util.Ajax.jsonRequest(
         {
-        	var itemsUrl = Alfresco.constants.PROXY_URI + "slingshot/datalists/item/node/" + arrItems[i].replace('://','/');
-	        
-	        // Reload the node's metadata
-	        Alfresco.util.Ajax.jsonPost(
-	        {
-	           url: itemsUrl,
-	           dataObj:
+           url: Alfresco.constants.PROXY_URI + "slingshot/datalists/item/node/" + nodeRef.replace('://','/'),
+           method: "POST",
+           dataObj:
+           {
+         	  fields:["cm_name"],
+        	  filter:{"filterId":"all","filterData":""}
+           },
+           successCallback:
+           {
+              fn: function CustomObjectFinder_loadAssocItems_loadSuccess(response)
 	           {
-	         	  fields:["cm_name","lot:qualifierTypeCode"],
-	        	  filter:{"filterId":"all","filterData":""}
+              	this.selectedItems[nodeRef].itemData = response.json.item.itemData;
+               },
+              scope: this,
+           },
+           failureCallback:
+           {
+              fn: function CustomObjectFinder_loadAssocItems_loadFailure(response)
+              {
+            	  
+              },
+              scope: this
+           }
+        });
+    	
+     },
+     /**
+      * Custom!
+      * 
+      * Retrieves the Data List from the Repository
+      *
+      * @method populateDataGrid
+      */      
+     /**     populateLableDataGrid: function CustomObjectFinder_populateLableDataGrid(nodeRef)
+     {
+
+        var itemsUrl = Alfresco.constants.URL_SERVICECONTEXT + "components/data-lists/config/columns?itemType=" + this.selectedItems[nodeRef].type;
+        
+        // Query the visible columns for this list's item type
+        Alfresco.util.Ajax.jsonGet(
+        {
+           url: itemsUrl,
+           successCallback:
+           {
+	           fn: function CustomObjectFinder_populateLableDataGrid_refreshSuccess(response)
+	           {
+	              var items = response.json.data.items,
+	              this.selectedItems = {};
+	              var item = response.json.item;
+	              this.itemsOnGrid[item.nodeRef] = item;
 	           },
-	           successCallback:
-	           {
-	              fn: function DataGrid_loadAssocItems_refreshSuccess(response)
-		           {
-	                  var item = response.json.item;
-	                  this.itemsOnGrid[item.nodeRef] = item;
-	               },
-	               
-	              scope: this,
-	           },
-	           failureCallback:
-	           {
-	              fn: function DataGrid_loadAssocItems_refreshFailure(response)
-	              {
-	            	  this.itemsOnGrid = null;
-	              },
-	              scope: this
-	           }
-	        });
-        }
+              scope: this
+           },
+           failureCallback:
+           {
+              fn: this._onDataListFailure,
+              obj:
+              {
+                 title: this.msg("message.error.columns.title"),
+                 text: this.msg("message.error.columns.description")
+              },
+              scope: this
+           }
+        });
      },      
-      
-      
-      
+    */    
       
       
       
