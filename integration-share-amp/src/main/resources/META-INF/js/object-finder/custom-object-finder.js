@@ -69,7 +69,6 @@
       this.columns = [];
       this.selectedItems = {};
       this.isReady = false;
-      this.itemsOnGrid = {};
       
       this.options.objectRenderer = new Alfresco.ObjectRenderer(this);
 
@@ -437,16 +436,6 @@
        * @type string
        */
       singleSelectedItem: null,
-      
-      /**
-       * Custom!
-       * 
-       * Selected items. Keeps a list of selected items for correct Add button state.
-       * 
-       * @property selectedItems
-       * @type object
-       */
-      itemsOnGrid: null,
 
       /**
        * Selected items. Keeps a list of selected items for correct Add button state.
@@ -581,10 +570,9 @@
             this.widgets.dialog.hideEvent.subscribe(this.onCancel, null, this);
             Dom.addClass(this.pickerId, "object-finder");
          }
-         
-         this.loadAssocItems();
+
          this._loadSelectedItems();
-         
+
       },
 
       /**
@@ -734,11 +722,28 @@
          {
             Event.preventDefault(e);
          }
+         
 
-         YAHOO.Bubbling.fire("renderCurrentValue",
+
+         if (isEmpty(this.selectedItems))
          {
-            eventGroup: this
-         });
+             YAHOO.Bubbling.fire("renderCurrentValue",
+                     {
+                        eventGroup: this
+                     });
+         }
+         else 
+         {
+             for (var key in this.selectedItems) 
+             {
+            	 this.loadAssocItems(key);
+             }	
+         };
+
+
+         
+
+
       },
 
       /**
@@ -749,7 +754,7 @@
        */
       _adjustCurrentValues: function CustomObjectFinder__adjustCurrentValues()
       {
-    	  this.loadAssocItems();
+
          if (!this.options.disabled)
          {
             var addedItems = this.getAddedItems(),
@@ -784,7 +789,7 @@
             
             this._enableActions();
          }
-         this.loadAssocItems();
+
       },
 
       /**
@@ -943,7 +948,6 @@
        */
       onRenderCurrentValue: function CustomObjectFinder_onRenderCurrentValue(layer, args)
       {
-    	  
          // Check the event is directed towards this instance
          if ($hasEventInterest(this, args))
          {
@@ -1000,6 +1004,12 @@
                            
                            
                            
+   
+                           
+
+                           
+                           
+                           
                            
                            
                            
@@ -1009,10 +1019,19 @@
                  	   
                     	for (var key2 in itemData)   
                     	{
-                    		var itemTitle = itemData[key2];
-
-                    			tempDisplayValue += "<th>" + key2 + "</th>";
-
+                    		if (typeof(items[key].itemData[key2].lable) == 'undefined')
+                    		{
+                    			var itemTitle = key2;
+                    		}
+                    		else
+                    		{
+                    			var itemTitle = items[key].itemData[key2].lable;
+                    			if (itemTitle == "Name") 
+                    			{
+                    				itemTitle = "Имя документа";
+                    			}
+                    		};
+                    		tempDisplayValue += "<th>" + itemTitle + "</th>";
                     	}
                     	tempDisplayValue += "</tr><tr>";
                     	   
@@ -1548,21 +1567,20 @@
          {
         	
             var items = response.json.data.items,
-               item;
+            item;
             this.selectedItems = {};
-            this.loadAssocItems();
             
-            for (var i = 0, il = items.length; i < il; i++)
+            
+            
+            for (var i = 0; i < items.length; i++)
             {
                item = items[i];
+               
                this.selectedItems[item.nodeRef] = item;
-               this.selectedItems[item.nodeRef].itemData = this.itemsOnGrid[item.nodeRef].itemData;
+               this.loadAssocItems(item.nodeRef);
             }
+    
 
-            YAHOO.Bubbling.fire("renderCurrentValue",
-            {
-               eventGroup: this
-            });
          };
          
          var onFailure = function CustomObjectFinder__loadSelectedItems_onFailure(response)
@@ -1625,61 +1643,120 @@
        * Data Item created event handler
        *
        * @method loadAssocItems
-       * @param layer {object} Event fired
-       * @param args {array} Event parameters (depends on event type)
        */
-      loadAssocItems: function CustomObjectFinder_loadAssocItems(useOptions)
-      { 	  
-      var arrItems = "";
-      if (this.options.selectedValue)
-      {
-         arrItems = this.options.selectedValue;
-      }
-      else
-      {
-         arrItems = this.options.currentValue;      
-      }
-      
-      arrItems = arrItems.split(",");
-
-  
-        for (i = 0; i<arrItems.length; i++) 
+      loadAssocItems: function CustomObjectFinder_loadAssocItems(nodeRef)
+      { 	
+    	  
+        // Reload the node's metadata
+    	Alfresco.util.Ajax.jsonRequest(
         {
-        	var itemsUrl = Alfresco.constants.PROXY_URI + "slingshot/datalists/item/node/" + arrItems[i].replace('://','/');
-	        
-	        // Reload the node's metadata
-	        Alfresco.util.Ajax.jsonPost(
-	        {
-	           url: itemsUrl,
-	           dataObj:
+           url: Alfresco.constants.PROXY_URI + "slingshot/datalists/item/node/" + nodeRef.replace('://','/'),
+           method: "POST",
+           dataObj:
+           {
+        	  fields:["lot:lotPositionNumber","lot:lotPositionStatus","lot:lotPositionDescription","lot:saleID","lot:saleValue","lot:saleType","lot:saleTime","lot:saleworkDays","lot:saleEndDate","lot:deliveryID","lot:deliveryValue","lot:deliveryTime","lot:workDays","lot:deliveryEndDate","supp:SuppDescription","supp:e-mail","supp:kpp","supp:inn","supp:Director_FIO","cm:name","lot:LotSale","priceinf:iciName","priceinf:iciKind","priceinf:sumWithoutVAT","lot:positionCode","lot:positionName","lot:positionGID","dir:materialsListNum","dir:materialsListName","dir:materialsListDescription","dir:safetyClassNum","dir:safetyClassName","dir:safetyClassDescription","dir:manufacturerNum","dir:manufacturerName","dir:manufacturerDescription"],
+        	  filter:{"filterId":"all","filterData":""}
+           },
+           successCallback:
+           {
+              fn: function CustomObjectFinder_loadAssocItems_loadSuccess(response)
 	           {
-	         	  fields:["lot:lotPositionNumber","lot:lotPositionStatus","lot:lotPositionDescription","lot:saleID","lot:saleValue","lot:saleType","lot:saleTime","lot:saleworkDays","lot:saleEndDate","lot:deliveryID","lot:deliveryValue","lot:deliveryTime","lot:workDays","lot:deliveryEndDate","supp:SuppDescription","supp:e-mail","supp:kpp","supp:inn","supp:Director_FIO","lot:lotName","cm:name","lot:lotDescription","lot:lotStatus","lot:LotSale","priceinf:iciName","priceinf:iciKind","priceinf:resource","priceinf:sumWithoutVAT","lot:positionCode","lot:positionName","lot:positionGID","dir:materialsListNum","dir:materialsListName","dir:materialsListDescription","dir:safetyClassNum","dir:safetyClassName","dir:safetyClassDescription","dir:manufacturerNum","dir:manufacturerName","dir:manufacturerDescription"],
-	        	  filter:{"filterId":"all","filterData":""}
-	           },
-	           successCallback:
+              	this.selectedItems[nodeRef].itemData = response.json.item.itemData;
+              	
+              	var isDataLoaded = true;
+              	for (var key in this.selectedItems)
+              	{
+              		if (typeof(this.selectedItems[key].itemData) == 'undefined')
+              			{
+              				isDataLoaded = false;
+              			}
+              	}
+              	
+              	if (isDataLoaded) 
+              	{
+              		this.populateLableDataGrid(nodeRef);
+              	}
+ 
+               },
+              scope: this,
+           },
+           failureCallback:
+           {
+              fn: function CustomObjectFinder_loadAssocItems_loadFailure(response)
+              {
+            	  
+              },
+              scope: this
+           }
+        });
+    	
+     },
+     /**
+      * Custom!
+      * 
+      * Retrieves the Data List from the Repository
+      *
+      * @method populateDataGrid
+      */      
+     populateLableDataGrid: function CustomObjectFinder_populateLableDataGrid(nodeRef)
+     {
+
+        var itemsUrl = Alfresco.constants.URL_SERVICECONTEXT + "components/data-lists/config/columns?itemType=" + this.selectedItems[nodeRef].type;
+        
+        // Query the visible columns for this list's item type
+        Alfresco.util.Ajax.jsonGet(
+        {
+           url: itemsUrl,
+           successCallback:
+           {
+	           fn: function CustomObjectFinder_populateLableDataGrid_refreshSuccess(response)
 	           {
-	              fn: function DataGrid_loadAssocItems_refreshSuccess(response)
-		           {
-	                  var item = response.json.item;
-	                  this.itemsOnGrid[item.nodeRef] = item;
-	               },
-	               
-	              scope: this,
-	           },
-	           failureCallback:
-	           {
-	              fn: function DataGrid_loadAssocItems_refreshFailure(response)
+	              var items = response.json.columns;
+	              for (var key in items) 
 	              {
-	            	  this.itemsOnGrid = null;
-	              },
-	              scope: this
-	           }
-	        });
-        }
+            		 for (var key2 in this.selectedItems) 
+            		 {
+                		 for (var key3 in this.selectedItems[key2].itemData) 
+                		 {
+	    	            	 if (items[key].formsName == key3) 
+	    	            	 {
+	    	            		 this.selectedItems[key2].itemData[key3].lable = items[key].label;
+	    	            	 }
+                		 }
+            		 }
+	              };
+	              
+	              	var isDataLoaded = true;
+	              	for (var key in this.selectedItems)
+	              	{
+	              		if (typeof(this.selectedItems[key].itemData) == 'undefined')
+	              			{
+	              				isDataLoaded = false;
+	              			}
+	              	}
+	              	
+	              	if (isDataLoaded) 
+	              	{
+	                    YAHOO.Bubbling.fire("renderCurrentValue",
+	                        {
+	                           eventGroup: this
+	                        });
+	              	}
+	              
+	           },
+              scope: this
+           },
+           failureCallback:
+           {
+	           fn: function CustomObjectFinder_populateLableDataGrid_refreshFailure(response)
+	           {
+
+	           },
+              scope: this
+           }
+        });
      },      
-      
-      
-      
+   
       
       
       
@@ -3314,3 +3391,10 @@
       }
    });
 })();
+
+function isEmpty(obj) {
+	  for (let key in obj) {
+	    return false;
+	  }
+	  return true;
+	};

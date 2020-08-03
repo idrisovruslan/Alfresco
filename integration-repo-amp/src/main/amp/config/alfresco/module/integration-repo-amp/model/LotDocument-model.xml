@@ -205,7 +205,7 @@
 
 			<associations>
 				<association name="lot:supplierLink">
-					<title>Поставщик</title>
+					<title>Уведомленый поставщик</title>
 					<source>
 						<mandatory>false</mandatory>
 						<many>true</many>
