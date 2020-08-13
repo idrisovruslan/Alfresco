@@ -201,12 +201,4 @@ public class DescriptionСontainers {
     			CONTANER_QNAME_SUPPLIER_BASE));
 		return descriptionСontainers;
 	}
-    
-
-    
-    private final QName PROJECT_LIST_ITEM_TYPE_PRICEINF = QName.createQName(NAMESPACE_URI_PRICEINF, DATA_LIST_NAME_ICI_SEARCH_RESULTS);
-    private final QName CONTANER_QNAME_PRICEINF = QName.createQName("cm:iciSearchResults");
-    
-
-
 }
