@@ -7,7 +7,7 @@ import org.alfresco.service.namespace.QName;
 
 
 public class DescriptionСontainers {
-	//TYPE CONTANIER
+	//TYPE OF CONTANIER
     private final String DATA_LIST_SITE_CONTAINER = "dataLists";
     //NAME OF SITES
     private final String SITE_SHORT_NAME = "smart";
