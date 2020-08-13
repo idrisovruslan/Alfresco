@@ -7,4 +7,15 @@
 <beans>
 	<bean id="webscript.helloworld.get" class="ioi.integration.demoamp.HelloWorldWebScript" parent="webscript">
 	</bean>
+	
+	<bean id="webscript.createdatalistsсontainer.get"
+	class="ioi.integration.dataListServiceWebScript.CreateDataListsСontainerWebScript"
+	parent="webscript">
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+   </bean>
+
+
+
 </beans>

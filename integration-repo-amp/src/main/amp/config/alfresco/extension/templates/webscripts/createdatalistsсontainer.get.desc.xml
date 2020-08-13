@@ -1,0 +1,7 @@
+<webscript>
+    <shortname>Create Data Lists Сontainers Webscript</shortname>
+    <description>Create Сontainers for Data Lists</description>
+    <url>/dataListService/createDataListContanier</url>
+    <authentication>user</authentication>
+    <format default="html"></format>
+</webscript>

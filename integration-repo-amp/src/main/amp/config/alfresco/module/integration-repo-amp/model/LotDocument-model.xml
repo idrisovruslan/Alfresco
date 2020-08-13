@@ -456,7 +456,7 @@
 
 
 		<type name="lot:deliveryGraf">
-			<title> График поставок</title>
+			<title>График поставок</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
 				<property name="lot:deliveryID">
@@ -507,7 +507,7 @@
 		</type>
 
 		<type name="lot:deliverySellOpt">
-			<title> Условия поставки</title>
+			<title>Условия поставки</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
 				<property name="lot:deliveryIntervalCode">
@@ -525,9 +525,10 @@
 				</property>
 			</properties>
 		</type>
+		
 		<!-- График платежей -->
 		<type name="lot:saleGraf">
-			<title> График платежей</title>
+			<title>График платежей</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
 				<property name="lot:saleID">
@@ -586,7 +587,7 @@
 		</type>
 
 		<type name="lot:saleSellOpt">
-			<title> Условия оплаты</title>
+			<title>Условия оплаты</title>
 			<parent>dl:dataListItem</parent>
 			<properties>
 				<property name="lot:saleIntervalCode">
