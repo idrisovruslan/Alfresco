@@ -1,0 +1,7 @@
+<webscript>
+    <shortname>upload to ftp</shortname>
+    <description>upload to ftp</description>
+    <url>/uploadToFtp/uploadtoftp</url>
+    <authentication>user</authentication>
+    <format default="html"></format>
+</webscript>
