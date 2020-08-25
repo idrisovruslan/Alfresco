@@ -32,7 +32,8 @@
 					<show id="aztkp:tzName" />
 					<show id="aztkp:tzDate" />
 					<show id="aztkp:numberSheetsInTz" />
-					<show id="aztkp:unitMeasurementLink" />
+					<show id="aztkp:qualifierTypeLink" />
+					<show id="aztkp:lotDocumentLink" />
 				</field-visibility>
 				<edit-form template="/org/alfresco/components/form/template/tabbed.ftl" />
 				
@@ -97,9 +98,18 @@
 										<control-param name="maxLength">128</control-param>
 									</control>
 								</field>	
-							<!-- aztkp:unitMeasurementLink -->	
+							<!-- aztkp:qualifierTypeLink -->	
 							<set id="111GdocParam1-1-6" parent="GdocParam1" />
-								<field id="aztkp:unitMeasurementLink" set="111GdocParam1-1-6">
+								<field id="aztkp:qualifierTypeLink" set="111GdocParam1-1-6">
+									<control template="/org/alfresco/components/form/controls/association.ftl">
+			                    		<control-param name="showTargetLink">true</control-param>
+			                     		<control-param name="allowNavigationToContentChildren">true</control-param>
+										<control-param name="startLocation">{siteshome}</control-param>
+									</control>
+								</field>	
+							<!-- aztkp:lotDocumentLink -->	
+							<set id="111GdocParam1-1-7" parent="GdocParam1" />
+								<field id="aztkp:lotDocumentLink" set="111GdocParam1-1-7">
 									<control template="/org/alfresco/components/form/controls/association.ftl">
 			                    		<control-param name="showTargetLink">true</control-param>
 			                     		<control-param name="allowNavigationToContentChildren">true</control-param>

@@ -1,1 +1,1 @@
-Message: <br> ${msg} <br><br>
+${msg}
