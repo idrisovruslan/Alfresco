@@ -3,22 +3,25 @@ package ioi.integration.uploadToFtp;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.net.SocketException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.ServiceRegistry;
+import org.alfresco.service.cmr.repository.AssociationRef;
+import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.MalformedNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -39,31 +42,35 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 		this.serviceRegistry = serviceRegistry;
 	}
 	
-	Map<QName,Serializable> fileProperties;
+	String directoryName;
 	String fileName;
-	NodeRef nodeRef;
+	
+	NodeRef mainNodeRef;
 	DocumentBuilder builder;
+	FTPClient fClient;
+	Map<QName,Serializable> mainNodeProperties;
 	
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 		
-		ParamLangXML();
-		
 		Map<String, Object> model = new HashMap<String, Object>();
 
 		try {
-			nodeRef = new NodeRef(req.getParameter("nodeRef"));
-			fileName = ((String) serviceRegistry.getNodeService().getProperty(nodeRef, ContentModel.PROP_NAME)).trim().toLowerCase();
-			fileProperties = serviceRegistry.getNodeService().getProperties(nodeRef);
-			this.ftpConn("192.168.3.93", "user", "pass", WriteParamXML(nodeRef), fileName);
-		} catch (MalformedNodeRefException ex) {
-			model.put("msg", "Не верный формат NodeRef: " + req.getParameter("nodeRef"));
-			return model;
-		} catch (InvalidNodeRefException ex) {
-			model.put("msg", "Не удалось получить параметры: " + req.getParameter("nodeRef"));
-			return model;
-		} catch (TransformerFactoryConfigurationError|TransformerException|IOException ex) {
-			model.put("msg", "Не удалось выполнить метод \"ftpConn\"");
+			loadWebScriptRequestParam(req);
+			mainNodeProperties = getSerializableDatalist(mainNodeRef);
+			initializationVariable();
+			
+			testMethod();
+			
+			initializationDocumentBuilder();
+			Document xmlDocument = writeDatalistToXML(mainNodeRef);
+			ftpConnect("192.168.3.93", "ftpuser", "S@asd123456");
+			makeDirectoryInFtp(directoryName);
+			uploadXmlToFileInFtp(xmlDocument);
+			ftpDisconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.put("msg", e.getMessage());
 			return model;
 		}
 
@@ -71,48 +78,193 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 		return model;
 	}
 	/**
-	 * Создание подключения и загрузка файла
+	 * TEST!!!!
 	 */
-	public void ftpConn(String hostAddress, String log, String password, Document domSource, String fileName)
-			throws TransformerFactoryConfigurationError, TransformerException, SocketException, IOException {
-		FTPClient fClient = new FTPClient();
-		fClient.connect(hostAddress);
-		fClient.enterLocalPassiveMode();
-		fClient.login(log, password);
-		Transformer transformer = TransformerFactory.newInstance().newTransformer();
-
-		try (OutputStream outputStream = fClient.storeFileStream(fileName + ".xml")) {
-			transformer.transform(new DOMSource(domSource), new StreamResult(outputStream));
+	public void testMethod() {
+		System.out.println(serviceRegistry.getNodeService().getType(mainNodeRef));
+		System.out.println(serviceRegistry.getNodeService().getType(mainNodeRef));
+		System.out.println("+++++++++++");
+		List<ChildAssociationRef> childAssociationRefs = serviceRegistry.getNodeService().getParentAssocs(mainNodeRef);
+		for(ChildAssociationRef childAssociationRef : childAssociationRefs) {
+			System.out.println(serviceRegistry.getNodeService().getType(childAssociationRef.getParentRef()));
+			System.out.println(serviceRegistry.getNodeService().getType(childAssociationRef.getChildRef()));
+			System.out.println("============");
 		}
-
-		fClient.logout();
-		fClient.disconnect();
 	}
 	/**
-	 * Инициализация билдера для XML
+	 * Считывание значений из запроса
+	 * @throws Exception 
 	 */
-	public void ParamLangXML() {
+	public void loadWebScriptRequestParam(WebScriptRequest req) throws Exception {
+		String result;
+		try {
+			mainNodeRef = new NodeRef(req.getParameter("nodeRef"));
+		} catch (MalformedNodeRefException e) {
+			e.printStackTrace();
+			result = "MalformedNodeRefException, method: loadWebScriptRequestParam()";
+			throw new Exception(result);
+		}
+	}
+	/**
+	 * Получение значений Даталиста
+	 * @throws Exception 
+	 */
+	public Map<QName,Serializable> getSerializableDatalist(NodeRef nodeRef) throws Exception {
+		try {
+			return serviceRegistry.getNodeService().getProperties(nodeRef);
+		} catch (InvalidNodeRefException e) {
+			e.printStackTrace();
+			String result = "InvalidNodeRefException, method: makeSerializableDatalist()";
+			throw new Exception(result);
+		}
+	}
+	/**
+	 * Инициализация переменных
+	 * @throws Exception 
+	 */
+	public void initializationVariable () {
+		directoryName = mainNodeRef.toString().replace("workspace://SpacesStore/", "");
+		fileName = directoryName + "_property.xml";
+	}
+	/**
+	 * Инициализация документ-билдера для XML
+	 * @throws Exception 
+	 */
+	public void initializationDocumentBuilder() throws Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			builder = factory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
+			String result = "ParserConfigurationException, method: initializationDocumentBuilder()";
+			throw new Exception(result);
 		}
 	}
 	/**
 	 * Запись настроек в XML файл
+	 * @throws Exception 
 	 */
-	public Document WriteParamXML(NodeRef nodeRef) {
-		Document doc = builder.newDocument();
-		Element rootElement = doc.createElement(fileName);
+	public Document writeDatalistToXML(NodeRef nodeRef) throws Exception {
+		Document document = builder.newDocument();
+		Element rootElement = document.createElement(directoryName);
 		
-		for (QName key : fileProperties.keySet()) {
-			Element propertyElement = doc.createElement(key.getLocalName());
-			propertyElement.appendChild(doc.createTextNode(fileProperties.get(key).toString()));
-			rootElement.appendChild(propertyElement);
-		}
+		fillDocWithNodeProperties(document, mainNodeProperties, rootElement);
+		
+		Element associationElement = document.createElement("associations");
+		rootElement.appendChild(associationElement);
 
-		doc.appendChild(rootElement);
-		return doc;
+		Collection<QName> qNameAssociations = serviceRegistry.getDictionaryService().getAssociations(QName.createQName("{http://www.ioi.com/model/AZTKP/1.0}AZTKPModel"));
+		
+		if (!qNameAssociations.isEmpty()) {
+			
+			Map<QName, Serializable> associationNodeProperties;
+			
+			for (QName qNameAssociationOfType : qNameAssociations) {
+				List<AssociationRef> associationRefsList = serviceRegistry.getNodeService().getTargetAssocs(mainNodeRef, qNameAssociationOfType);
+				if (!associationRefsList.isEmpty()) {
+					for (AssociationRef associationRef : associationRefsList) {
+						NodeRef nodeRefAssociation = associationRef.getTargetRef();
+						try {
+							associationNodeProperties = getSerializableDatalist(nodeRefAssociation);
+						} catch (Exception e) {
+							e.printStackTrace();
+							String result = "Exception, method: writeDatalistToXML()";
+							throw new Exception(result);
+						}
+						Element associationChieldElement = document.createElement(nodeRefAssociation.toString().replace("workspace://SpacesStore/", ""));
+						associationElement.appendChild(associationChieldElement);
+						fillDocWithNodeProperties(document, associationNodeProperties, associationChieldElement);
+					}
+				}
+			}
+		}
+		
+		
+
+		
+		
+		
+		
+		document.appendChild(rootElement);
+		return document;
+	}
+	/**
+	 * Заполнение документа свойствами нода
+	 */
+	public void fillDocWithNodeProperties(Document document,Map<QName, Serializable> nodeProperties, Element mainElement) {
+		for (QName key : nodeProperties.keySet()) {
+			Element propertyElement = document.createElement(key.getLocalName());
+			propertyElement.appendChild(document.createTextNode(nodeProperties.get(key).toString()));
+			mainElement.appendChild(propertyElement);
+		}
+	}
+	/**
+	 * Создание подключения к FTP
+	 * @throws Exception 
+	 */
+	public void ftpConnect(String hostAddress, String log, String password) throws Exception {
+		fClient = new FTPClient();
+		try {
+			fClient.connect(hostAddress);
+			fClient.enterLocalPassiveMode();
+			fClient.login(log, password);
+		} catch (IOException e) {
+			e.printStackTrace();
+			String result = "IOException, method: ftpConnect()";
+			throw new Exception(result);
+		}
+	}
+	/**
+	 * Создание директории на FTP
+	 * @throws Exception 
+	 */
+	public void makeDirectoryInFtp(String directoryName) throws Exception {
+		try {
+			fClient.makeDirectory(directoryName);
+			fClient.changeWorkingDirectory(directoryName);
+		} catch (IOException e) {
+			e.printStackTrace();
+			String result = "IOException, method: makeDirectoryInFtp()";
+			throw new Exception(result);
+		}
+	}
+	/**
+	 * Загрузка XML файла на FTP
+	 * @throws Exception 
+	 */
+	public void uploadXmlToFileInFtp(Document domSource) throws Exception {
+		try {
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
+			try (OutputStream outputStream = fClient.storeFileStream(fileName)) {
+				transformer.transform(new DOMSource(domSource), new StreamResult(outputStream));
+			} catch (TransformerException e) {
+				e.printStackTrace();
+				String result = "TransformerException, method: uploadXmlToFtp()";
+				throw new Exception(result);
+			} catch (IOException e) {
+				e.printStackTrace();
+				String result = "IOException, method: uploadXmlToFtp()";
+				throw new Exception(result);
+			}
+		} catch (TransformerConfigurationException e) {
+			e.printStackTrace();
+			String result = "TransformerConfigurationException, method: uploadXmlToFtp()";
+			throw new Exception(result);
+		}
+	}
+	/**
+	 * Закрытие подключения к FTP
+	 * @throws Exception 
+	 */
+	public void ftpDisconnect() throws Exception {
+			try {
+				fClient.logout();
+				fClient.disconnect();
+			} catch (IOException e) {
+				e.printStackTrace();
+				String result = "IOException, method: ftpDisconnect()";
+				throw new Exception(result);
+			}
 	}
 }
