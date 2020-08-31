@@ -21,6 +21,18 @@
 		<property name="nodeLocatorService" ref="nodeLocatorService" />
 	</bean>
 
+	<!-- Бин для работы с FTP -->
+	<bean id="service.ftp" class="ioi.integration.ftp.Ftp">
+		<property name="hostAddress">
+			<value>${custom.ftp.hostAddress}</value>
+		</property>
+		<property name="login">
+			<value>${custom.ftp.login}</value>
+		</property>
+		<property name="password">
+			<value>${custom.ftp.password}</value>
+		</property>
+	</bean>
 <!--
 	<bean id="integration-repo-amp.FormFilterNode" class="ioi.integration.formProcessorFilters.TaskFormFilter" parent="baseFormFilter">
 	    <property name="filterRegistry" ref="nodeFilterRegistry" />

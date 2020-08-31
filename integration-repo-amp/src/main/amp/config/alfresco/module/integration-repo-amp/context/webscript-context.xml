@@ -24,6 +24,6 @@
 		<property name="serviceRegistry">
 			<ref bean="ServiceRegistry" />
 		</property>
+		<property name="ftp" ref="service.ftp"/>
 	</bean>
-
 </beans>

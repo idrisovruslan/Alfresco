@@ -1,1 +1,7 @@
 /alf_data_dev/
+/.idea/
+/solr.log
+/alfresco.log
+/integration.iml
+/solr-config/solr-config.iml
+/runner/.settings/

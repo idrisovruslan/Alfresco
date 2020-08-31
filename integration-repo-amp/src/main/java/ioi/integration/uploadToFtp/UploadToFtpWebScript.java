@@ -1,12 +1,16 @@
 package ioi.integration.uploadToFtp;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import ioi.integration.ftp.Ftp;
+import org.alfresco.service.ServiceRegistry;
+import org.alfresco.service.cmr.repository.*;
+import org.alfresco.service.namespace.QName;
+import org.apache.commons.net.ftp.FTPClient;
+import org.springframework.extensions.webscripts.Cache;
+import org.springframework.extensions.webscripts.DeclarativeWebScript;
+import org.springframework.extensions.webscripts.Status;
+import org.springframework.extensions.webscripts.WebScriptRequest;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,22 +21,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.alfresco.model.ContentModel;
-import org.alfresco.service.ServiceRegistry;
-import org.alfresco.service.cmr.repository.AssociationRef;
-import org.alfresco.service.cmr.repository.ChildAssociationRef;
-import org.alfresco.service.cmr.repository.InvalidNodeRefException;
-import org.alfresco.service.cmr.repository.MalformedNodeRefException;
-import org.alfresco.service.cmr.repository.NodeRef;
-import org.alfresco.service.namespace.QName;
-import org.apache.commons.net.ftp.FTPClient;
-import org.springframework.extensions.webscripts.Cache;
-import org.springframework.extensions.webscripts.DeclarativeWebScript;
-import org.springframework.extensions.webscripts.Status;
-import org.springframework.extensions.webscripts.WebScriptRequest;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
+import java.util.*;
 
 public class UploadToFtpWebScript extends DeclarativeWebScript {
 
@@ -41,18 +33,24 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
+
+	private Ftp ftp;
+
+	public void setFtp(Ftp ftp) {
+		this.ftp = ftp;
+	}
+
+	private String directoryName;
+	private String fileName;
+	private final Set<QName> models = new HashSet<QName>();
 	
-	String directoryName;
-	String fileName;
-	
-	NodeRef mainNodeRef;
-	DocumentBuilder builder;
-	FTPClient fClient;
-	Map<QName,Serializable> mainNodeProperties;
-	
+	private NodeRef mainNodeRef;
+	private DocumentBuilder builder;
+	private Map<QName,Serializable> mainNodeProperties;
+
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
-		
+
 		Map<String, Object> model = new HashMap<String, Object>();
 
 		try {
@@ -60,14 +58,14 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 			mainNodeProperties = getSerializableDatalist(mainNodeRef);
 			initializationVariable();
 			
-			testMethod();
+			//testMethod();
 			
 			initializationDocumentBuilder();
 			Document xmlDocument = writeDatalistToXML(mainNodeRef);
-			ftpConnect("192.168.3.93", "ftpuser", "S@asd123456");
-			makeDirectoryInFtp(directoryName);
-			uploadXmlToFileInFtp(xmlDocument);
-			ftpDisconnect();
+			ftp.ftpConnect();
+			ftp.makeDirectoryInFtp(directoryName);
+			ftp.uploadXmlToFileInFtp(xmlDocument, fileName);
+			ftp.ftpDisconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.put("msg", e.getMessage());
@@ -125,6 +123,13 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 	public void initializationVariable () {
 		directoryName = mainNodeRef.toString().replace("workspace://SpacesStore/", "");
 		fileName = directoryName + "_property.xml";
+		models.add(QName.createQName("{http://www.ioi.com/model/AZTKP/1.0}AZTKPModel"));
+		models.add(QName.createQName("{http://www.ioi.com/model/priceInfo/1.0}priceInfoModel"));
+		models.add(QName.createQName("{http://www.ioi.com/model/procurement/1.0}procurementProcedureModel"));
+		models.add(QName.createQName("{http://www.ioi.com/model/priceInfo/1.0}priceInfoModel"));
+		models.add(QName.createQName("{http://www.ioi.com/model/supplier/1.0}SupplierModel"));
+		models.add(QName.createQName("{http://www.ioi.com/model/lotdoc/1.0}LotDocumentModel"));
+		models.add(QName.createQName("{http://www.ioi.com/model/directory/1.0}DirectoryModel"));
 	}
 	/**
 	 * Инициализация документ-билдера для XML
@@ -146,45 +151,41 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 	 */
 	public Document writeDatalistToXML(NodeRef nodeRef) throws Exception {
 		Document document = builder.newDocument();
-		Element rootElement = document.createElement(directoryName);
-		
+		Element rootElement = document.createElement("nodeRef:" + directoryName);
+
 		fillDocWithNodeProperties(document, mainNodeProperties, rootElement);
 		
 		Element associationElement = document.createElement("associations");
 		rootElement.appendChild(associationElement);
 
-		Collection<QName> qNameAssociations = serviceRegistry.getDictionaryService().getAssociations(QName.createQName("{http://www.ioi.com/model/AZTKP/1.0}AZTKPModel"));
-		
-		if (!qNameAssociations.isEmpty()) {
-			
-			Map<QName, Serializable> associationNodeProperties;
-			
-			for (QName qNameAssociationOfType : qNameAssociations) {
-				List<AssociationRef> associationRefsList = serviceRegistry.getNodeService().getTargetAssocs(mainNodeRef, qNameAssociationOfType);
-				if (!associationRefsList.isEmpty()) {
-					for (AssociationRef associationRef : associationRefsList) {
-						NodeRef nodeRefAssociation = associationRef.getTargetRef();
-						try {
-							associationNodeProperties = getSerializableDatalist(nodeRefAssociation);
-						} catch (Exception e) {
-							e.printStackTrace();
-							String result = "Exception, method: writeDatalistToXML()";
-							throw new Exception(result);
+		for (QName qNameModel : models) {
+
+			Collection<QName> qNameAssociations = serviceRegistry.getDictionaryService().getAssociations(qNameModel);
+
+			if (!qNameAssociations.isEmpty()) {
+
+				Map<QName, Serializable> associationNodeProperties;
+
+				for (QName qNameAssociationOfType : qNameAssociations) {
+					List<AssociationRef> associationRefsList = serviceRegistry.getNodeService().getTargetAssocs(mainNodeRef, qNameAssociationOfType);
+					if (!associationRefsList.isEmpty()) {
+						for (AssociationRef associationRef : associationRefsList) {
+							NodeRef nodeRefAssociation = associationRef.getTargetRef();
+							try {
+								associationNodeProperties = getSerializableDatalist(nodeRefAssociation);
+							} catch (Exception e) {
+								e.printStackTrace();
+								String result = "Exception, method: writeDatalistToXML()";
+								throw new Exception(result);
+							}
+							Element associationChieldElement = document.createElement("nodeRef:" + nodeRefAssociation.toString().replace("workspace://SpacesStore/", ""));
+							associationElement.appendChild(associationChieldElement);
+							fillDocWithNodeProperties(document, associationNodeProperties, associationChieldElement);
 						}
-						Element associationChieldElement = document.createElement(nodeRefAssociation.toString().replace("workspace://SpacesStore/", ""));
-						associationElement.appendChild(associationChieldElement);
-						fillDocWithNodeProperties(document, associationNodeProperties, associationChieldElement);
 					}
 				}
 			}
 		}
-		
-		
-
-		
-		
-		
-		
 		document.appendChild(rootElement);
 		return document;
 	}
@@ -194,77 +195,12 @@ public class UploadToFtpWebScript extends DeclarativeWebScript {
 	public void fillDocWithNodeProperties(Document document,Map<QName, Serializable> nodeProperties, Element mainElement) {
 		for (QName key : nodeProperties.keySet()) {
 			Element propertyElement = document.createElement(key.getLocalName());
-			propertyElement.appendChild(document.createTextNode(nodeProperties.get(key).toString()));
+			if (nodeProperties.get(key) != null) {
+				propertyElement.appendChild(document.createTextNode(nodeProperties.get(key).toString()));
+			} else {
+				propertyElement.appendChild(document.createTextNode("null"));
+			}
 			mainElement.appendChild(propertyElement);
 		}
-	}
-	/**
-	 * Создание подключения к FTP
-	 * @throws Exception 
-	 */
-	public void ftpConnect(String hostAddress, String log, String password) throws Exception {
-		fClient = new FTPClient();
-		try {
-			fClient.connect(hostAddress);
-			fClient.enterLocalPassiveMode();
-			fClient.login(log, password);
-		} catch (IOException e) {
-			e.printStackTrace();
-			String result = "IOException, method: ftpConnect()";
-			throw new Exception(result);
-		}
-	}
-	/**
-	 * Создание директории на FTP
-	 * @throws Exception 
-	 */
-	public void makeDirectoryInFtp(String directoryName) throws Exception {
-		try {
-			fClient.makeDirectory(directoryName);
-			fClient.changeWorkingDirectory(directoryName);
-		} catch (IOException e) {
-			e.printStackTrace();
-			String result = "IOException, method: makeDirectoryInFtp()";
-			throw new Exception(result);
-		}
-	}
-	/**
-	 * Загрузка XML файла на FTP
-	 * @throws Exception 
-	 */
-	public void uploadXmlToFileInFtp(Document domSource) throws Exception {
-		try {
-			Transformer transformer = TransformerFactory.newInstance().newTransformer();
-
-			try (OutputStream outputStream = fClient.storeFileStream(fileName)) {
-				transformer.transform(new DOMSource(domSource), new StreamResult(outputStream));
-			} catch (TransformerException e) {
-				e.printStackTrace();
-				String result = "TransformerException, method: uploadXmlToFtp()";
-				throw new Exception(result);
-			} catch (IOException e) {
-				e.printStackTrace();
-				String result = "IOException, method: uploadXmlToFtp()";
-				throw new Exception(result);
-			}
-		} catch (TransformerConfigurationException e) {
-			e.printStackTrace();
-			String result = "TransformerConfigurationException, method: uploadXmlToFtp()";
-			throw new Exception(result);
-		}
-	}
-	/**
-	 * Закрытие подключения к FTP
-	 * @throws Exception 
-	 */
-	public void ftpDisconnect() throws Exception {
-			try {
-				fClient.logout();
-				fClient.disconnect();
-			} catch (IOException e) {
-				e.printStackTrace();
-				String result = "IOException, method: ftpDisconnect()";
-				throw new Exception(result);
-			}
 	}
 }
