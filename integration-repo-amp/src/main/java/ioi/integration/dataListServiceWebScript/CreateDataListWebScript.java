@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.model.DataListModel;
-
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.namespace.QName;
@@ -15,11 +14,15 @@ import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 
+import ioi.integration.ftp.Ftp;
+
 public class CreateDataListWebScript extends DeclarativeWebScript {
-	
+
+    private final String SITE_SHORT_NAME = "smart";
+    private final String DATALIST_NAME = "iciSearchResults";
     private final static String NAMESPACE_URI = "http://www.ioi.com/model/priceInfo/1.0";
     private final String DATA_LIST_SITE_CONTAINER = "dataLists";
-    private final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(NAMESPACE_URI, "iciSearchResults");
+    private final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(NAMESPACE_URI, DATALIST_NAME);
 
     private ServiceRegistry serviceRegistry;
 
@@ -27,80 +30,74 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
         this.serviceRegistry = serviceRegistry;
     }
 
+    private Ftp ftp;
+
+    public void setFtp(Ftp ftp) {
+        this.ftp = ftp;
+    }
+
     @Override
-    protected Map<String, Object> executeImpl(
-            WebScriptRequest req, Status status, Cache cache) {
+    protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
         Map<String, Object> model = new HashMap<String, Object>();
 
-        // Name of the out-of-the-box Sample site (Web Site Design Project)
-        String siteShortName = "smart";
+        Map<String, String> dataListProperties = readXmlFromFtp();
+        createDataList(dataListProperties);
 
-        // Name of the data list we are about to create
-        String dataListName = "iciSearchResults";
-        // Get or create the site data list container (assumes that the site exists)
-        
-        if (!serviceRegistry.getSiteService().hasContainer(siteShortName, DATA_LIST_SITE_CONTAINER)) {
-        	serviceRegistry.getSiteService().createContainer(siteShortName, DATA_LIST_SITE_CONTAINER,
+        model.put("msg", "ok");
+        return model;
+    }
+
+    public Map<String, String> readXmlFromFtp() {
+        Map<String, String> dataListProperties = null;
+        try {
+            ftp.ftpConnect();
+            dataListProperties = ftp.readXmlFromFtp("2df200ae-188e-4777-a3e7-2d6c092bfae6",
+                    "2df200ae-188e-4777-a3e7-2d6c092bfae6_property.xml");
+            ftp.ftpDisconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dataListProperties;
+    }
+
+    public void createDataList(Map<String, String> dataListProperties) {
+        if (!serviceRegistry.getSiteService().hasContainer(SITE_SHORT_NAME, DATA_LIST_SITE_CONTAINER)) {
+            serviceRegistry.getSiteService().createContainer(SITE_SHORT_NAME, DATA_LIST_SITE_CONTAINER,
                     ContentModel.TYPE_CONTAINER, null);
         }
-        
-        NodeRef dataListContainerNodeRef = serviceRegistry.getSiteService().getContainer(
-                siteShortName, DATA_LIST_SITE_CONTAINER);
 
-        
+        NodeRef dataListContainerNodeRef = serviceRegistry.getSiteService().getContainer(SITE_SHORT_NAME,
+                DATA_LIST_SITE_CONTAINER);
+
         // Check that the data list name is not already used
-        NodeRef contaner = serviceRegistry.getNodeService().getChildByName(
-                dataListContainerNodeRef, ContentModel.ASSOC_CONTAINS, dataListName);
+        NodeRef contaner = serviceRegistry.getNodeService().getChildByName(dataListContainerNodeRef,
+                ContentModel.ASSOC_CONTAINS, DATALIST_NAME);
+
         Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
         if (contaner == null) {
             // Create the data list contaner
-            properties.put(ContentModel.PROP_NAME, dataListName);
+            properties.put(ContentModel.PROP_NAME, DATALIST_NAME);
             properties.put(ContentModel.PROP_TITLE, "Результаты поиска ИЦИ");
-            properties.put(ContentModel.PROP_DESCRIPTION, "A list of projects that has names starting with A");
-            properties.put(DataListModel.PROP_DATALIST_ITEM_TYPE, "priceinf:" + PRICEINF_PROJECT_LIST_ITEM_TYPE.getLocalName());
-            
-            NodeRef datalistNodeRef = serviceRegistry.getNodeService().createNode(
-                    dataListContainerNodeRef,
-                    ContentModel.ASSOC_CONTAINS,
-                    QName.createQName("cm:projectListA"),
-                    DataListModel.TYPE_DATALIST,
-                    properties).getChildRef();
+            properties.put(ContentModel.PROP_DESCRIPTION, "ici Search Results");
+            properties.put(DataListModel.PROP_DATALIST_ITEM_TYPE,
+                    "priceinf:" + PRICEINF_PROJECT_LIST_ITEM_TYPE.getLocalName());
 
-                if (datalistNodeRef != null) {
-                	model.put("msg", "Создали контейнер:  " + datalistNodeRef);
-    			}
-                else {
-                	model.put("msg", "Не создали контейнер");
-                }
+            NodeRef datalistNodeRef = serviceRegistry.getNodeService()
+                    .createNode(dataListContainerNodeRef, ContentModel.ASSOC_CONTAINS,
+                            QName.createQName("cm:priceinf_ici_" + DATALIST_NAME), DataListModel.TYPE_DATALIST, properties)
+                    .getChildRef();
 
         } else {
-        	// Create the data list
-            properties.put(QName.createQName(NAMESPACE_URI, "iciName"), "iciName");
-            properties.put(QName.createQName(NAMESPACE_URI, "iciKind"), "iciKind");
-            properties.put(QName.createQName(NAMESPACE_URI, "resource"), "resource");
-            properties.put(QName.createQName(NAMESPACE_URI, "quantity"), "quantity");
-            properties.put(QName.createQName(NAMESPACE_URI, "priceUnitWithoutVAT"), 1);
-            properties.put(QName.createQName(NAMESPACE_URI, "sumWithoutVAT"), 1);
-            properties.put(QName.createQName(NAMESPACE_URI, "costOfDeliveryWithoutVAT"), 1);
-            properties.put(QName.createQName(NAMESPACE_URI, "sumWithDeliveryWithoutVAT"), 1);
-            properties.put(QName.createQName(NAMESPACE_URI, "priceDeliveryWithAdjustmentsWithoutVAT"), 1);
-            properties.put(QName.createQName(NAMESPACE_URI, "sumShippingWithAdjustmentsWithoutVAT"), 1);            
-            properties.put(QName.createQName(NAMESPACE_URI, "iciCurrency"), "RUB");
-            properties.put(QName.createQName(NAMESPACE_URI, "iciVatRate"), "0");
-            
-            NodeRef projectANodeRef = serviceRegistry.getNodeService().createNode(
-            		contaner, ContentModel.ASSOC_CONTAINS,
-                    QName.createQName("cm:projectA1"),
-                    PRICEINF_PROJECT_LIST_ITEM_TYPE,
-                    properties).getChildRef();
-            
-            if (projectANodeRef != null) {
-            	model.put("msg", "Создали лист:  " + projectANodeRef + "в" + contaner);
-			}
-            else {
-            	model.put("msg", "Не создали лист");
+            for (String key : dataListProperties.keySet()) {
+                properties.put(QName.createQName(NAMESPACE_URI, key), dataListProperties.get(key));
             }
+
+            NodeRef projectANodeRef = serviceRegistry
+                    .getNodeService().createNode(contaner, ContentModel.ASSOC_CONTAINS,
+                            QName.createQName("cm:priceinf_ici_" + dataListProperties.get("name")), PRICEINF_PROJECT_LIST_ITEM_TYPE, properties)
+                    .getChildRef();
+
         }
-        return model;
     }
 }
