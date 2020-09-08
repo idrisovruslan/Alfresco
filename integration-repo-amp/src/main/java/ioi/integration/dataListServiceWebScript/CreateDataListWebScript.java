@@ -1,9 +1,8 @@
 package ioi.integration.dataListServiceWebScript;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.ibm.icu.text.SimpleDateFormat;
+import com.ibm.icu.util.GregorianCalendar;
+import ioi.integration.ftp.Ftp;
 import org.alfresco.model.ContentModel;
 import org.alfresco.model.DataListModel;
 import org.alfresco.service.ServiceRegistry;
@@ -14,7 +13,11 @@ import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 
-import ioi.integration.ftp.Ftp;
+import java.io.Serializable;
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class CreateDataListWebScript extends DeclarativeWebScript {
 
@@ -23,6 +26,8 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
     private final static String NAMESPACE_URI = "http://www.ioi.com/model/priceInfo/1.0";
     private final String DATA_LIST_SITE_CONTAINER = "dataLists";
     private final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(NAMESPACE_URI, DATALIST_NAME);
+
+    SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
 
     private ServiceRegistry serviceRegistry;
 
@@ -89,8 +94,19 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
                     .getChildRef();
 
         } else {
+
             for (String key : dataListProperties.keySet()) {
-                properties.put(QName.createQName(NAMESPACE_URI, key), dataListProperties.get(key));
+                if (key.equals("tzDate")) {
+                    GregorianCalendar startDate = new GregorianCalendar();
+                    try {
+                        sdf.isLenient();
+                        startDate.setTime(sdf.parse(dataListProperties.get(key)));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    properties.put(QName.createQName(NAMESPACE_URI, key), dataListProperties.get(key));
+                }
             }
 
             NodeRef projectANodeRef = serviceRegistry
