@@ -81,17 +81,17 @@
 				<property name="supp:Code">
 					<title>Код поставщика</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:SuppDescription">
 					<title>Наименование поставщика</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:e-mail">
 					<title>E-mail</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:Alte-mail">
 					<title>E-mail дополнительный</title>
@@ -101,32 +101,32 @@
 				<property name="supp:inn">
 					<title>ИНН</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:kpp">
 					<title>КПП</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:Director_FIO">
 					<title>ФИО руководителя</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:Director_Promise">
 					<title>Должность руководителя</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:Dat_Director_FIO">
 					<title>ФИО руководителя в дательном падеже</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:Dat_Director_Promise">
 					<title>Должность руководителя в дательном падеже</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="supp:gender">
 					<title>Пол</title>

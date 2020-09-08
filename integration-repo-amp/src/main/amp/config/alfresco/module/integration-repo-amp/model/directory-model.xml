@@ -36,17 +36,17 @@
 				<property name="dir:manufacturerNum">
 					<title>№</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:manufacturerName">
 					<title>Позиция</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:manufacturerDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 			
@@ -64,17 +64,17 @@
 				<property name="dir:safetyClassNum">
 					<title>№</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:safetyClassName">
 					<title>Позиция</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:safetyClassDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 			
@@ -92,17 +92,17 @@
 				<property name="dir:materialsListNum">
 					<title>№</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:materialsListName">
 					<title>Позиция</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:materialsListDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 			
@@ -120,17 +120,17 @@
 				<property name="dir:paymentConditionsNum">
 					<title>№</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:paymentConditionsName">
 					<title>Позиция</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:paymentConditionsDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 			
@@ -148,17 +148,17 @@
 				<property name="dir:priceValidityInTkpNum">
 					<title>№</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:priceValidityInTkpName">
 					<title>Позиция</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="dir:priceValidityInTkpDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 			

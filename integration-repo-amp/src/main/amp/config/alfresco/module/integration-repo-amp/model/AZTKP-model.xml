@@ -37,82 +37,82 @@
 				<property name="aztkp:tkpName">
 					<title>№ ТКП</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:doNotSendMailingList">
 					<title>Не передавать список рассылки</title>
 					<type>d:boolean</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:letterSubject">
 					<title>Тема письма</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:letterText">
 					<title>Текст письма</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:signatoryPosition">
 					<title>Должность подписанта</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:quantity">
 					<title>Количество</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:coordinatorPosition1">
 					<title>Должность согласующего 1</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:coordinatorFullName1">
 					<title>ФИО согласующего 1</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:coordinatorPosition2">
 					<title>Должность согласующего 2</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:coordinatorFullName2">
 					<title>ФИО согласующего 2</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:coordinatorPosition3">
 					<title>Должность согласующего 3</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:coordinatorFullName3">
 					<title>ФИО согласующего 3</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:node">
 					<title>Примечание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:tzName">
 					<title>№ ТЗ</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:tzDate">
 					<title>Дата ТЗ</title>
 					<type>d:date</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:numberSheetsInTz">
 					<title>Кол-во листов в ТЗ</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="aztkp:textArea1">
 					<title>textArea1</title>

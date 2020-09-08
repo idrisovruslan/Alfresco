@@ -103,32 +103,32 @@
 				<property name="lot:lotId">
 					<title>Id</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:lotName">
 					<title>Регистрационный №</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:lotNumber">
 					<title>Порядковый номер</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:lotDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:procurementNumber">
 					<title>№ ЗП</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:lotStatus">
 					<title>Статус</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="lot:statusOptions" />
 					</constraints>
@@ -136,7 +136,7 @@
 				<property name="lot:lotTime">
 					<title>Срок проведения опроса, в раб. днях</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="lot:TimeOptions" />
 					</constraints>
@@ -145,13 +145,13 @@
 				<property name="lot:AnotherlotTime">
 					<title>Иной срок проведения опроса, в раб. днях</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 
 				<property name="lot:EndDate">
 					<title>Дата окончания проведения опроса</title>
 					<type>d:date</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 
 				<property name="lot:LowPriceDate">
@@ -162,26 +162,26 @@
 				<property name="lot:deliveryPriceDate">
 					<title>передавать ПД для поиска ИЦИ и АЗТКП</title>
 					<type>d:boolean</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 
 				<property name="lot:LotStartDate">
 					<title>Дата начала поставки</title>
 					<type>d:date</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 
 				<property name="lot:LotEndDate">
 					<title>Дата окончания поставки</title>
 					<type>d:date</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 
 				</property>
 
 				<property name="lot:LotSale">
 					<title>Предмет закупки</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:LotDeliveryPrice">
 					<title>Сведения о включенных в цену расходах</title>
@@ -291,7 +291,7 @@
 					</source>
 					<target>
 						<class>priceinf:iciSearchResults</class>
-						<mandatory>true</mandatory>
+						<mandatory>false</mandatory>
 						<many>false</many>
 					</target>
 				</association>-->
@@ -307,19 +307,19 @@
 				<property name="lot:lotPositionId">
 					<title>ID</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:lotPositionNumber">
 					<title>Регистрационный №</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:lotPositionStatus">
 					<title>Статус</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="lot:statusOptions" />
 					</constraints>
@@ -328,31 +328,31 @@
 				<property name="lot:lotPositionDescription">
 					<title>Описание</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:lotNumberLink">
 					<title>№ Лота</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:lotPositionYear">
 					<title>Год заявки</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:lotPositionNote">
 					<title>Примечание</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:lotPositionAmount">
 					<title>Количество</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 			
@@ -385,19 +385,19 @@
 				<property name="lot:positionCode">
 					<title>Код</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:positionName">
 					<title>Наименование</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				
 				<property name="lot:positionGID">
 					<title>GID</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 
 			</properties>
@@ -437,17 +437,17 @@
 				<property name="lot:qualifierTypeCode">
 					<title>Код единицы измерения</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:qualifierTypeName">
 					<title>Наименование единицы измерения</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:qualifierTypeDescription">
 					<title>Пояснение</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 			</properties>
 		</type>
@@ -467,12 +467,12 @@
 				<property name="lot:deliveryValue">
 					<title>Объем поставки, %</title>
 					<type>d:double</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:deliveryTime">
 					<title>Срок поставки, дней</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:workDays">
 					<title>Рабочие дни</title>
@@ -480,7 +480,7 @@
 					<mandatory>false</mandatory>
 				</property>
 				<!-- перенести в ассоциации -->
-				<!-- <property name="lot:deliveryTimeOptions"> <title>Условия поставки</title> <type>d:int</type> <mandatory>true</mandatory> <constraints> <constraint ref="lot:deliverySellOptions" /> </constraints> </property> -->
+				<!-- <property name="lot:deliveryTimeOptions"> <title>Условия поставки</title> <type>d:int</type> <mandatory>false</mandatory> <constraints> <constraint ref="lot:deliverySellOptions" /> </constraints> </property> -->
 				<property name="lot:deliveryEndDate">
 					<title>Дата поставки </title>
 					<type>d:date</type>
@@ -513,12 +513,12 @@
 				<property name="lot:deliveryIntervalCode">
 					<title>Код</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:deliveryIntervalOptions">
 					<title>Наименование</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="lot:deliverySellOptions" />
 					</constraints>
@@ -539,13 +539,13 @@
 				<property name="lot:saleValue">
 					<title>Объем оплаты, %</title>
 					<type>d:double</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 
 				</property>
 				<property name="lot:saleType">
 					<title>Тип оплаты</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="lot:saleTypeOptions" />
 					</constraints>
@@ -553,7 +553,7 @@
 				<property name="lot:saleTime">
 					<title>Срок оплаты, дней</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<!-- <constraints> <constraint ref="lot:saleTypeOptions" /> </constraints> -->
 				</property>
 				<property name="lot:saleworkDays">
@@ -562,7 +562,7 @@
 					<mandatory>false</mandatory>
 				</property>
 				<!-- перенести в ассоциации -->
-				<!-- <property name="lot:deliveryTimeOptions"> <title>Условия поставки</title> <type>d:int</type> <mandatory>true</mandatory> <constraints> <constraint ref="lot:deliverySellOptions" /> </constraints> </property> -->
+				<!-- <property name="lot:deliveryTimeOptions"> <title>Условия поставки</title> <type>d:int</type> <mandatory>false</mandatory> <constraints> <constraint ref="lot:deliverySellOptions" /> </constraints> </property> -->
 				
 				<property name="lot:saleEndDate">
 					<title>Дата оплаты </title>
@@ -593,12 +593,12 @@
 				<property name="lot:saleIntervalCode">
 					<title>Код</title>
 					<type>d:int</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 				</property>
 				<property name="lot:saleIntervalOptions">
 					<title>Наименование</title>
 					<type>d:text</type>
-					<mandatory>true</mandatory>
+					<mandatory>false</mandatory>
 					<constraints>
 						<constraint ref="lot:deliverySellOptions" />
 					</constraints>
