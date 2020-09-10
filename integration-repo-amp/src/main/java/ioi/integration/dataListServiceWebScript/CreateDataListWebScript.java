@@ -19,6 +19,11 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+//Создает результаты поиска ИЦИ из ФТП. !!!!!не доработан!!!!!:
+//      имена папок и файлов заданы жестко, метод readXmlFromFtp()
+//      жестко задано имя "tzDate"
+//      скрипт отвечает и за создание контейнера и за создание даталиста(за создание должен отвеать CreateDataListContainerWebScript
+
 public class CreateDataListWebScript extends DeclarativeWebScript {
 
     private final String SITE_SHORT_NAME = "smart";
@@ -27,7 +32,7 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
     private final String DATA_LIST_SITE_CONTAINER = "dataLists";
     private final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(NAMESPACE_URI, DATALIST_NAME);
 
-    SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
 
     private ServiceRegistry serviceRegistry;
 
@@ -81,7 +86,7 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
 
         Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
         if (contaner == null) {
-            // Create the data list contaner
+            //создание контейнера даталистов
             properties.put(ContentModel.PROP_NAME, DATALIST_NAME);
             properties.put(ContentModel.PROP_TITLE, "Результаты поиска ИЦИ");
             properties.put(ContentModel.PROP_DESCRIPTION, "ici Search Results");
@@ -94,13 +99,13 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
                     .getChildRef();
 
         } else {
-
+            //заполнение и создание даталиста
             for (String key : dataListProperties.keySet()) {
                 if (key.equals("tzDate")) {
                     GregorianCalendar startDate = new GregorianCalendar();
                     try {
-                        sdf.isLenient();
-                        startDate.setTime(sdf.parse(dataListProperties.get(key)));
+                        simpleDateFormat.isLenient();
+                        startDate.setTime(simpleDateFormat.parse(dataListProperties.get(key)));
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
