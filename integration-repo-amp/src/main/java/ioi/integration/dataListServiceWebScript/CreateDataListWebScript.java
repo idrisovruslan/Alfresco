@@ -28,9 +28,11 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
 
     private final String SITE_SHORT_NAME = "smart";
     private final String DATALIST_NAME = "iciSearchResults";
-    private final static String NAMESPACE_URI = "http://www.ioi.com/model/priceInfo/1.0";
+    private final String NAMESPACE_URI = "http://www.ioi.com/model/priceInfo/1.0";
     private final String DATA_LIST_SITE_CONTAINER = "dataLists";
     private final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(NAMESPACE_URI, DATALIST_NAME);
+    private final String WORKING_DIRECTORY_NAME = "2df200ae-188e-4777-a3e7-2d6c092bfae6";
+    private final String FILE_NAME = "2df200ae-188e-4777-a3e7-2d6c092bfae6_property.xml";
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
 
@@ -61,8 +63,8 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
         Map<String, String> dataListProperties = null;
         try {
             ftp.ftpConnect();
-            dataListProperties = ftp.readXmlFromFtp("2df200ae-188e-4777-a3e7-2d6c092bfae6",
-                    "2df200ae-188e-4777-a3e7-2d6c092bfae6_property.xml");
+            dataListProperties = ftp.readXmlFromFtp(WORKING_DIRECTORY_NAME,
+                    FILE_NAME);
             ftp.ftpDisconnect();
 
         } catch (Exception e) {
