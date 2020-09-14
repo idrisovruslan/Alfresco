@@ -33,6 +33,9 @@
 			<value>${custom.ftp.password}</value>
 		</property>
 	</bean>
+	<!-- Бин описания контейнеров -->
+	<bean id="service.description.containers" class="ioi.integration.dataListServiceWebScript.DescriptionContainers">
+	</bean>
 <!--
 	<bean id="integration-repo-amp.FormFilterNode" class="ioi.integration.formProcessorFilters.TaskFormFilter" parent="baseFormFilter">
 	    <property name="filterRegistry" ref="nodeFilterRegistry" />

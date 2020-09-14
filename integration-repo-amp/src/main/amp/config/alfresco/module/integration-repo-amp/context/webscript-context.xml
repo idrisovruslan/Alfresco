@@ -9,14 +9,6 @@
 	class="ioi.integration.demoamp.HelloWorldWebScript" 
 	parent="webscript">
 	</bean>
-	
-	<bean id="webscript.createdatalistsсontainer.get"
-	class="ioi.integration.dataListServiceWebScript.CreateDataListsСontainerWebScript"
-	parent="webscript">
-		<property name="serviceRegistry">
-			<ref bean="ServiceRegistry" />
-		</property>
-   </bean>
 
 	<bean id="webscript.uploadtoftp.get" 
 	class="ioi.integration.uploadToFtp.UploadToFtpWebScript" 
@@ -26,4 +18,28 @@
 		</property>
 		<property name="ftp" ref="service.ftp"/>
 	</bean>
+
+	<bean id="webscript.createdatalistsсontainer.get"
+		  class="ioi.integration.dataListServiceWebScript.CreateDataListsContainerWebScript"
+		  parent="webscript">
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="descContainers">
+			<ref bean="service.description.containers" />
+		</property>
+	</bean>
+
+	<bean id="webscript.createdatalist.get"
+		  class="ioi.integration.dataListServiceWebScript.CreateDataListWebScript"
+		  parent="webscript">
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="ftp" ref="service.ftp"/>
+		<property name="descContainers">
+			<ref bean="service.description.containers" />
+		</property>
+	</bean>
+
 </beans>

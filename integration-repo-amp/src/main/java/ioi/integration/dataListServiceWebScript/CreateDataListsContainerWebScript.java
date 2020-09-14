@@ -15,11 +15,13 @@ import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 
-public class CreateDataListsСontainerWebScript extends DeclarativeWebScript {
+public class CreateDataListsContainerWebScript extends DeclarativeWebScript {
 
 	private ServiceRegistry serviceRegistry;
 
-	DescriptionСontainers descСontainers = new DescriptionСontainers();
+	private DescriptionContainers descContainers;
+
+	public void setDescContainers(DescriptionContainers descContainers) { this.descContainers = descContainers; }
 
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
@@ -28,10 +30,10 @@ public class CreateDataListsСontainerWebScript extends DeclarativeWebScript {
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
-		Map<String, Map<String, String>> descriptionСontainers = descСontainers.getDescriptionСontainers();
+		Map<String, Map<String, String>> descriptionContainers = descContainers.getDescriptionContainers();
 		Map<String, Object> model = new HashMap<String, Object>();
 
-		for (Entry<String, Map<String, String>> entry : descriptionСontainers.entrySet()) {
+		for (Entry<String, Map<String, String>> entry : descriptionContainers.entrySet()) {
 			String key = entry.getKey();
 			Map<String, String> description = entry.getValue();
 			QName projectListItemType = QName.createQName(description.get("NAMESPACE_URI"), description.get("DATA_LIST_NAME"));
@@ -59,12 +61,6 @@ public class CreateDataListsСontainerWebScript extends DeclarativeWebScript {
 						.createNode(dataListContainerNodeRef, ContentModel.ASSOC_CONTAINS,
 								QName.createQName(description.get("CONTANER_QNAME")), DataListModel.TYPE_DATALIST, properties)
 						.getChildRef();
-
-				if (datalistNodeRef != null) {
-					continue;
-				} else {
-					break;
-				}
 			}
 		}
 		model.put("msg", "Отработал");

@@ -26,31 +26,34 @@ import java.util.Map;
 
 public class CreateDataListWebScript extends DeclarativeWebScript {
 
-    private final String SITE_SHORT_NAME = "smart";
-    private final String DATALIST_NAME = "iciSearchResults";
-    private final String NAMESPACE_URI = "http://www.ioi.com/model/priceInfo/1.0";
-    private final String DATA_LIST_SITE_CONTAINER = "dataLists";
-    private final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(NAMESPACE_URI, DATALIST_NAME);
-    private final String WORKING_DIRECTORY_NAME = "2df200ae-188e-4777-a3e7-2d6c092bfae6";
-    private final String FILE_NAME = "2df200ae-188e-4777-a3e7-2d6c092bfae6_property.xml";
-
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
-
     private ServiceRegistry serviceRegistry;
+
+    private DescriptionContainers descContainers;
+
+    private Ftp ftp;
+
+    public void setDescContainers(DescriptionContainers descContainers) { this.descContainers = descContainers; }
 
     public void setServiceRegistry(ServiceRegistry serviceRegistry) {
         this.serviceRegistry = serviceRegistry;
     }
 
-    private Ftp ftp;
+    public void setFtp(Ftp ftp) { this.ftp = ftp; }
 
-    public void setFtp(Ftp ftp) {
-        this.ftp = ftp;
-    }
+    private final String WORKING_DIRECTORY_NAME = "2df200ae-188e-4777-a3e7-2d6c092bfae6";
+    private final String FILE_NAME = "2df200ae-188e-4777-a3e7-2d6c092bfae6_property.xml";
+
+    Map<String, Map<String, String>> descriptionContainers;
+    Map<String, String> iciSearchResultsDescription;
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
 
     @Override
     protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
         Map<String, Object> model = new HashMap<String, Object>();
+
+        descriptionContainers = descContainers.getDescriptionContainers();
+        iciSearchResultsDescription = descriptionContainers.get("ICI_SEARCH_RESULTS");
 
         Map<String, String> dataListProperties = readXmlFromFtp();
         createDataList(dataListProperties);
@@ -66,38 +69,42 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
             dataListProperties = ftp.readXmlFromFtp(WORKING_DIRECTORY_NAME,
                     FILE_NAME);
             ftp.ftpDisconnect();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return dataListProperties;
     }
 
+
     public void createDataList(Map<String, String> dataListProperties) {
-        if (!serviceRegistry.getSiteService().hasContainer(SITE_SHORT_NAME, DATA_LIST_SITE_CONTAINER)) {
-            serviceRegistry.getSiteService().createContainer(SITE_SHORT_NAME, DATA_LIST_SITE_CONTAINER,
+        if (!serviceRegistry.getSiteService().hasContainer(iciSearchResultsDescription.get("SITE_SHORT_NAME"), iciSearchResultsDescription.get("DATA_LIST_SITE_CONTAINER"))) {
+            serviceRegistry.getSiteService().createContainer(iciSearchResultsDescription.get("SITE_SHORT_NAME"), iciSearchResultsDescription.get("DATA_LIST_SITE_CONTAINER"),
                     ContentModel.TYPE_CONTAINER, null);
         }
 
-        NodeRef dataListContainerNodeRef = serviceRegistry.getSiteService().getContainer(SITE_SHORT_NAME,
-                DATA_LIST_SITE_CONTAINER);
+        final QName PRICEINF_PROJECT_LIST_ITEM_TYPE = QName.createQName(
+                iciSearchResultsDescription.get("NAMESPACE_URI"),
+                iciSearchResultsDescription.get("DATA_LIST_NAME"));
+
+        NodeRef dataListContainerNodeRef = serviceRegistry.getSiteService().getContainer(iciSearchResultsDescription.get("SITE_SHORT_NAME"),
+                iciSearchResultsDescription.get("DATA_LIST_NAME"));
 
         // Check that the data list name is not already used
         NodeRef contaner = serviceRegistry.getNodeService().getChildByName(dataListContainerNodeRef,
-                ContentModel.ASSOC_CONTAINS, DATALIST_NAME);
+                ContentModel.ASSOC_CONTAINS, iciSearchResultsDescription.get("DATA_LIST_NAME"));
 
         Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
         if (contaner == null) {
             //создание контейнера даталистов
-            properties.put(ContentModel.PROP_NAME, DATALIST_NAME);
-            properties.put(ContentModel.PROP_TITLE, "Результаты поиска ИЦИ");
-            properties.put(ContentModel.PROP_DESCRIPTION, "ici Search Results");
+            properties.put(ContentModel.PROP_NAME, iciSearchResultsDescription.get("DATA_LIST_NAME"));
+            properties.put(ContentModel.PROP_TITLE, iciSearchResultsDescription.get("DATA_LIST_NAME_ICI_SEARCH_RESULTS"));
+            properties.put(ContentModel.PROP_DESCRIPTION, iciSearchResultsDescription.get("CONTENT_MODEL_PROP_DESCRIPTION_ICI_SEARCH_RESULTS"));
             properties.put(DataListModel.PROP_DATALIST_ITEM_TYPE,
-                    "priceinf:" + PRICEINF_PROJECT_LIST_ITEM_TYPE.getLocalName());
+                    iciSearchResultsDescription.get("PREFIX_PRICEINF") + PRICEINF_PROJECT_LIST_ITEM_TYPE.getLocalName());
 
             NodeRef datalistNodeRef = serviceRegistry.getNodeService()
                     .createNode(dataListContainerNodeRef, ContentModel.ASSOC_CONTAINS,
-                            QName.createQName("cm:priceinf_ici_" + DATALIST_NAME), DataListModel.TYPE_DATALIST, properties)
+                            QName.createQName("cm:priceinf_ici_" + iciSearchResultsDescription.get("DATA_LIST_NAME")), DataListModel.TYPE_DATALIST, properties)
                     .getChildRef();
 
         } else {
@@ -112,7 +119,7 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
                         e.printStackTrace();
                     }
                 } else {
-                    properties.put(QName.createQName(NAMESPACE_URI, key), dataListProperties.get(key));
+                    properties.put(QName.createQName(iciSearchResultsDescription.get("NAMESPACE_URI"), key), dataListProperties.get(key));
                 }
             }
 
