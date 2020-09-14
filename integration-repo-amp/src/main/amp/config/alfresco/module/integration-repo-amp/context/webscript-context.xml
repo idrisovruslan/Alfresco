@@ -30,6 +30,17 @@
 		</property>
 	</bean>
 
+	<bean id="webscript.createemptydatalists.get"
+		  class="ioi.integration.dataListServiceWebScript.CreateEmptyDataListsWebScript"
+		  parent="webscript">
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="descContainers">
+			<ref bean="service.description.containers" />
+		</property>
+	</bean>
+
 	<bean id="webscript.createdatalist.get"
 		  class="ioi.integration.dataListServiceWebScript.CreateDataListWebScript"
 		  parent="webscript">

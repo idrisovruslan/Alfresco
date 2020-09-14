@@ -146,25 +146,20 @@ public class Ftp {
             for (int i = 0; i < properties.getLength(); i++) {
                 Node propertie = properties.item(i);
                 if (propertie.getNodeType() != Node.TEXT_NODE) {
-                    System.out.println(propertie.getNodeName() + "--------" + propertie.getTextContent());
                     dataListProperties.put(propertie.getNodeName(),propertie.getTextContent());
                 }
 //				if (propertie.getNodeName() != "associations") {
-//					System.out.println(propertie.getNodeName() + "--------" + propertie.getTextContent());
 //				} else {
 //					NodeList associations = propertie.getChildNodes();
 //					for (int j = 0; j < associations.getLength(); j++) {
 //						Node association = associations.item(j);
-//						System.out.println("++++++" + association.getNodeName());
 //						NodeList associationProperties = association.getChildNodes();
 //						for (int k = 0; k < associationProperties.getLength(); k++) {
 //							Node associationPropertie = associationProperties.item(k);
-//							System.out.println("    " + associationPropertie.getNodeName() + "--------"
-//									+ associationPropertie.getTextContent());
 //						}
 //					}
 //				}
-                System.out.println("===========>>>>");
+
             }
 
         } catch (ParserConfigurationException ex) {

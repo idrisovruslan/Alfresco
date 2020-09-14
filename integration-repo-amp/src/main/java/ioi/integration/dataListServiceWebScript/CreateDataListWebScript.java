@@ -87,11 +87,14 @@ public class CreateDataListWebScript extends DeclarativeWebScript {
                 iciSearchResultsDescription.get("DATA_LIST_NAME"));
 
         NodeRef dataListContainerNodeRef = serviceRegistry.getSiteService().getContainer(iciSearchResultsDescription.get("SITE_SHORT_NAME"),
-                iciSearchResultsDescription.get("DATA_LIST_NAME"));
+                iciSearchResultsDescription.get("DATA_LIST_SITE_CONTAINER"));
+
+        System.out.println(iciSearchResultsDescription.get("DATA_LIST_NAME"));
 
         // Check that the data list name is not already used
         NodeRef contaner = serviceRegistry.getNodeService().getChildByName(dataListContainerNodeRef,
                 ContentModel.ASSOC_CONTAINS, iciSearchResultsDescription.get("DATA_LIST_NAME"));
+
 
         Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
         if (contaner == null) {

@@ -1,0 +1,7 @@
+<webscript>
+    <shortname>Create Data List Webscript</shortname>
+    <description>Create Data List</description>
+    <url>/dataListService/createDataList</url>
+    <authentication>user</authentication>
+    <format default="html"></format>
+</webscript>
