@@ -33,7 +33,8 @@
 	
 	            <div class="bdft">
 	               <input id="${formId}-submit" type="submit" value="${msg("form.button.submit.label")}" />
-	               &nbsp;<input id="${formId}-cancel" type="button" value="${msg("form.button.cancel.label")}" />
+					<input id="${formId}-submit" type="submit" value="Скрипт" OnClick="createEmptyDataListsWebScript();"/>
+	               <input id="${formId}-cancel" type="button" value="${msg("form.button.cancel.label")}" />
 	            </div>
 	      
 	         </form>
@@ -41,4 +42,33 @@
 	      </div>
 	   </div>
 	</div>
+
+	<script language="JavaScript">
+
+		(function () {
+			var form = document.getElementById(${formId});
+			form.addEventListener('submit', function(event){
+				createEmptyDataListsWebScript();
+				if(false){
+					event.preventDefault();
+					return false;
+				}
+			});
+		}());
+
+		async function createEmptyDataListsWebScript() {
+			let nodeRef = "${form.arguments["itemId"]}"
+			let url = "http://localhost:8080/alfresco/s/dataListService/createEmptyDataLists?nodeRef=" + nodeRef;
+			let response = await fetch(url);
+
+			if (response.ok) { // если HTTP-статус в диапазоне 200-299
+				// получаем тело ответа (см. про этот метод ниже)
+				let json = await response.json();
+				alert(response.text());
+			} else {
+				alert("Ошибка HTTP: " + response.status);
+			}
+		}
+	</script>
+
 </#macro>
